@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signupUser } from '../api';
+import { useNavigate } from 'react-router-dom';
+import Dashboard from './Dashboard'
 
 const Signup = ({ t, setUser }) => {
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', age: '', gender: '', country: '', jobTitle: '', industry: '', consent: false,
   });
+  const navigate = useNavigate();
+  const [dash,setDash]= useState(false)
 
       const handleSignup = async (e) => {
         e.preventDefault();
@@ -19,12 +23,18 @@ const Signup = ({ t, setUser }) => {
           setUser(response); // you store the returned user (optional)
           // setPage('dashboard'); // go to dashboard
           alert('Registration successful!');
+          setDash(true)
+          // navigate(Dashboard)
         } catch (error) {
           console.error('Signup error:', error);
           alert('Registration failed. Please try again.');
         }
       };
-
+      useEffect(()=>{
+        if(dash){
+          navigate('/Dashboard')
+        }
+      })
       const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
