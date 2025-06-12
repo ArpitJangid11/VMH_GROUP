@@ -21,7 +21,7 @@ const Home = ({ t, user}) => {
                       </Link>
                     </div>
                   ):(
-                    <Link to="/signup">
+                    <Link to="/login">
                       <button
                         className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
                       >
