@@ -29,7 +29,12 @@ const translations = {
     earnings: "Earnings",
     refer: "Refer a Friend",
     notification: "Notifications",
+    login: "Login",
     logout: "Logout",
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    here: "Here",
+    hi: "Hi, ",
   },
   fr: {
     home: "Accueil",
@@ -62,7 +67,12 @@ const translations = {
     earnings: "Gains",
     refer: "Parrainer un ami",
     notification: "Notifications",
+    login: "Se connecter",
     logout: "Déconnexion",
+    password: "Mot de passe",
+    confirmPassword: "Confirmez le mot de passe",
+    here: "Ici",
+    hi: "Hi",
   },
   de: {
     home: "Startseite",
@@ -96,7 +106,11 @@ const translations = {
     earnings: "Einnahmen",
     refer: "Freund werben",
     notification: "Benachrichtigungen",
+    login: "Login",
     logout: "Abmelden",
+    password: "Passwort",
+    confirmPassword: "Passwort bestätigen",
+    here: "Hier",
   },
 };
 

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { signupUser } from '../api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Dashboard from './Dashboard'
 
 const Signup = ({ t, setUser }) => {
   const [formData, setFormData] = useState({
-    name: '', email: '', phone: '', age: '', gender: '', country: '', jobTitle: '', industry: '', consent: false,
+    name: '', email: '', phone: '', age: '', gender: '', country: '', jobTitle: '', industry: '',password: '', consent: false,
   });
   const navigate = useNavigate();
   const [dash,setDash]= useState(false)
@@ -18,6 +18,11 @@ const Signup = ({ t, setUser }) => {
           return;
         }
 
+        if (formData.password !== formData.confirmPassword) {
+          alert("Passwords do not match.");
+          return;
+        }
+        
         try {
           const response = await signupUser(formData);  // this sends the data to Airtable
           setUser(response); // you store the returned user (optional)
@@ -120,6 +125,24 @@ const Signup = ({ t, setUser }) => {
                         required
                       />
                     </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder={t.password }
+                        onChange={handleInputChange}
+                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        required
+                      />
+                      <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder={t.confirmPassword }
+                        onChange={handleInputChange}
+                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        required
+                      />
+                    </div>
                     <label className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg">
                       <input
                         type="checkbox"
@@ -137,6 +160,8 @@ const Signup = ({ t, setUser }) => {
                       {t.submit}
                     </button>
                   </form>
+                  <p className="text-gray-600 cursor-pointer text-center mt-8 mb-8"> <Link  
+                   to='/Login'>{t.login}  {t.here}</Link></p>
                 </div>
               </div>
   );
