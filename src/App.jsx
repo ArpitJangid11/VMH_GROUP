@@ -9,6 +9,8 @@ import Dashboard from './pages/Dashboard';
 import Faqs from './pages/Faqs';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import Surveys from './pages/Surveys';
+import SurveyPage from './pages/QuestionSurevy';
 
 const App = () => {
   const [language, setLanguage] = useState('en');
@@ -40,7 +42,9 @@ const App = () => {
             <Route path="/about" element={<About t={t} />} />
             <Route path="/login" element={<Login t={t} setUser={setUser} />} />
             <Route path="/signup" element={<Signup t={t} setUser={setUser} />} />
-            <Route path="/dashboard" element={<Dashboard t={t} user={user} />} />
+            <Route path="/dashboard" element={<Dashboard t={t} user={user} setUser={setUser}/>} />
+            <Route path="/surveys" element={<Surveys t={t} />} />
+            <Route path="/surveys/:label" element={<SurveyPage t={t} />} />
             <Route path="/faqs" element={<Faqs t={t} />} />
             <Route path="/contact" element={<Contact t={t} />} />
           </Routes>

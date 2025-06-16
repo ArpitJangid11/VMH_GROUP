@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { signupUser } from '../api';
 import { Link, useNavigate } from 'react-router-dom';
+// import bcrypt from 'bcryptjs';
 import Dashboard from './Dashboard'
 
 const Signup = ({ t, setUser }) => {
@@ -22,17 +23,26 @@ const Signup = ({ t, setUser }) => {
           alert("Passwords do not match.");
           return;
         }
-        
+
         try {
-          const response = await signupUser(formData);  // this sends the data to Airtable
-          setUser(response); // you store the returned user (optional)
-          // setPage('dashboard'); // go to dashboard
+          // 🔒 Hash the password before sending
+          // const hashedPassword = await bcrypt.hash(formData.password, 10); // 10 is salt rounds
+
+          // const signupData = {
+          //   ...formData,
+          //   password: hashedPassword,
+          // };
+
+          // delete signupData.confirmPassword;
+
+          const response = await signupUser(formData);
+          setUser(response);
           alert('Registration successful!');
           setDash(true)
-          // navigate(Dashboard)
+          navigate('/Dashboard');
         } catch (error) {
           console.error('Signup error:', error);
-          alert('Registration failed. Please try again.');
+          alert('Registration failed.');
         }
       };
       useEffect(()=>{
