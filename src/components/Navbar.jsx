@@ -8,6 +8,7 @@ const Navbar = ({ language, setLanguage, t, user, setUser }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     setUser(null);
     navigate('/login');
     setMenuOpen(false);

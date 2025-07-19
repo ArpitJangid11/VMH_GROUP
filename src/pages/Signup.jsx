@@ -104,7 +104,7 @@ const Signup = ({ t, setUser }) => {
               <input type="text" name="fullName" placeholder={t.name} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
               <input type="email" name="email" placeholder={t.email} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
               <input type="tel" name="phone" placeholder={t.phone} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="date" name="DOB" placeholder="Date of Birth" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+              <input type="date" name="DOB" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
               <select name="gender" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" defaultValue="">
                 <option value="" disabled>{t.gender}</option>
                 <option value="Male">Male</option>
