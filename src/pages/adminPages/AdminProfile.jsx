@@ -69,7 +69,7 @@ const AdminProfile = ({ t, setUser }) => {
     { label: t?.name || "Full Name", key: "fullName", editable: true },
     { label: t?.email || "Email", key: "email", editable: false },
     { label: t?.phone || "Phone", key: "phone", editable: false },
-    { label: t?.age || "Age", key: "age", editable: true },
+    { label: t?.dob || "DOB", key: "DOB", editable: true },
     { label: t?.gender || "Gender", key: "gender", editable: true },
     { label: t?.country || "Country", key: "country", editable: true },
     { label: t?.jobTitle || "Job Title", key: "jobTitle", editable: true },

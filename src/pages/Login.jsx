@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { getProfile, loginUser } from "../services/userService";
+import { loginUser } from "../services/userService";
 
 const Login = ({ t, setUser }) => {
   const [email, setEmail] = useState("");                                            
@@ -13,7 +13,7 @@ const Login = ({ t, setUser }) => {
   setLoading(true);
 
   try {
-    const { token } = await loginUser({ email, password });
+    const { token,user } = await loginUser({ email, password });
 
     if (!token) {
       alert("Invalid login credentials");
@@ -23,7 +23,7 @@ const Login = ({ t, setUser }) => {
     // ✅ Save token BEFORE calling getProfile
     localStorage.setItem("token", token);
 
-    const user = await getProfile();
+    // const user = await getProfile();
 
     localStorage.setItem("user", JSON.stringify(user));
     setUser(user);

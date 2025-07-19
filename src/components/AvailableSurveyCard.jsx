@@ -4,19 +4,23 @@ import { incrementSurveyResponseCount } from "../services/userService";
 
 const AvailableSurveyCard = ({ survey }) => {
   const handleStartSurvey = async () => {
-  if (!survey?.link) {
-    alert("Survey link is not available.");
-    return;
-  }
+    if (!survey?.link) {
+      alert("Survey link is not available.");
+      return;
+    }
 
-  try {
-    await incrementSurveyResponseCount(survey.survey_id || survey.id); // ✅ update server
-    window.open(survey.link, "_blank", "noopener,noreferrer"); // ✅ open link
-  } catch (error) {
-    console.error("Failed to increment response count:", error);
-    alert("Could not register response. Please try again.");
-  }
-};
+    try {
+      // Replace 'user=xxxx' with actual user ID
+      const user = JSON.parse(localStorage.getItem("user")); 
+      const updatedLink = survey.link.replace(/user=xxxx/, `user=${user.id}`);
+
+      await incrementSurveyResponseCount(survey.survey_id || survey.id);
+      window.open(updatedLink, "_blank", "noopener,noreferrer");
+    } catch (error) {
+      console.error("Failed to increment response count:", error);
+      alert("Could not register response. Please try again.");
+    }
+  };
 
   return (
     <div className="w-full bg-white border-l-4 border-blue-600 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 mb-5 flex flex-col md:flex-row justify-between items-start md:items-center">
