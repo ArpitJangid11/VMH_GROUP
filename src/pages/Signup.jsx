@@ -104,15 +104,24 @@ const Signup = ({ t, setUser }) => {
               <input type="text" name="fullName" placeholder={t.name} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
               <input type="email" name="email" placeholder={t.email} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
               <input type="tel" name="phone" placeholder={t.phone} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input
-                type="text"
-                name="DOB"
-                placeholder="Date of Birth"
-                onFocus={(e) => (e.target.type = 'date')}
-                onBlur={(e) => { if (!e.target.value) e.target.type = 'text'; }}
-                onChange={handleInputChange}
-                className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-              />
+              <div className="relative w-full">
+  <input
+    type="date"
+    name="DOB"
+    id="dob"
+    max={new Date().toISOString().split("T")[0]}
+    onChange={handleInputChange}
+    required
+    className="peer block w-full appearance-none border border-gray-300 bg-white px-3 pt-5 pb-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <label
+    htmlFor="dob"
+    className="absolute left-3 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500"
+  >
+    Date of Birth
+  </label>
+</div>
+
               <select name="gender" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" defaultValue="">
                 <option value="" disabled>{t.gender}</option>
                 <option value="Male">Male</option>
