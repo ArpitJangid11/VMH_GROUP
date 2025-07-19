@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { getAllUsers, updateUserRole } from "../../services/userService";
 import { FaSearch } from "react-icons/fa";
 
-// Removed "moderator"
 const roles = ["all", "user", "admin"];
 
 const EditUserRolesInline = () => {
@@ -13,6 +12,7 @@ const EditUserRolesInline = () => {
   const [filterRole, setFilterRole] = useState("all");
   const [loadingId, setLoadingId] = useState(null);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("success");
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -45,14 +45,19 @@ const EditUserRolesInline = () => {
     );
   };
 
-  const handleUpdate = async (userId, role) => {
+  const handleUpdate = async (userId, newRole) => {
+    const user = users.find((u) => u.id === userId);
+    if (user.role === newRole) return;
+
     setLoadingId(userId);
     try {
-      await updateUserRole(userId, role);
-      setMessage(`✅ Role updated for ${userId}`);
+      await updateUserRole(userId, newRole);
+      setMessage(`✅ Role updated for ${user.email}`);
+      setMessageType("success");
     } catch (error) {
       console.error(error);
       setMessage("❌ Failed to update role.");
+      setMessageType("error");
     } finally {
       setLoadingId(null);
       setTimeout(() => setMessage(""), 3000);
@@ -60,27 +65,27 @@ const EditUserRolesInline = () => {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-center text-blue-900">
+    <div className="p-4 sm:p-6 max-w-6xl mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-blue-900">
         Manage User Roles
       </h2>
 
-      <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
-        <div className="relative w-full md:w-1/2">
-            <input
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
+        <div className="relative w-full sm:w-1/2">
+          <input
             type="text"
             placeholder="Search by email..."
             value={searchEmail}
             onChange={(e) => setSearchEmail(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-2xl border bg-white border-gray-300 shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all text-gray-800 placeholder-gray-500"
-            />
-             <FaSearch className="absolute left-3 top-1/3 text-gray-400" />
+            className="w-full pl-10 pr-4 py-3 rounded-2xl border bg-white border-gray-300 shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none text-gray-800 placeholder-gray-500"
+          />
+          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
 
         <select
           value={filterRole}
           onChange={(e) => setFilterRole(e.target.value)}
-          className="w-full md:w-1/3 border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full sm:w-1/4 border border-gray-300 px-4 py-3 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
         >
           {roles.map((role) => (
             <option key={role} value={role}>
@@ -90,30 +95,34 @@ const EditUserRolesInline = () => {
         </select>
       </div>
 
-      {message && <p className="text-green-600 mb-4">{message}</p>}
+      {message && (
+        <p className={`mb-4 text-sm ${messageType === "error" ? "text-red-600" : "text-green-600"}`}>
+          {message}
+        </p>
+      )}
 
       {filteredUsers.length === 0 ? (
-        <p className="text-gray-600">No users match your criteria.</p>
+        <p className="text-gray-600 text-center">No users match your criteria.</p>
       ) : (
         <div className="space-y-4">
           {filteredUsers.map((user) => (
             <div
               key={user.id}
-              className="bg-white shadow-md rounded-lg p-4 flex items-center justify-between transition-all duration-200 hover:shadow-lg hover:scale-[1.01]"
+              className="bg-white shadow-md rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 hover:shadow-lg hover:scale-[1.01] transition-all duration-200"
             >
               <div>
                 <p className="font-semibold text-gray-800">{user.fullName}</p>
-                <p className="text-gray-500 text-sm">{user.email}</p>
+                <p className="text-gray-500 text-sm break-all">{user.email}</p>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-3">
                 <select
                   value={user.role}
                   onChange={(e) => handleRoleChange(user.id, e.target.value)}
-                  className="border border-gray-300 px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="border border-gray-300 px-4 py-2 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                   {roles
-                    .filter((r) => r !== "all") // "all" is for filtering only
+                    .filter((r) => r !== "all")
                     .map((role) => (
                       <option key={role} value={role}>
                         {role.charAt(0).toUpperCase() + role.slice(1)}
@@ -124,7 +133,7 @@ const EditUserRolesInline = () => {
                 <button
                   onClick={() => handleUpdate(user.id, user.role)}
                   disabled={loadingId === user.id}
-                  className="bg-blue-600 hover:bg-blue-700 transition-colors text-white px-4 py-1 rounded shadow-sm"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow-sm transition-all disabled:opacity-50"
                 >
                   {loadingId === user.id ? "Updating..." : "Update"}
                 </button>

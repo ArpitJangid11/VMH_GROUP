@@ -55,43 +55,45 @@ const ManageUsers = () => {
       user.fullName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.phone?.includes(searchTerm) ||
-      user.role?.toLowerCase().includes(searchTerm.toLowerCase()); // search by role
+      user.role?.toLowerCase().includes(searchTerm.toLowerCase());
 
     return matchStatus && matchSearch;
   });
 
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold text-blue-900 mb-6 text-center">Manage Users</h2>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-blue-900 text-center mb-6">
+        Manage Users
+      </h2>
 
-      {/* Search + Filter */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-        {/* Creative Search Input */}
-        <div className="relative w-full md:w-1/2">
-         <input
+      {/* Search & Filter */}
+      <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between mb-6">
+        {/* Search */}
+        <div className="relative w-full sm:w-1/2">
+          <input
             type="text"
-            placeholder="Search by name, email, phone or role"
+            placeholder="Search users..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-2xl border bg-white border-gray-300 shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all text-gray-800 placeholder-gray-500"
+            className="w-full pl-10 bg-white pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
           />
           <FaSearch className="absolute left-3 top-1/3 text-gray-400" />
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {["all", "active", "inactive"].map((status) => (
             <button
               key={status}
               onClick={() => setFilterStatus(status)}
-              className={`px-4 py-2 rounded-full text-sm transition font-semibold ${
+              className={`px-4 py-2 text-sm font-medium rounded-full transition ${
                 filterStatus === status
                   ? status === "active"
                     ? "bg-green-600 text-white"
                     : status === "inactive"
                     ? "bg-red-600 text-white"
                     : "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
               }`}
             >
               {status.charAt(0).toUpperCase() + status.slice(1)}
