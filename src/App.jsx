@@ -64,7 +64,6 @@ const App = () => {
 
             <Route path="/admin/profile" element={<AdminProfile t={t} user={user} setUser={setUser}/>} />
             <Route path="/admin/edit-survey/:id" element={<EditSurvey />} />
-            <Route path="/surveys/:label" element={<SurveyPage t={t} />} />
 
             {/* user side  routes */}
             <Route path="/dashboard" element={<UserDashboard t={t} user={user} setUser={setUser} />} />
