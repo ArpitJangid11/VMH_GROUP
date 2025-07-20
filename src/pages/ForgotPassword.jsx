@@ -37,6 +37,7 @@ const ForgotPassword = ({ t }) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
+            autoComplete="email"
             placeholder={t.email || "Enter your email"}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
