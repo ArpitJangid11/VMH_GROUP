@@ -3,38 +3,35 @@ import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../services/userService";
 
 const Login = ({ t, setUser }) => {
-  const [email, setEmail] = useState("");                                            
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // 👈 added error state
+  const navigate = useNavigate();
 
- const handleLogin = async (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(""); // Clear previous error
 
-  try {
-    const { token,user } = await loginUser({ email, password });
+    try {
+      const { token, user } = await loginUser({ email, password });
 
-    if (!token) {
-      alert("Invalid login credentials");
-      return;
+      if (!token) {
+        setError("Invalid login credentials");
+        return;
+      }
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+      navigate(user.role === "admin" ? "/admin" : "/dashboard");
+    } catch (err) {
+      setError(err.response?.data?.message || err.message || "Login failed. Try again.");
+    } finally {
+      setLoading(false);
     }
-
-    // ✅ Save token BEFORE calling getProfile
-    localStorage.setItem("token", token);
-
-    // const user = await getProfile();
-
-    localStorage.setItem("user", JSON.stringify(user));
-    setUser(user);
-    navigate(user.role === "admin" ? "/admin" : "/dashboard");
-  } catch (err) {
-    alert(err.response?.data?.message || err.message || "Login failed. Try again.");
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   return (
     <div className="max-w-md mx-auto">
@@ -60,9 +57,23 @@ const Login = ({ t, setUser }) => {
             required
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           />
+          <div className="text-right">
+            <Link to="/forgot-password" className="text-sm text-blue-600 hover:underline">
+              {t.forgotPassword || "Forgot Password?"}
+            </Link>
+          </div>
+
+          {/* 👇 Error display */}
+          {error && <p className="text-red-600 text-sm">{error}</p>}
+
           <button
             type="submit"
-            className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+            disabled={loading}
+            className={`w-full px-6 py-4 font-semibold rounded-lg transition-all duration-200 shadow-lg ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 hover:shadow-xl"
+            }`}
           >
             {loading ? "Logging in" : t.login}
           </button>

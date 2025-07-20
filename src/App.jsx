@@ -21,6 +21,8 @@ import Refer from './pages/userPages/Refer';
 import PointsRewards from './pages/userPages/Rewards';
 import SurveyHistory from './pages/userPages/SurveyHistory';
 import EditUserRole from './pages/adminPages/EditUserRole';
+import ResetPassword from './pages/ResetPassword';
+import ForgotPassword from './pages/ForgotPassword';
 
 const App = () => {
   const [language, setLanguage] = useState('en');
@@ -53,6 +55,8 @@ const App = () => {
             <Route path="/signup" element={<Signup t={t} setUser={setUser} />} />
             <Route path="/faqs" element={<Faqs t={t} />} />
             <Route path="/contact" element={<Contact t={t} />} />
+            <Route path="/forgot-password" element={<ForgotPassword t={t} />} />
+            <Route path="/reset-password" element={<ResetPassword t={t} />} />
 
             {/* Admin side routes */}
             <Route path="/admin" element={<Admin t={t} user={user} />} />
