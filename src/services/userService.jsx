@@ -113,20 +113,19 @@ export const updateSurveyByAdmin = async (id, updatedData) => {
 };
 
 
-export const toggleSurveyActiveStatus = async (id, isActive) => {
+export const updateUserIsActiveStatus = async (userId, isActive) => {
   const token = localStorage.getItem("token");
-  const res = await API.put(
-    `/api/admin/surveys/${id}/status`,
+  const res = await API.patch(
+    `/api/admin/users/${userId}/status`,
     { isActive },
     {
       headers: {
         Authorization: `Bearer ${token}` },
     }
   );
-  console.log(isActive);
-  
-  return res.data; // { message, survey }
+  return res.data; // { message }
 };
+
 
 //  User side available surveys
 export const listSurveys = async () => {

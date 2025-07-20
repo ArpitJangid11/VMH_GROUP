@@ -2,7 +2,7 @@ import React from "react";
 import { FaPhone, FaTrash, FaUserShield, FaEarthAsia } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
-const UsersTab = ({ user, onToggleStatus, onDelete }) => {
+const UsersTab = ({ user, onToggleStatus, onBlockUser }) => {
   return (
     <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 overflow-hidden">
       {/* User Info */}
@@ -48,11 +48,11 @@ const UsersTab = ({ user, onToggleStatus, onDelete }) => {
           onClick={() => onToggleStatus(user.id, user.isActive)}
           className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
             user.isActive
-              ? "bg-red-100 text-red-700 hover:bg-red-200"
-              : "bg-green-100 text-green-700 hover:bg-green-200"
+            ? "bg-green-100 text-green-700 hover:bg-green-200"
+            : "bg-red-100 text-red-700 hover:bg-red-200"
           }`}
         >
-          {user.isActive ? "Deactivate" : "Activate"}
+          {user.isActive ? "Activate" : "Deactivate"}
         </button>
 
         {/* Role */}
@@ -62,12 +62,15 @@ const UsersTab = ({ user, onToggleStatus, onDelete }) => {
         </span>
 
         {/* Delete */}
-        <button
-          onClick={() => onDelete(user.id)}
-          className="text-white bg-red-600 hover:bg-red-700 px-3 py-1.5 text-xs rounded-full flex items-center gap-1"
+       <button
+          onClick={() => onBlockUser(user.id, user.isActive)}
+          className={`px-3 py-1 rounded-full text-sm font-medium shadow ${
+            user.isActive
+              ? "bg-red-100 text-red-600 hover:bg-red-200"
+              : "bg-green-100 text-green-600 hover:bg-green-200"
+          }`}
         >
-          <FaTrash className="text-sm" />
-          Delete
+          {user.isActive ? "Block User" : "Unblock User"}
         </button>
       </div>
     </div>
