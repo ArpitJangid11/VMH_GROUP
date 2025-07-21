@@ -36,7 +36,7 @@ const SurveyHistory = () => {
           <FaArrowLeft size={20} />
         </button>
         <h2 className="text-center text-3xl font-bold text-blue-900">
-          Your Survey History
+          Survey History
         </h2>
       </div>
       {history.length === 0 ? (
