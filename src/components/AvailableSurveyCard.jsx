@@ -1,6 +1,6 @@
 import React from "react";
 import { FaClock, FaGift } from "react-icons/fa";
-import { incrementSurveyResponseCount } from "../services/userService";
+import { createSurveyResponse, incrementSurveyResponseCount } from "../services/userService";
 
 const AvailableSurveyCard = ({ survey }) => {
   const handleStartSurvey = async () => {
@@ -13,7 +13,7 @@ const AvailableSurveyCard = ({ survey }) => {
       // Replace 'user=xxxx' with actual user ID
       const user = JSON.parse(localStorage.getItem("user")); 
       const updatedLink = survey.link.replace(/user=xxxx/, `user=${user.id}`);
-
+      await createSurveyResponse(user.id, survey.survey_id || survey.id);
       await incrementSurveyResponseCount(survey.survey_id || survey.id);
       window.open(updatedLink, "_blank", "noopener,noreferrer");
     } catch (error) {

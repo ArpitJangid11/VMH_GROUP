@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import AvailableSurveyCard from "../../components/AvailableSurveyCard";
 import { listSurveys } from "../../services/userService";
-import { FaSearch } from "react-icons/fa";
+import { FaArrowLeft, FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Surveys = ({ t }) => {
   const [surveys, setSurveys] = useState([]);
@@ -10,7 +11,12 @@ const Surveys = ({ t }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  
+  const navigate = useNavigate();
 
+  const handleBack = () => {
+    navigate(-1); // Go back one page in browser history
+  };
   useEffect(() => {
     const fetchSurveys = async () => {
       try {
@@ -51,7 +57,18 @@ const Surveys = ({ t }) => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-blue-900 mb-4 text-center">{t.surveys}</h2>
+      
+      <div className="relative mb-6">
+        <button
+          onClick={handleBack}
+          className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+        >
+          <FaArrowLeft size={20} />
+        </button>
+        <h2 className="text-center text-3xl font-bold text-blue-900">
+          {t.surveys}
+        </h2>
+      </div>
       <div className="relative w-full mb-10">
         <input
           type="text"

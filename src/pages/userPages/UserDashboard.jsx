@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DashboardCard from "../../components/DashboardCard";
-import { listSurveys, getProfile } from "../../services/userService";
+import {
+  listSurveys,
+  getProfile,
+  getUserSurveyHistory,
+} from "../../services/userService";
 
 const UserDashboard = ({ t }) => {
   const [surveyStats, setSurveyStats] = useState({
@@ -17,15 +21,18 @@ const UserDashboard = ({ t }) => {
 
   const fetchDashboardData = async () => {
     try {
-      const surveys = await listSurveys(); // ✅ user-side API
-      const userRes = await getProfile(); // { user: {...} }
+      const surveys = await listSurveys(); // available surveys
+      const userRes = await getProfile();  // get profile
+      const userId = userRes.id;
+      console.log(userId);
+      
+      const history = await getUserSurveyHistory(userId); // completed history
+      console.log(history.length);
 
       const available = surveys?.length || 0;
-      const user = userRes?.user || {};
-
-      const completed = user.completedSurveys || 0;
-      const earnings = user.points || 0;
-      const referrals = user.referrals?.length || 0;
+      const completed = history?.length || 0;
+      const earnings = userRes?.user?.points || 0;
+      const referrals = userRes?.user?.referrals?.length || 0;
 
       setSurveyStats({
         totalAvailable: available,

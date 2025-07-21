@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { getProfile } from "../../services/userService";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const PointsRewards = ({ t }) => {
   const [points, setPoints] = useState(0);
   const [history, setHistory] = useState([]);
-
+    
+   const navigate = useNavigate();
+  
+    const handleBack = () => {
+      navigate(-1); // Go back one page in browser history
+    };
   useEffect(() => {
     const fetchRewards = async () => {
       try {
@@ -20,10 +27,17 @@ const PointsRewards = ({ t }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-blue-900 mb-4 text-center">
-        {t.rewards || "Points & Rewards"}
-      </h2>
-
+         <div className="relative mb-6">
+            <button
+              onClick={handleBack}
+              className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+              >
+              <FaArrowLeft size={20} />
+            </button>
+            <h2 className="text-center text-3xl font-bold text-blue-900">
+              {t.rewards || "Points & Rewards"}
+            </h2>
+          </div>
       {/* Current Balance */}
       <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 mb-6">
         <h3 className="text-xl font-semibold text-green-800 mb-2">Current Balance</h3>

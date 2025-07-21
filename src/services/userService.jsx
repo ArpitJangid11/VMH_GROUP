@@ -177,3 +177,33 @@ export const updateUserRole = async (userId, newRole) => {
   );
   return res.data; // { message, user }
 };
+
+export const createSurveyResponse = async (userId, surveyId) => {
+  const token = localStorage.getItem("token");
+
+  const res = await API.post(
+    "/api/users/start",  // ✅ This matches your Express route
+    { userId, surveyId },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return res.data;
+};
+
+
+// Get all surveys a user has responded to
+export const getUserSurveyHistory = async (userId) => {
+  const token = localStorage.getItem("token");
+
+  const res = await API.get(`/api/users/history/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.data; // returns the response history array
+};

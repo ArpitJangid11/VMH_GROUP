@@ -4,6 +4,7 @@ import {
   getAllSurveysByAdmin,
   updateSurveyByAdmin,
 } from "../../services/userService";
+import { FaArrowLeft } from "react-icons/fa";
 
 const EditSurvey = () => {
   const { id } = useParams();
@@ -17,6 +18,10 @@ const EditSurvey = () => {
     duration: 0,
     preferences: [],
   });
+      
+  const handleBack = () => {
+    navigate(-1); // Go back one page in browser history
+  };
 
   useEffect(() => {
     const fetchSurvey = async () => {
@@ -69,7 +74,17 @@ const EditSurvey = () => {
 
   return (
     <div className="max-w-2xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg border border-blue-100">
-      <h2 className="text-3xl font-bold mb-6 text-center text-blue-800">Edit Survey</h2>
+       <div className="relative mb-6">
+            <button
+                onClick={handleBack}
+                className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+            >
+                <FaArrowLeft size={20} />
+            </button>
+            <h2 className="text-center text-3xl font-bold text-blue-900">
+                Edit Survey
+            </h2>
+        </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
           <label className="block mb-1 font-medium text-blue-700">Title</label>

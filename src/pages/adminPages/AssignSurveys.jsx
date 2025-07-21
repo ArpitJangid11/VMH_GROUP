@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { createSurvey } from "../../services/userService";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const preferenceOptions = ["Health", "Tech", "Finance"];
 
@@ -14,6 +16,11 @@ const AssignSurveys = () => {
   });
 
   const [cardData, setCardData] = useState(null);
+   const navigate = useNavigate();
+    
+      const handleBack = () => {
+        navigate(-1); // Go back one page in browser history
+      };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,8 +60,17 @@ const AssignSurveys = () => {
     <div className="max-w-md mx-auto">
       {/* FORM */}
       <div className="bg-white rounded-xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-blue-900 mb-4 text-center">Assign Survey</h2>
-
+        <div className="relative mb-6">
+            <button
+                onClick={handleBack}
+                className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+            >
+                <FaArrowLeft size={20} />
+            </button>
+            <h2 className="text-center text-3xl font-bold text-blue-900">
+                Assign Survey
+            </h2>
+        </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
             type="text"

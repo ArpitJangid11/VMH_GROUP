@@ -1,11 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { getProfile, updateProfile } from "../../services/userService";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const AdminProfile = ({ t, setUser }) => {
   const [editMode, setEditMode] = useState(false);
   const [form, setForm] = useState({});
   const [loading, setLoading] = useState(false); // 🔁 for Save button
+
+   const navigate = useNavigate();
+    
+      const handleBack = () => {
+        navigate(-1); // Go back one page in browser history
+      };
 
   // Load user from localStorage or API
   useEffect(() => {
@@ -79,10 +87,18 @@ const AdminProfile = ({ t, setUser }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 mt-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-blue-900 mb-6 text-center">
-          {t?.profile || "Profile"}
-        </h2>
+      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 mt-6"> 
+        <div className="relative mb-6">
+          <button
+            onClick={handleBack}
+            className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+            >
+            <FaArrowLeft size={20} />
+          </button>
+          <h2 className="text-center text-3xl font-bold text-blue-900">
+            {t?.profile || "Profile"}
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-gray-700">
           {fields.map(({ label, key, editable }) => (

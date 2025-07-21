@@ -4,7 +4,8 @@ import {
   updateUserIsActiveStatus,
 } from "../../services/userService";
 import UsersTab from "../../components/UsersTab";
-import { FaSearch, FaFilter, FaTimes } from "react-icons/fa";
+import { FaSearch, FaFilter, FaTimes, FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -15,6 +16,12 @@ const ManageUsers = () => {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [customDays, setCustomDays] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1); // Go back one page in browser history
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -86,9 +93,17 @@ const ManageUsers = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
-      <h2 className="text-2xl font-bold text-center text-blue-900 mb-6">
-        Manage Users
-      </h2>
+      <div className="relative mb-6">
+          <button
+              onClick={handleBack}
+              className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+          >
+              <FaArrowLeft size={20} />
+          </button>
+          <h2 className="text-center text-3xl font-bold text-blue-900">
+                Manage Users
+          </h2>
+      </div>
 
       {/* Search and Filter */}
       <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between mb-4">

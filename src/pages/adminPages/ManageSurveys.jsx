@@ -6,11 +6,16 @@ import {
   updateSurveyByAdmin,
 } from "../../services/userService";
 import SurveysTab from "../../components/TabSurveys";
+import { FaArrowLeft } from "react-icons/fa";
 
 const ManageSurveys = () => {
   const [surveys, setSurveys] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+      
+  const handleBack = () => {
+    navigate(-1); // Go back one page in browser history
+  };
 
   useEffect(() => {
     fetchSurveys();
@@ -51,10 +56,17 @@ const ManageSurveys = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold text-center mb-6 text-blue-800">
-        Manage Surveys
-      </h1>
-
+      <div className="relative mb-6">
+            <button
+                onClick={handleBack}
+                className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+            >
+                <FaArrowLeft size={20} />
+            </button>
+            <h2 className="text-center text-3xl font-bold text-blue-900">
+                 Manage Surveys
+            </h2>
+        </div>
       {loading ? (
         <p className="text-center text-gray-500">Loading surveys...</p>
       ) : surveys.length > 0 ? (

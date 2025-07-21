@@ -1,7 +1,8 @@
 // src/pages/adminPages/EditUserRolesInline.jsx
 import React, { useEffect, useState } from "react";
 import { getAllUsers, updateUserRole } from "../../services/userService";
-import { FaSearch } from "react-icons/fa";
+import { FaArrowLeft, FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const roles = ["all", "user", "admin"];
 
@@ -13,6 +14,12 @@ const EditUserRolesInline = () => {
   const [loadingId, setLoadingId] = useState(null);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("success");
+
+   const navigate = useNavigate();
+      
+    const handleBack = () => {
+      navigate(-1); // Go back one page in browser history
+    };
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -66,10 +73,17 @@ const EditUserRolesInline = () => {
 
   return (
     <div className="p-4 sm:p-6 max-w-6xl mx-auto">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-blue-900">
-        Manage User Roles
-      </h2>
-
+      <div className="relative mb-6">
+            <button
+                onClick={handleBack}
+                className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
+            >
+                <FaArrowLeft size={20} />
+            </button>
+            <h2 className="text-center text-3xl font-bold text-blue-900">
+                 Manage User Roles
+            </h2>
+        </div>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
         <div className="relative w-full sm:w-1/2">
           <input

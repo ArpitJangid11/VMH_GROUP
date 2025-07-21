@@ -23,6 +23,7 @@ import SurveyHistory from './pages/userPages/SurveyHistory';
 import EditUserRole from './pages/adminPages/EditUserRole';
 import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
+import Notification from './pages/userPages/Notification';
 
 const App = () => {
   const [language, setLanguage] = useState('en');
@@ -75,6 +76,8 @@ const App = () => {
             <Route path="/survey-history" element={<SurveyHistory t={t} user={user} setUser={setUser} />} />
             <Route path="/earnings" element={<PointsRewards t={t} user={user} setUser={setUser} />} />
             <Route path="/surveys" element={<Surveys t={t} />} />
+            <Route path="/refer" element={<Refer t={t} />} />
+            <Route path="/notifications" element={<Notification t={t} />} />
 
             
           </Routes>
