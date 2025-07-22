@@ -23,11 +23,11 @@ export const getProfile = async () => {
   const token = localStorage.getItem("token");
   const res = await API.get("/api/users/me", {
     headers: {
-      Authorization: `Bearer ${token}`  // ✅ Send the token
-    }
+      Authorization: `Bearer ${token}`,
+    },
   });
-  return res.data; // { user }
-}
+  return res.data;
+};
 
 // Update user profile (e.g., fullname, phone, etc.)
 export const updateProfile = async (data) => {

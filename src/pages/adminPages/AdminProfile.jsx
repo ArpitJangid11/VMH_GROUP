@@ -17,24 +17,19 @@ const AdminProfile = ({ t, setUser }) => {
 
   // Load user from localStorage or API
   useEffect(() => {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-    if (savedUser) {
-      setForm(savedUser);
-      setUser && setUser(savedUser);
-    } else {
-      const fetchUser = async () => {
-        try {
-          const fetchedUser = await getProfile();
-          setForm(fetchedUser);
-          setUser && setUser(fetchedUser);
-          localStorage.setItem("user", JSON.stringify(fetchedUser));
-        } catch (err) {
-          console.error("Failed to load user:", err);
-        }
-      };
-      fetchUser();
+  const fetchUser = async () => {
+    try {
+      const fetchedUser = await getProfile();
+      setForm(fetchedUser);
+      setUser && setUser(fetchedUser);
+      localStorage.setItem("user", JSON.stringify(fetchedUser));
+    } catch (err) {
+      console.error("Failed to load user:", err);
     }
-  }, []);
+  };
+
+  fetchUser(); // always fetch from API (fresh, secure, fast)
+}, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
