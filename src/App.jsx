@@ -28,13 +28,20 @@ import Notification from './pages/userPages/Notification';
 const App = () => {
   const [language, setLanguage] = useState('en');
   const [user, setUser] = useState(null);
+
   const t = translations[language];
 
   useEffect(() => {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
+    try {
+      const savedUserString = localStorage.getItem("user");
 
-    if (savedUser) {
-      setUser && setUser(savedUser); // restore user from localStorage
+      if (savedUserString && savedUserString !== "undefined") {
+        const savedUser = JSON.parse(savedUserString);
+        setUser(savedUser);
+      }
+    } catch (error) {
+      console.error("Error parsing user from localStorage:", error);
+      localStorage.removeItem("user");
     }
   }, []);
 
@@ -56,7 +63,7 @@ const App = () => {
             <Route path="/signup" element={<Signup t={t} setUser={setUser} />} />
             <Route path="/faqs" element={<Faqs t={t} />} />
             <Route path="/contact" element={<Contact t={t} />} />
-            <Route path="/forgot-password" element={<ForgotPassword t={t} />} />
+            <Route path="/forgot-password" element={<ForgotPassword t={t}/>} />
             <Route path="/reset-password" element={<ResetPassword t={t} />} />
 
             {/* Admin side routes */}

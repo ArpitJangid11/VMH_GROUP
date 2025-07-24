@@ -11,6 +11,15 @@ export const verifyOtp = async ({ email, otp }) => {
   const res = await API.post("/api/auth/verify-otp", { email, otp });
   return res.data; // { message: "OTP verified successfully" }
 };
+export const verifyOtps = async ({ email, otp }) => {
+  const res = await API.post("/api/auth/verify-otp", { email, otp });
+  return res.data; // { message: "OTP verified successfully" }
+};
+
+export const resendVerificationOtp = async (email) => {
+  const res = await API.post("/api/auth/resend-otp", { email });
+  return res.data;
+};
 
 // Login user with email and password (after OTP verification)
 export const loginUser = async (data) => {
