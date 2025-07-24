@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signupUser, verifyOtp, loginUser } from '../services/userService';
+import { signupUser, verifyOtp, loginUser, resendVerificationOtp } from '../services/userService';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = ({ t, setUser }) => {
@@ -15,6 +15,7 @@ const Signup = ({ t, setUser }) => {
 
   const [step, setStep] = useState("form");
   const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -30,9 +31,20 @@ const Signup = ({ t, setUser }) => {
       await signupUser(formData);
       setStep("otp");
     } catch (error) {
-      alert(error.response?.data?.message || "Registration failed.");
+      setError(error.response?.data?.message || "Registration failed.");
     } finally {
       setLoading(false);
+    }
+  };
+  const handleResendOtp = async () => {
+    try {
+      setLoading(true)
+      const { message } = await resendVerificationOtp(formData.email);
+      setError(message); // 👈 Now it's used — displays message as a success alert
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to resend OTP");
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -50,7 +62,7 @@ const Signup = ({ t, setUser }) => {
       setUser(user);
       navigate(user.role === "admin" ? "/admin" : "/dashboard");
     } catch (err) {
-      alert(err.response?.data?.message || "OTP verification failed.");
+      setError(err.response?.data?.message || "OTP verification failed.");
     } finally {
       setLoading(false);
     }
@@ -78,13 +90,29 @@ const Signup = ({ t, setUser }) => {
             className="w-full p-4 border border-gray-300 rounded-lg mb-4"
             required
           />
+          {error && <p className="text-red-600 text-sm">{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            className="w-full p-3 bg-blue-600 text-white rounded"
+            className={`w-full px-6 py-4 mb-5 font-semibold rounded-lg transition-all duration-200 shadow-lg ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 hover:shadow-xl"
+            }`}
           >
             {loading ? "Verifying..." : "Verify OTP & Login"}
           </button>
+          <button
+          type="button"
+          onClick={handleResendOtp}
+          className={`w-full px-6 py-4 mb-5 font-semibold rounded-lg transition-all duration-200 shadow-lg ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 hover:shadow-xl"
+            }`}
+        >
+          Resend OTP 
+        </button>
         </form>
       </div>
     );
@@ -350,7 +378,8 @@ const Signup = ({ t, setUser }) => {
             <input type="checkbox" name="consent" onChange={handleInputChange} checked={formData.consent} required className="mt-1 h-4 w-4 text-blue-600" />
             <span className="text-sm text-gray-700">{t.consent}</span>
           </label>
-
+          {/* Display  errors */}
+          {error && <p className="text-red-600 text-sm">{error}</p>}
           {/* Submit */}
           <button type="submit" disabled={loading} className="w-full py-4 bg-blue-600 text-white font-semibold rounded-lg hover:scale-105 transition disabled:opacity-50">
             {loading ? "Registering..." : t.submit}

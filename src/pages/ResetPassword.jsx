@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { resetPassword } from "../services/userService";
+import { resetPassword, sendForgotPasswordOtp } from "../services/userService";
 
 const ResetPassword = ({ t }) => {
   const location = useLocation();
@@ -34,6 +34,17 @@ const ResetPassword = ({ t }) => {
     setError(err.response?.data?.message || err.message || "Reset failed");
   } finally {
     setLoading(false);
+  }
+};
+const handleResendOtp = async () => {
+  try {
+    setLoading(true)
+    const { message } = await sendForgotPasswordOtp(email);
+    setError(message); // 👈 Now it's used — displays message as a success alert
+  } catch (err) {
+    setError(err.response?.data?.message || "Failed to resend OTP");
+  }finally{
+    setLoading(false)
   }
 };
 
@@ -78,6 +89,17 @@ const ResetPassword = ({ t }) => {
             }`}
             >
             {loading ? "Updating..." : t.updatePassword || "Update Password"}
+        </button>
+        <button
+          type="button"
+          onClick={handleResendOtp}
+          className={`w-full px-6 py-4 mb-5 font-semibold rounded-lg transition-all duration-200 shadow-lg ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 hover:shadow-xl"
+            }`}
+        >
+          Resend OTP 
         </button>
         </form>
       </div>
