@@ -10,7 +10,7 @@ const Login = ({ t, setUser }) => {
   const [verified, setVerified] = useState(false);
   const [first, setFirst] = useState(false);
   const [nowLogin, setNowLogin] = useState(false);
-  const [error, setError] = useState(""); // 👈 added error state
+  const [error, setError] = useState(""); //  added error state
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -102,13 +102,17 @@ const handleResendOtp = async () => {
                 <h3 className="text-lg font-medium mb-2 text-center text-blue-700">
                   Verify Your Email
                 </h3>
+                <p className="text-gray-700 mb-2">
+                  OTP will be sent to your email: <span className="font-medium text-blue-800">{email}</span>
+                </p>
+                {first &&
                 <input
                   type="text"
                   placeholder="Enter OTP"
                   className="w-full p-4 border border-gray-300 mb-5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
-                />
+                />}
                 {first &&
                   <button
                     type="button"
@@ -136,8 +140,9 @@ const handleResendOtp = async () => {
                 </button>
               </div>
             )}
-          {/* 👇 Error display */}
-          {nowLogin ?(<p className="text-green-600 text-sm">Login Now</p>) :
+          {/*  Error display */}
+          {
+          nowLogin ?(<p className="text-green-600 text-sm">Login Now</p>) :
           (error && <p className="text-red-600 text-sm">{error}</p>)}
           {!verified &&
           <button
