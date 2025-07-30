@@ -103,7 +103,7 @@ const handleResendOtp = async () => {
                   Verify Your Email
                 </h3>
                 <p className="text-gray-700 mb-2">
-                  OTP will be sent to your email: <span className="font-medium text-blue-800">{email}</span>
+                  OTP will be sent to your email: <span className="font-medium text-blue-8 00">{email}</span>
                 </p>
                 {first &&
                 <input
