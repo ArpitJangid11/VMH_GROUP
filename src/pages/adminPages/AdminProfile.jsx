@@ -3,33 +3,36 @@ import React, { useState, useEffect } from "react";
 import { getProfile, updateProfile } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import SurveyLoadingScreen from "../../components/SurveyLoadingScreen";
 
 const AdminProfile = ({ t, setUser }) => {
   const [editMode, setEditMode] = useState(false);
   const [form, setForm] = useState({});
-  const [loading, setLoading] = useState(false); // 🔁 for Save button
+  const [loading, setLoading] = useState(false); // 🔹 for Save button
+  const [profileLoading, setProfileLoading] = useState(true); // 🔹 for initial fetch
 
-   const navigate = useNavigate();
-    
-      const handleBack = () => {
-        navigate(-1); // Go back one page in browser history
-      };
+  const navigate = useNavigate();
 
-  // Load user from localStorage or API
-  useEffect(() => {
-  const fetchUser = async () => {
-    try {
-      const fetchedUser = await getProfile();
-      setForm(fetchedUser);
-      setUser && setUser(fetchedUser);
-      localStorage.setItem("user", JSON.stringify(fetchedUser));
-    } catch (err) {
-      console.error("Failed to load user:", err);
-    }
+  const handleBack = () => {
+    navigate(-1);
   };
 
-  fetchUser(); // always fetch from API (fresh, secure, fast)
-}, []);
+  // Load user from API
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const fetchedUser = await getProfile();
+        setForm(fetchedUser);
+        setUser && setUser(fetchedUser);
+        localStorage.setItem("user", JSON.stringify(fetchedUser));
+      } catch (err) {
+        console.error("Failed to load user:", err);
+      } finally {
+        setProfileLoading(false); // stop loader
+      }
+    };
+    fetchUser();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +47,7 @@ const AdminProfile = ({ t, setUser }) => {
   };
 
   const handleSave = async () => {
-    setLoading(true); // start loading
+    setLoading(true); // start loading save button
     try {
       const updated = await updateProfile(form);
       const newUser = updated.user || updated;
@@ -56,16 +59,13 @@ const AdminProfile = ({ t, setUser }) => {
       console.error("Update failed:", err);
       alert("Failed to update profile. Try again.");
     } finally {
-      setLoading(false); // stop loading
+      setLoading(false); // stop button loading
     }
   };
 
-  if (!form || Object.keys(form).length === 0) {
-    return (
-      <div className="text-center py-12 text-gray-500">
-        {t?.loading || "Loading profile..."}
-      </div>
-    );
+  // 🔹 Show loader until profile loads
+  if (profileLoading) {
+    return <SurveyLoadingScreen message="Fetching Profile..."/>;
   }
 
   const fields = [
@@ -82,12 +82,12 @@ const AdminProfile = ({ t, setUser }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 mt-6"> 
+      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 mt-6">
         <div className="relative mb-6">
           <button
             onClick={handleBack}
             className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"
-            >
+          >
             <FaArrowLeft size={20} />
           </button>
           <h2 className="text-center text-3xl font-bold text-blue-900">

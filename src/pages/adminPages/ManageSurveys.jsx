@@ -7,6 +7,7 @@ import {
 } from "../../services/userService";
 import SurveysTab from "../../components/TabSurveys";
 import { FaArrowLeft } from "react-icons/fa";
+import SurveyLoadingScreen from "../../components/SurveyLoadingScreen";
 
 const ManageSurveys = () => {
   const [surveys, setSurveys] = useState([]);
@@ -68,7 +69,7 @@ const ManageSurveys = () => {
             </h2>
         </div>
       {loading ? (
-        <p className="text-center text-gray-500">Loading surveys...</p>
+        <SurveyLoadingScreen message="Fetching Manage Surveys..."/>
       ) : surveys.length > 0 ? (
         <div className="flex flex-col gap-6">
           {surveys.map((survey) => (

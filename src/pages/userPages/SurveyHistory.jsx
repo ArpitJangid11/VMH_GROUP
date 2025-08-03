@@ -2,32 +2,45 @@ import React, { useEffect, useState } from "react";
 import { getUserSurveyHistory } from "../../services/userService";
 import { FaArrowLeft, FaClock, FaGift } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import SurveyLoadingScreen from "../../components/SurveyLoadingScreen";
 
 const SurveyHistory = () => {
   const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(true);   // loading state
+  const [error, setError] = useState(null);       // error state
   const user = JSON.parse(localStorage.getItem("user"));
   
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   
-    const handleBack = () => {
-      navigate(-1); // Go back one page in browser history
-    };
-  useEffect(() => {
-    const fetchHistory = async () => {
-      try {
-        const data = await getUserSurveyHistory(user.id);
-        setHistory(data);
-      } catch (error) {
-        console.error("Failed to load history:", error);
-      }
-    };
+  const handleBack = () => {
+    navigate(-1); // Go back one page in browser history
+  };
 
-    if (user?.id) fetchHistory();
-  }, [user]);
+  useEffect(() => {
+  const fetchHistory = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await getUserSurveyHistory(user.id);
+      setHistory(data);
+    } catch (err) {
+      console.error("Failed to load history:", err);
+      setError("Failed to load survey history. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (user?.id) fetchHistory();
+}, [user?.id]);
+
+  if (loading) {
+    return <SurveyLoadingScreen message="Fetching History..." />; 
+  }
 
   return (
     <div className="p-6">
-      {/* <h2 className="text-2xl font-semibold mb-4 text-blue-800">Your Survey History</h2> */}
+      {/* Header with Back Button */}
       <div className="relative mb-6">
         <button
           onClick={handleBack}
@@ -39,8 +52,17 @@ const SurveyHistory = () => {
           Survey History
         </h2>
       </div>
+
+      {/* Error Handling */}
+      {error && (
+        <p className="text-red-600 text-center mb-4">{error}</p>
+      )}
+
+      {/* History List */}
       {history.length === 0 ? (
-        <p className="text-gray-600">No surveys attempted yet.</p>
+        <p className="text-gray-600 text-center">
+          No surveys attempted yet.
+        </p>
       ) : (
         <div className="space-y-4">
           {history.map((item) => (

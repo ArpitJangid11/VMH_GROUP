@@ -119,7 +119,7 @@ const Signup = ({ t, setUser }) => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto mt-27">
       <div className="bg-white shadow-md rounded-xl p-8">
         <h2 className="text-3xl font-bold text-blue-900 mb-4 text-center">{t.signup}</h2>
         <p className="text-center text-gray-600 mb-6">Join our research community today</p>

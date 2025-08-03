@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getAllUsers, updateUserRole } from "../../services/userService";
 import { FaArrowLeft, FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import SurveyLoadingScreen from "../../components/SurveyLoadingScreen";
 
 const roles = ["all", "user", "admin"];
 
@@ -14,7 +15,7 @@ const EditUserRolesInline = () => {
   const [loadingId, setLoadingId] = useState(null);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("success");
-
+  const [loading, setLoading] = useState(true);
    const navigate = useNavigate();
       
     const handleBack = () => {
@@ -23,9 +24,17 @@ const EditUserRolesInline = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const data = await getAllUsers();
-      setUsers(data);
-      setFilteredUsers(data);
+      try {
+        const data = await getAllUsers();
+        setUsers(data);
+        setFilteredUsers(data);
+      } catch (err) {
+        console.error(err);
+        setMessage("❌ Failed to load users.");
+        setMessageType("error");
+      } finally {
+        setLoading(false); // stop loader after fetch
+      }
     };
     fetchUsers();
   }, []);
@@ -53,6 +62,7 @@ const EditUserRolesInline = () => {
   };
 
   const handleUpdate = async (userId, newRole) => {
+    setLoading(true)
     const user = users.find((u) => u.id === userId);
     if (user.role === newRole) return;
 
@@ -66,11 +76,14 @@ const EditUserRolesInline = () => {
       setMessage("❌ Failed to update role.");
       setMessageType("error");
     } finally {
+      setLoading(false)
       setLoadingId(null);
       setTimeout(() => setMessage(""), 3000);
     }
   };
-
+   if (loading) {
+    return <SurveyLoadingScreen message="Fetching Users..."/>;
+  }
   return (
     <div className="p-4 sm:p-6 max-w-6xl mx-auto">
       <div className="relative mb-6">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { sendForgotPasswordOtp } from "../services/userService";
 import { useNavigate } from "react-router-dom";
+import { FiMail } from "react-icons/fi";
 
 const ForgotPassword = ({ t }) => {
   const [email, setEmail] = useState("");
@@ -29,30 +30,34 @@ const ForgotPassword = ({ t }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
+    <div className="max-w-md mx-auto mt-27">
       <div className="bg-white shadow-lg rounded-xl p-8">
-        <h2 className="text-2xl font-bold text-blue-700 mb-4 text-center">
+        <h2 className="text-2xl font-bold text-blue-900 mb-4 text-center">
           {t.forgotPassword || "Forgot Password"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            autoComplete="email"
-            placeholder={t.email || "Enter your email"}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
+          <div className="relative">
+              <FiMail className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 transition-colors duration-200" />
+              <input
+                type="email"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your Email"
+                required
+                className="w-full pl-12 pr-4 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300 placeholder-gray-500 hover:bg-gray-200"
+              />
+            </div>
           {message && <p className="text-green-600 text-sm">{message}</p>}
           {error && <p className="text-red-600 text-sm">{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3 rounded-lg text-white transition ${
+            className={`w-full py-4 mb-4 font-medium rounded-lg transition-all duration-200 transform hover:scale-105 ${
               loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
+                ? "bg-gray-400 cursor-not-allowed text-white"
+                : "bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:from-blue-600 hover:to-blue-800 shadow-lg hover:shadow-xl"
             }`}
           >
             {loading ? "Sending..." : t.sendOtp || "Send OTP"}

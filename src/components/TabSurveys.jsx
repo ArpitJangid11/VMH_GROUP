@@ -1,27 +1,27 @@
-// components/surveysTab.jsx
+// components/SurveysTab.jsx
 import React, { useState, useEffect } from "react";
 
 const SurveysTabs = ({ survey, onEdit, onToggleStatus }) => {
   const [isPaused, setIsPaused] = useState(!survey.isActive);
   const [isStarted, setIsStarted] = useState(survey.isActive);
   const [progress, setProgress] = useState(0);
-  const [responses, setResponses] = useState(survey.responseCount || 0);
+  const targetResponses=100;
 
+  //  Update progress whenever responseCount or targetResponses changes
   useEffect(() => {
-    let interval;
-    if (isStarted && !isPaused) {
-      interval = setInterval(() => {
-        setProgress((prev) => Math.min(prev + 1, 100));
-        setResponses((prev) => prev + Math.floor(Math.random() * 3));
-      }, 1000);
+    if (targetResponses && survey.responseCount !== undefined) {
+      const calculated = Math.min(
+        (survey.responseCount / targetResponses) * 100,
+        100
+      );
+      setProgress(calculated);
     }
-    return () => clearInterval(interval);
-  }, [isPaused, isStarted]);
+  }, [survey.responseCount, targetResponses]);
 
   const handleStart = () => {
     setIsStarted(true);
     setIsPaused(false);
-     onToggleStatus({ ...survey, isActive: true });
+    onToggleStatus({ ...survey, isActive: true });
   };
 
   const handlePauseToggle = () => {
@@ -80,15 +80,19 @@ const SurveysTabs = ({ survey, onEdit, onToggleStatus }) => {
         <strong>Reward:</strong> {survey.rewardPoints} Points
       </p>
 
+      {/* ✅ Progress Bar based on responseCount */}
       <div className="w-full bg-gray-200 h-3 rounded-full mt-4 overflow-hidden">
         <div
-          className="h-full bg-blue-500 transition-all duration-300"
+          className="h-full bg-blue-500 transition-all duration-500"
           style={{ width: `${progress}%` }}
         />
       </div>
 
       <p className="text-xs text-gray-500 mt-2">
-        Real-time Responses: <strong>{responses}</strong>
+        Real-time Responses:{" "}
+        <strong>
+          {survey.responseCount} / {targetResponses}
+        </strong>
       </p>
 
       <div className="mt-4 flex gap-4 flex-wrap">

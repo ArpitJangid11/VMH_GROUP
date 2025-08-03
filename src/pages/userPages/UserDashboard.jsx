@@ -29,7 +29,7 @@ const UserDashboard = ({ t }) => {
       const history = await getUserSurveyHistory(userId); // completed history
       console.log(history.length);
 
-      const available = surveys?.length || 0;
+      const available = surveys?.length - history?.length|| 0;
       const completed = history?.length || 0;
       const earnings = userRes?.user?.points || 0;
       const referrals = userRes?.user?.referrals?.length || 0;

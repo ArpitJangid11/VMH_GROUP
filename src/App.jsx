@@ -24,6 +24,7 @@ import EditUserRole from './pages/adminPages/EditUserRole';
 import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import Notification from './pages/userPages/Notification';
+import ImageSection from './pages/homepage/ImageSection';
 
 const App = () => {
   const [language, setLanguage] = useState('en');
@@ -47,7 +48,7 @@ const App = () => {
 
   return (
     <Router future={{v7_relativeSplatPath: true,}}>
-      <div className="min-h-screen bg-gray-100">
+      <div className="">
         <Navbar
           language={language}
           setLanguage={setLanguage}
@@ -55,9 +56,14 @@ const App = () => {
           user={user}
           setUser={setUser}
         />
-        <main className="container mx-auto p-6">
+        <main className="container ">
           <Routes>
-            <Route path="/" element={<Home t={t} user={user} />} />
+            <Route path="/" element={
+              <>
+                <ImageSection />
+                <Home t={t} user={user} />
+              </>
+              } />
             <Route path="/about" element={<About t={t} />} />
             <Route path="/login" element={<Login t={t} setUser={setUser} />} />
             <Route path="/signup" element={<Signup t={t} setUser={setUser} />} />
@@ -89,7 +95,7 @@ const App = () => {
             
           </Routes>
         </main>
-        <footer className="bg-blue-900 text-white p-4 text-center">
+        <footer className="bg-blue-600 text-white pt-4 pb-4 text-center fixed bottom-0 left-0 w-full">
           <p>&copy; 2025 VMH Groups Market Research. All rights reserved.</p>
         </footer>
       </div>

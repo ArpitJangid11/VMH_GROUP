@@ -1,7 +1,7 @@
 import React from "react";
 
 const About = (t) => {
-  return <div className="max-w-4xl mx-auto">
+  return <div className="max-w-4xl mx-auto mt-27">
                 <div className="bg-white rounded-xl shadow-lg p-8">
                   <h2 className="text-3xl font-bold text-blue-900 mb-6">{t.about}</h2>
                   <p className="text-lg text-gray-700 leading-relaxed">{t.aboutText}</p>

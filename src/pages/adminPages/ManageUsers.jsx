@@ -6,6 +6,7 @@ import {
 import UsersTab from "../../components/UsersTab";
 import { FaSearch, FaFilter, FaTimes, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import SurveyLoadingScreen from "../../components/SurveyLoadingScreen";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -16,6 +17,7 @@ const ManageUsers = () => {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [customDays, setCustomDays] = useState("");
+   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -25,11 +27,14 @@ const ManageUsers = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      setLoading(true);
       try {
         const data = await getAllUsers();
         setUsers(data);
       } catch (error) {
         console.error("Failed to fetch users", error);
+      } finally{
+        setLoading(false);
       }
     };
     fetchUsers();
@@ -90,7 +95,9 @@ const ManageUsers = () => {
 
     return matchStatus && matchSearch && matchDate;
   });
-
+   if (loading) {
+    return <SurveyLoadingScreen message="Fetching Manage Users..." />;
+  }
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
       <div className="relative mb-6">
