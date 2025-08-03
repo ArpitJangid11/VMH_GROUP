@@ -56,7 +56,7 @@ const App = () => {
           user={user}
           setUser={setUser}
         />
-        <main className="container ">
+        <main className="container l-0 mr-100 w-full mb-20">
           <Routes>
             <Route path="/" element={
               <>
@@ -95,7 +95,7 @@ const App = () => {
             
           </Routes>
         </main>
-        <footer className="bg-blue-600 text-white pt-4 pb-4 text-center fixed bottom-0 left-0 w-full">
+        <footer className="bg-blue-600 text-white mt-2 pt-4 pb-4 text-center fixed bottom-0 left-0 w-full">
           <p>&copy; 2025 VMH Groups Market Research. All rights reserved.</p>
         </footer>
       </div>

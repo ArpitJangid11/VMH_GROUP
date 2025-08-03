@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Globe, Shield, User, LogOut, ChevronDown } from 'lucide-react';
 
+
 const NAV_LINKS = [
   { to: '/', key: 'home' },
   { to: '/about', key: 'about' },
   { to: '/faqs', key: 'faqs' },
   { to: '/contact', key: 'contact' },
 ];
+
 
 const LANGS = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
@@ -17,6 +19,7 @@ const LANGS = [
   { code: 'zh', label: '中國人',  flag: '🇨🇳' },
 ];
 
+
 export default function Navbar({ language, setLanguage, t, user, setUser }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -24,12 +27,14 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
   const [openLang, setOpenLang] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -43,8 +48,10 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     }
   }, [openLang, openMenu]);
 
+
   const isActive = (route) => pathname === route;
   const currentLang = LANGS.find((l) => l.code === language) ?? LANGS[0];
+
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -53,6 +60,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     navigate('/login');
     setOpenMenu(false);
   };
+
 
   return (
     <nav 
@@ -78,6 +86,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
           </div>
         </Link>
 
+
         {/* CLEAN DESKTOP MENU */}
         <div className="hidden lg:flex flex-1 justify-center items-center mx-8">
           <div className="flex items-center space-x-2 bg-blue-50 rounded-full p-2 border border-blue-100">
@@ -102,6 +111,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
             ))}
           </div>
         </div>
+
 
         {/* CLEAN RIGHT SECTION */}
         <div className="flex items-center space-x-3">
@@ -153,8 +163,9 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
             </Link>
           )}
 
-          {/* Language Picker */}
-          <div className="relative" onClick={(e) => e.stopPropagation()}>
+
+          {/* Language Picker - Desktop Only */}
+          <div className="hidden lg:block relative" onClick={(e) => e.stopPropagation()}>
             <button 
               onClick={() => setOpenLang(!openLang)}
               className="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-blue-100 hover:bg-blue-50 transition-all duration-300 text-blue-700 font-medium hover:scale-105 hover:shadow-md"
@@ -188,6 +199,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
             )}
           </div>
 
+
           {/* Mobile Burger */}
           <button 
             onClick={(e) => {
@@ -204,6 +216,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
           </button>
         </div>
       </div>
+
 
       {/* CLEAN MOBILE MENU */}
       {openMenu && (
@@ -229,6 +242,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                 </Link>
               ))}
             </div>
+
 
             {/* Mobile Auth Section */}
             <div className="border-t border-blue-100 pt-4 space-y-3">
@@ -279,6 +293,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                   {t.join}
                 </Link>
               )}
+
 
               {/* Mobile Language Selection */}
               <div className="bg-blue-50 rounded-2xl p-4 border border-blue-100">
