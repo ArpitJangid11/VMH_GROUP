@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, Globe, Shield, User, LogOut, ChevronDown } from 'lucide-react';
+import { Menu, X, Shield, User, LogOut, ChevronDown } from 'lucide-react';
+import { MdOutlineTranslate } from "react-icons/md";
 
 
 const NAV_LINKS = [
@@ -170,7 +171,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
               onClick={() => setOpenLang(!openLang)}
               className="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-blue-100 hover:bg-blue-50 transition-all duration-300 text-blue-700 font-medium hover:scale-105 hover:shadow-md"
             >
-              <Globe size={16} />
+              <MdOutlineTranslate size={16} />
               <span className="text-lg">{currentLang.flag}</span>
               <ChevronDown size={14} className={`transition-transform duration-200 ${openLang ? 'rotate-180' : ''}`} />
             </button>

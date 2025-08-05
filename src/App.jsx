@@ -25,6 +25,7 @@ import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import Notification from './pages/userPages/Notification';
 import ImageSection from './pages/homepage/ImageSection';
+import Footer from './components/Footer';
 
 const App = () => {
   const [language, setLanguage] = useState('en');
@@ -48,7 +49,7 @@ const App = () => {
 
   return (
     <Router future={{v7_relativeSplatPath: true,}}>
-      <div className="">
+      <div className="flex flex-col min-h-screen">
         <Navbar
           language={language}
           setLanguage={setLanguage}
@@ -95,9 +96,7 @@ const App = () => {
             
           </Routes>
         </main>
-        <footer className="bg-blue-600 text-white mt-2 pt-4 pb-4 text-center fixed bottom-0 left-0 w-full">
-          <p>&copy; 2025 VMH Groups Market Research. All rights reserved.</p>
-        </footer>
+        <Footer/>
       </div>
     </Router>
   );
