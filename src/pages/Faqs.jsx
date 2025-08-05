@@ -33,7 +33,7 @@ export default function Faqs() {
 
   return (
     <div className="min-h-screen bg-white mt-10 flex flex-col items-center py-12 md:py-20">
-      <h2 className="text-3xl font-bold text-blue-600 mb-10 text-center">
+      <h2 className="text-3xl font-bold text-blue-600 mb-10 text-center mx-3">
         Frequently Asked Questions
       </h2>
       <div className="w-full max-w-2xl mx-auto">
