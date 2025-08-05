@@ -11,7 +11,7 @@ import {
 
 export default function ContactUs() {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-start py-12 md:py-20">
+    <div className="min-h-screen bg-white mt-10 flex flex-col items-center justify-start py-12 md:py-20">
       <h2 className="text-center text-3xl font-bold text-blue-600 mb-10 mt-2">
         Contact VMH Market Research
       </h2>

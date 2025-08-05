@@ -9,11 +9,11 @@ const Home = ({ t, user}) => {
           
           <div>
             { user &&
-            <h4 className="text-5xl md:text-6xl font-bold capitalize text-gray-500 mb-6 leading-tight">{t.hi}{user.fullName}</h4>
+            <h4 className="text-5xl md:text-3xl font-bold capitalize text-gray-500 mb-6 leading-tight">{t.hi}{user.fullName}</h4>
             }
             <Link to={user ?(user.role ==="admin"?"/admin":"/Dashboard"):("/login")}>
               <button
-                className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-lg font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-500 text-white text-lg font-semibold rounded-lg hover:from-blue-500 hover:to-blue-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                 {user ? (t.dashboard):(t.joinNow)}
               </button>
