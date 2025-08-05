@@ -10,7 +10,7 @@ const Notification = () => {
           };
   return (
     <div>
-       <div className="relative mb-6">
+       <div className="relative mb-6 mt-27">
             <button
                 onClick={handleBack}
                 className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"

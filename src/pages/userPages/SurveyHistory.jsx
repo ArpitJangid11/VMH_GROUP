@@ -39,7 +39,7 @@ const SurveyHistory = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6  mt-27" >
       {/* Header with Back Button */}
       <div className="relative mb-6">
         <button

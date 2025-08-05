@@ -10,7 +10,7 @@ const RewardsPanel = () => {
         };
   return (
     <div>
-      <div className="relative mb-6">
+      <div className="relative mt-27 mb-6">
           <button
               onClick={handleBack}
               className="absolute left-0 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-600 transition"

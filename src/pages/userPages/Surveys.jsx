@@ -106,7 +106,7 @@ const Surveys = ({ t }) => {
       
       {/*  Show main content only when not loading */}
       {!loading && (
-        <div className="max-w-6xl mx-auto px-4 py-10">
+        <div className="max-w-6xl mx-auto px-4 py-10  mt-27">
           <div className="relative mb-6">
             <button
               onClick={handleBack}
