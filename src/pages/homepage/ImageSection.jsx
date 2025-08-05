@@ -2,7 +2,7 @@ import React from "react";
 
 const ImageSection = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden rounded-b-3xl shadow-2xl">
+    <div className="relative w-full min-h-screen overflow-hidden rounded-b-2xl shadow-1xl">
       {/* Background image */}
       <img
         src="/images/homepage.png"
@@ -16,12 +16,12 @@ const ImageSection = () => {
 
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 object-contain bg-black/20 lg:bg-black/40 mix-blend-multiply" />
-      <div className="absolute inset-0 object-contain bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+      <div className="absolute inset-0 object-contain bg-black/4 lg:bg-black/20 mix-blend-multiply" />
+      <div className="absolute inset-0 object-contain bg-gradient-to-t from-black/10 via-transparent to-black/20" />
 
       {/* Spotlight effect */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="w-32 h-32 sm:w-48 sm:h-48 lg:w-72 lg:h-72 rounded-full bg-white/5 shadow-lg blur-3xl opacity-30" />
+        <div className="w-32 h-10 sm:w-48 sm:h-48 lg:w-72 lg:h-72 rounded-full bg-white/5 shadow-lg blur-2xl opacity-50" />
       </div>
 
       {/* Content */}
@@ -93,7 +93,7 @@ const ImageSection = () => {
             transform: scale(1);
           }
           50% {
-            transform: scale(1.15);
+            transform: scale(1.2);
           }
         }
         .animate-zoomSlow {
