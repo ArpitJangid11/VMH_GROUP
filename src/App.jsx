@@ -57,7 +57,7 @@ const App = () => {
           user={user}
           setUser={setUser}
         />
-        <main className="container l-0 mr-100 w-full mb-20">
+        <main className="container self-center mb-20">
           <Routes>
             <Route path="/" element={
               <>
