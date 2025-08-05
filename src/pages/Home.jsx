@@ -4,7 +4,7 @@ const Home = ({ t, user}) => {
   return (
      <div className="text-center py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-blue-900 mb-6 leading-tight">{t.welcome}</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-blue-600 mb-6 leading-tight">{t.welcome}</h1>
           <p className="mt-4 text-xl text-gray-600 mb-8 max-w-2xl mx-auto">{t.slogan}</p>
           
           <div>

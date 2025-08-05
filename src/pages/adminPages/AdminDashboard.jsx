@@ -16,7 +16,7 @@ const Admin = ({t}) => {
     <div>
       <div className="max-w-6xl mx-auto px-4 py-10 mt-27">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-blue-900 mb-2">{t.admin }{" "}{t.dashboard}</h2>
+          <h2 className="text-3xl font-bold text-blue-600 mb-2">{t.admin }{" "}{t.dashboard}</h2>
             <p className="text-gray-600">Welcome back! Here's your research activity overview.</p>
         </div>
 

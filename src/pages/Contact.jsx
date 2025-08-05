@@ -101,7 +101,7 @@ export default function ContactUs() {
             <button
               type="submit"
               className="flex items-center justify-center gap-2 py-3 w-full rounded-md font-semibold text-white 
-                bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-700 transition-all"
+                bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-700 transform transition-transform duration-200 hover:scale-105"
             >
               <FaPaperPlane /> Send Message
             </button>
