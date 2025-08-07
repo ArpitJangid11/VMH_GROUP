@@ -1,57 +1,67 @@
-import { useState } from 'react';
-import { signupUser, verifyOtp, loginUser, resendVerificationOtp } from '../services/userService';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { FiMail, FiPhone, FiUser, FiLock, FiEye, FiEyeOff, FiMapPin } from "react-icons/fi";
+import { signupUser, verifyOtp, loginUser, resendVerificationOtp } from "../services/userService";
 
 const Signup = ({ t, setUser }) => {
   const [formData, setFormData] = useState({
-    fullName: '', email: '', phone: '', DOB: '', gender: '', country: '',
-    address: '', city: '', state: '', zipCode: '',
-    jobTitle: '', industry: '', employmentStatus: '', primaryBusiness: '',
-    numberOfEmployees: '', revenueOrganization: '', higherDegree: '',
-    incomeBeforeTax: '', totalMembers: '', children: '', retiredPerson: '',
-    maritalStatus: '', password: '', confirmPassword: '',
-    role: 'user', consent: false,
+    fullName: '',
+    email: '',
+    phone: '',
+    DOB: '',
+    gender: '',
+    country: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    password: '',
+    confirmPassword: '',
+    role: 'user',
+    consent: false,
   });
-
-  const [step, setStep] = useState("form");
-  const [otp, setOtp] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [step, setStep] = useState("form");
+  const [error, setError] = useState("");
+  const [otp, setOtp] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCPassword, setShowCPassword] = useState(false);
   const navigate = useNavigate();
 
+  // Input handler
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
+  };
+
+  // Form Submit
   const handleSignup = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match.");
+      setError("Passwords do not match.");
       return;
     }
-
+    setLoading(true);
+    setError("");
     try {
-      setLoading(true);
       await signupUser(formData);
       setStep("otp");
-    } catch (error) {
-      setError(error.response?.data?.message || "Registration failed.");
+    } catch (err) {
+      setError(err.response?.data?.message || "Registration failed.");
     } finally {
       setLoading(false);
     }
   };
-  const handleResendOtp = async () => {
-    try {
-      setLoading(true)
-      const { message } = await resendVerificationOtp(formData.email);
-      setError(message); // 👈 Now it's used — displays message as a success alert
-    } catch (err) {
-      setError(err.response?.data?.message || "Failed to resend OTP");
-    }finally{
-      setLoading(false)
-    }
-  };
 
+  // OTP Verification
   const handleOtpVerify = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
     try {
-      setLoading(true);
       await verifyOtp({ email: formData.email, otp });
       const { token, user } = await loginUser({
         email: formData.email,
@@ -68,329 +78,353 @@ const Signup = ({ t, setUser }) => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
+  // Resend OTP
+  const handleResendOtp = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const { message } = await resendVerificationOtp(formData.email);
+      setError(message);
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to resend OTP");
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // --- OTP Verification Screen ---
   if (step === "otp") {
     return (
-      <div className="max-w-md mx-auto mt-10 bg-white p-8 rounded-xl shadow">
-        <h2 className="text-3xl font-bold text-blue-900 mb-4 text-centerr">Verify OTP</h2>
-        <p className="text-gray-600 text-center mb-8">OTP sent to your email. Please check your inbox.</p>
-        <form onSubmit={handleOtpVerify}>
-          <input
-            type="text"
-            placeholder="Enter OTP"
-            value={otp}
-            onChange={(e) => setOtp(e.target.value)}
-            className="w-full p-4 border border-gray-300 rounded-lg mb-4"
-            required
-          />
-          {error && <p className="text-red-600 text-sm">{error}</p>}
-          <button
-            type="submit"
-            disabled={loading}
-            className={`w-full px-6 py-4 mb-5 font-semibold rounded-lg transition-all duration-200 shadow-lg ${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 hover:shadow-xl"
-            }`}
-          >
-            {loading ? "Verifying..." : "Verify OTP & Login"}
-          </button>
-          <button
-          type="button"
-          onClick={handleResendOtp}
-          className={`w-full px-6 py-4 mb-5 font-semibold rounded-lg transition-all duration-200 shadow-lg ${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 hover:shadow-xl"
-            }`}
-        >
-          Resend OTP 
-        </button>
-        </form>
+      <div className="min-h-screen flex flex-col animate-fadeIn">
+        <div className="flex-1 flex overflow-hidden">
+          {/* Left Side - Branding & Image */}
+          <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden transition-all duration-700">
+            <div className="absolute top-0 left-0 right-0 flex flex-col items-center pt-8 pb-4">
+              <h1 className="text-4xl font-bold mb-2 tracking-tight text-blue-900">VMH Group</h1>
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center p-8 pt-32">
+              <img
+                src="/images/login-vector.png"
+                alt="Sign up illustration"
+                className="max-w-full max-h-full object-contain scale-105 opacity-90 transition duration-700"
+              />
+            </div>
+          </div>
+          {/* Right Side - OTP */}
+          <div className="w-full lg:w-1/2 bg-gray-50 overflow-y-auto flex justify-center pt-8">
+            <div className="w-full max-w-md fade-in-up pb-8">
+              <div className="text-center mb-6">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                    <span className="text-white font-bold text-xl">V</span>
+                  </div>
+                  <span className="text-2xl font-bold text-gray-800">VMH Group</span>
+                </div>
+                <h2 className="text-xl font-bold mb-2 text-blue-900">Verify Your Email</h2>
+                <p className="text-gray-600 mb-4">
+                  OTP sent to your email: <span className="font-medium text-blue-800">{formData.email}</span>
+                </p>
+              </div>
+              <form onSubmit={handleOtpVerify} className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Enter OTP"
+                  value={otp}
+                  onChange={e => setOtp(e.target.value)}
+                  required
+                  className="w-full p-4 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                />
+                {error && (
+                  <div className="text-red-600 text-sm text-center animate-shake">{error}</div>
+                )}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full py-4 mb-2 font-medium rounded-lg transition-all duration-200 hover:scale-105 ${
+                    loading
+                      ? "bg-gray-400 cursor-not-allowed text-white"
+                      : "bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:from-blue-600 hover:to-blue-800 shadow-lg hover:shadow-xl"
+                  }`}
+                >
+                  {loading ? "Verifying..." : "Verify OTP & Login"}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResendOtp}
+                  disabled={loading}
+                  className={`w-full py-3 font-medium rounded-lg transition-all duration-200 hover:scale-105 ${
+                    loading
+                      ? "bg-gray-400 cursor-not-allowed text-white"
+                      : "bg-white border border-blue-400 text-blue-700 hover:bg-blue-50 shadow"
+                  }`}
+                >
+                  Resend OTP
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <style>{`
+          .animate-fadeIn { animation: fadeIn 0.7s cubic-bezier(.22,1,.36,1); }
+          .fade-in-up { animation: fadeInUp 0.9s cubic-bezier(.22,1,.36,1); }
+          @keyframes fadeIn { to { opacity: 1; } from { opacity: 0; } }
+          @keyframes fadeInUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform:translateY(0);} }
+          .animate-shake { animation: shake 0.3s; }
+          @keyframes shake { 10%, 90% {transform: translateX(-1px);} 20%, 80% {transform: translateX(3px);} 30%, 50%, 70% {transform: translateX(-4px);} 40%, 60% {transform: translateX(4px);} }
+        `}</style>
       </div>
     );
   }
 
+  // --- MAIN SIGNUP FORM SCREEN ---
   return (
-    <div className="max-w-4xl mx-auto mt-27">
-      <div className="bg-white shadow-md rounded-xl p-8">
-        <h2 className="text-3xl font-bold text-blue-900 mb-4 text-center">{t.signup}</h2>
-        <p className="text-center text-gray-600 mb-6">Join our research community today</p>
-        <form onSubmit={handleSignup} className="space-y-6">
-
-          {/* Basic Info */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Basic Information</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <input type="text" name="fullName" placeholder={t.name} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="email" name="email" placeholder={t.email} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="tel" name="phone" placeholder={t.phone} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <div className="relative w-full">
-  <input
-    type="date"
-    name="DOB"
-    id="dob"
-    max={new Date().toISOString().split("T")[0]}
-    onChange={handleInputChange}
-    required
-    className="peer block w-full appearance-none border border-gray-300 bg-white px-3 pt-5 pb-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <label
-    htmlFor="dob"
-    className="absolute left-3 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500"
-  >
-    Date of Birth
-  </label>
-</div>
-
-              <select name="gender" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" defaultValue="">
-                <option value="" disabled>{t.gender}</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-              <input type="text" name="country" placeholder={t.country} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="text" name="address" placeholder="Street Address" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="text" name="city" placeholder="City" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="text" name="state" placeholder="State" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="text" name="zipCode" placeholder="Zip Code" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-            </div>
+    <div className="min-h-screen flex flex-col mt-27 animate-fadeIn">
+      <div className="flex-1 flex overflow-hidden">
+        {/* Left Side - Branding & Image */}
+        <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden transition-all duration-700">
+          <div className="absolute top-0 left-0 right-0 flex flex-col items-center pt-8 pb-4">
+            <h1 className="text-4xl font-bold mb-2 tracking-tight text-blue-900">VMH Group</h1>
           </div>
-
-          {/* Professional Info */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Professional Information</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">What is your job title?</label>
-                <select
-                  name="jobTitle"
+          <div className="absolute inset-0 flex items-center justify-center p-8 pt-32">
+            <img
+              src="/images/login-vector.png"
+              alt="Sign up illustration"
+              className="max-w-full max-h-full object-contain scale-105 opacity-90 transition duration-700"
+            />
+          </div>
+        </div>
+        {/* Right Side - Signup Form */}
+        <div className="w-full lg:w-1/2 bg-gray-50 flex flex-col h-screen">
+          {/* This area is scrollable if the form is long and always shows from the top */}
+          <div className="flex-1 overflow-y-auto flex justify-center pt-8">
+            <div className="w-full max-w-md fade-in-up pb-8">
+              <div className="text-center mb-8">
+                <div className="flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg flex items-center justify-center mr-3 hover:scale-110 transition-all duration-300">
+                    <span className="text-white font-bold text-xl">V</span>
+                  </div>
+                  <span className="text-2xl font-bold text-gray-800">VMH Group</span>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">{t.signup || "Join Us"}</h2>
+                <p className="text-gray-600">Already have an account?{" "}
+                  <Link to="/login" className="text-blue-500 hover:underline font-medium hover:text-blue-700 transition-colors duration-200">
+                    {t.login || "Login"}
+                  </Link>
+                </p>
+              </div>
+              <form onSubmit={handleSignup} className="space-y-6">
+                {/* Full Name */}
+                <div className="relative group">
+                  <FiUser className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    placeholder={t.name || "Full Name"}
+                    required
+                    className="w-full pl-12 pr-4 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                </div>
+                {/* Email */}
+                <div className="relative group">
+                  <FiMail className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder={t.email || "Your Email"}
+                    required
+                    className="w-full pl-12 pr-4 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                </div>
+                {/* Phone */}
+                <div className="relative group">
+                  <FiPhone className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder={t.phone || "Phone Number"}
+                    required
+                    className="w-full pl-12 pr-4 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                </div>
+                {/* DOB & Gender on a row */}
+                <div className="flex space-x-2">
+                  <div className="relative w-1/2">
+                    <input
+                      type="date"
+                      name="DOB"
+                      value={formData.DOB}
+                      max={new Date().toISOString().split("T")[0]}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full pl-4 pr-4 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition"
+                    />
+                  </div>
+                  <div className="relative w-1/2">
+                    <select
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full pl-4 pr-4 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition"
+                    >
+                      <option value="">{t.gender || "Gender"}</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                {/* Country */}
+                <div className="relative group">
+                  <FiMapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
+                  <input
+                    type="text"
+                    name="country"
+                    value={formData.country}
+                    onChange={handleInputChange}
+                    placeholder={t.country || "Country"}
+                    required
+                    className="w-full pl-12 pr-4 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                </div>
+                {/* Address, City, State, Zip */}
+                <input
+                  type="text"
+                  name="address"
+                  value={formData.address}
                   onChange={handleInputChange}
+                  placeholder="Street Address"
                   required
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
-                  defaultValue=""
-                >
-                  <option value="" disabled>--Select One--</option>
-                  <option value="C-level">C-level (CEO, CFO, CTO, CIO, CMO)</option>
-                  <option value="Owner">Owner, Partners</option>
-                  <option value="Vice President">Vice President</option>
-                  <option value="Director">Director</option>
-                  <option value="Manager">Manager</option>
-                  <option value="Analyst">Analyst</option>
-                  <option value="Assistant">Assistant or Associate</option>
-                  <option value="Administrative">Administrative</option>
-                  <option value="Consultant">Consultant</option>
-                  <option value="Intern">Intern</option>
-                  <option value="Volunteer">Volunteer</option>
-                  <option value="None">None of the above</option>
-                  <option value="Prefer not to say">Prefer not to say</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">Which departments you work within at your organization:</label>
-                 <select
-                  name="departments"
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
-                  defaultValue=""
-                >
-                  <option value="" disabled>--Select One--</option>
-                  <option>Administration/General Staff</option>
-                  <option>Customer Service/Client Service</option>
-                  <option>Executive Leadership</option>
-                  <option>Finance/Accounting</option>
-                  <option>Human Resource</option>
-                  <option>Legal/Law</option>
-                  <option>Marketing</option>
-                  <option>Operations</option>
-                  <option>Procurement</option>
-                  <option>Sales/Business Development</option>
-                  <option>Technology Development Hardware</option>
-                  <option>Technology Development Software</option>
-                  <option>Technology Implementation</option>
-                  <option>Other</option>
-                  <option>I don’t work</option>
-                </select>
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">Employment status:</label>
-                <select
-                  name="employmentStatus"
-                  value={formData.employmentStatus}
-                  onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
-                >
-                  <option value="">--Select One--</option>
-                  <option value="Employed for wages">Employed for wages</option>
-                  <option value="Self employed">Self employed</option>
-                  <option value="Employed full-time">Employed full-time</option>
-                  <option value="Employed part-time">Employed part-time</option>
-                  <option value="Contract/Freelancer">Contract, Freelancer or Temporary Employee</option>
-                  <option value="Homemaker">A homemaker</option>
-                  <option value="Student">A student</option>
-                  <option value="Military">Military</option>
-                  <option value="Retired">Retired</option>
-                  <option value="Unable to work">Unable to work</option>
-                  <option value="Prefer not to say">Prefer not to say</option>
-                </select>
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">What is your company’s primary type of business?:</label>
-                <select
-                  name="primaryBusiness"
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
-                  defaultValue=""
-                >
-                  <option value="" disabled>--Select One--</option>
-                  <option value="Agriculture">Agriculture</option>
-                  <option value="Aerospace and Defence">Aerospace and Defence</option>
-                  <option value="Automotive">Automotive</option>
-                  <option value="Banking and Financial Service">Banking and Financial Service</option>
-                  <option value="Chemicals">Chemicals</option>
-                  <option value="Construction">Construction</option>
-                  <option value="eCommerce">eCommerce</option>
-                  <option value="Education">Education</option>
-                  <option value="Energy">Energy</option>
-                  <option value="Engineering">Engineering</option>
-                  <option value="Entertainment">Entertainment</option>
-                  <option value="Government and Public Sector">Government and Public Sector</option>
-                  <option value="Healthcare">Healthcare</option>
-                  <option value="Insurance">Insurance</option>
-                  <option value="Life Science">Life Science</option>
-                  <option value="Manufacturing">Manufacturing</option>
-                  <option value="Mining and Extraction">Mining and Extraction</option>
-                  <option value="Non-profit Sector">Non-profit Sector</option>
-                  <option value="Publishing and Media">Publishing and Media</option>
-                  <option value="Real Estate">Real Estate</option>
-                  <option value="Retail and Wholesale Trade">Retail and Wholesale Trade</option>
-                  <option value="Technology">Technology</option>
-                  <option value="Telecommunication">Telecommunication</option>
-                  <option value="Transport">Transport</option>
-                  <option value="Logistics">Logistics</option>
-                  <option value="Travel and Hospitality">Travel and Hospitality</option>
-                  <option value="Utilities">Utilities</option>
-                  <option value="Sales">Sales</option>
-                </select>
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">How many employees work at your Organization (all locations)?:</label>
-                <select name="numberOfEmployees" onChange={handleInputChange} className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition" defaultValue="">
-                  <option value="" disabled>--Select One--</option>
-                  <option value="1 TO 49">1 TO 49 EMPLOYEES</option>
-                  <option value="50 TO 249">50 TO 249 EMPLOYEES</option>
-                  <option value="250 TO 499">250 TO 499 EMPLOYEES</option>
-                  <option value="500 TO 999">500 TO 999 EMPLOYEES</option>
-                  <option value="1000 TO 1999">1000 TO 1999 EMPLOYEES</option>
-                  <option value="2000 TO 4999">2000 TO 4999 EMPLOYEES</option>
-                  <option value="5000+">5000+ EMPLOYEES</option>
-                </select>
-              </div>
-              
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">What is the annual revenue for your organization?:</label>
-                <select
-                  name="revenueOrganization"
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
-                  defaultValue=""
-                >
-                  <option value="" disabled>--Select One--</option>
-                  <option value="UNDER $10000">UNDER $10000</option>
-                  <option value="$10000-$24999">$10000-$24999</option>
-                  <option value="$25000 - $49999">$25000 - $49999</option>
-                  <option value="$50000 - $99999">$50000 - $99999</option>
-                  <option value="$1MILLION – $4.99MILLION">$1MILLION – $4.99MILLION</option>
-                  <option value="$5MILLION – $9.99MILLION">$5MILLION – $9.99MILLION</option>
-                  <option value="$10MILLION – $49.99MILLION">$10MILLION – $49.99MILLION</option>
-                  <option value="$50MILLION – $99.99MILLION">$50MILLION – $99.99MILLION</option>
-                  <option value="$100MILLION – $249.99MILLION">$100MILLION – $249.99MILLION</option>
-                  <option value="$250MILLION – $499.99MILLION">$250MILLION – $499.99MILLION</option>
-                  <option value="$500MILLION – $999.99MILLION">$500MILLION – $999.99MILLION</option>
-                  <option value="$1BILLION+">$1BILLION+</option>
-                </select>
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">
-                  What is the highest degree or level of school you have completed?:
-                </label>
-                <select
-                  name="higherDegree"
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
-                  defaultValue=""
+                  className="w-full py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200 mb-2"
+                />
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleInputChange}
+                    placeholder="City"
+                    required
+                    className="w-1/3 py-4 px-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                  <input
+                    type="text"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleInputChange}
+                    placeholder="State"
+                    required
+                    className="w-1/3 py-4 px-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                  <input
+                    type="text"
+                    name="zipCode"
+                    value={formData.zipCode}
+                    onChange={handleInputChange}
+                    placeholder="Zip Code"
+                    required
+                    className="w-1/3 py-4 px-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                </div>
+                {/* Password and Confirm Password */}
+                <div className="relative group">
+                  <FiLock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    placeholder={t.password || "Password"}
+                    required
+                    autoComplete="new-password"
+                    className="w-full pl-12 pr-12 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2"
+                    onClick={() => setShowPassword(v => !v)}
+                    tabIndex={-1}
                   >
-                  <option value="" disabled>--Select One--</option>
-                  <option value="Nursery School to 8th Grade">Nursery School to 8th Grade</option>
-                  <option value="Some High school">Some High school</option>
-                  <option value="High school graduate">High school graduate</option>
-                  <option value="Associate degree">Associate degree</option>
-                  <option value="Bachelor's degree">Bachelor's degree</option>
-                  <option value="Master's degree">Master's degree</option>
-                  <option value="Professional degree">Professional degree</option>
-                  <option value="Doctorate degree">Doctorate degree</option>
-                </select>
-              </div>
+                    {showPassword
+                      ? <FiEyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                      : <FiEye className="h-5 w-5 text-gray-400 hover:text-gray-600" />}
+                  </button>
+                </div>
+                <div className="relative group">
+                  <FiLock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <input
+                    type={showCPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                    placeholder={t.confirmPassword || "Confirm Password"}
+                    required
+                    autoComplete="new-password"
+                    className="w-full pl-12 pr-12 py-4 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition placeholder-gray-500 hover:bg-gray-200"
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2"
+                    onClick={() => setShowCPassword(v => !v)}
+                    tabIndex={-1}
+                  >
+                    {showCPassword
+                      ? <FiEyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                      : <FiEye className="h-5 w-5 text-gray-400 hover:text-gray-600" />}
+                  </button>
+                </div>
+                {/* Consent Checkbox */}
+                <label className="flex items-start space-x-3 p-2 bg-gray-50 rounded-lg cursor-pointer mb-2">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    checked={formData.consent}
+                    onChange={handleInputChange}
+                    required
+                    className="mt-1 h-4 w-4 text-blue-600"
+                  />
+                  <span className="text-sm text-gray-700">{t.consent || "I agree to terms & policies"}</span>
+                </label>
+                {/* Error Message */}
+                {error && <div className="text-red-600 text-sm text-center animate-shake">{error}</div>}
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full py-4 font-medium rounded-lg transition-all duration-200 shadow-lg hover:scale-[1.02] ${
+                    loading
+                      ? "bg-gray-400 cursor-not-allowed text-white"
+                      : "bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:from-blue-600 hover:to-blue-900 hover:shadow-xl hover:-translate-y-1"
+                  }`}
+                >
+                  {loading ? (
+                    <span className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Registering...
+                    </span>
+                  ) : (
+                    t.submit || "Sign Up"
+                  )}
+                </button>
+              </form>
             </div>
           </div>
-
-          {/* Household Info */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Household Information</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <input type="number" name="incomeBeforeTax" placeholder="Income Before Tax" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="number" name="totalMembers" placeholder="Total Household Members" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="number" name="children" placeholder="Number of Children" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="number" name="retiredPerson" placeholder="Number of Retired Persons" onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <select name="maritalStatus" onChange={handleInputChange} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 transition">
-                <option value="">Select Marital Status</option>
-                <option>Single</option>
-                <option>Married</option>
-                <option>Divorced</option>
-                <option>Widowed</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Account Info */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Account Credentials</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <input type="password" name="password" placeholder={t.password} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-              <input type="password" name="confirmPassword" placeholder={t.confirmPassword} onChange={handleInputChange} required className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-            </div>
-          </div>
-
-          {/* Consent */}
-          <label className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg cursor-pointer">
-            <input type="checkbox" name="consent" onChange={handleInputChange} checked={formData.consent} required className="mt-1 h-4 w-4 text-blue-600" />
-            <span className="text-sm text-gray-700">{t.consent}</span>
-          </label>
-          {/* Display  errors */}
-          {error && <p className="text-red-600 text-sm">{error}</p>}
-          {/* Submit */}
-          <button type="submit" disabled={loading} className="w-full py-4 bg-blue-600 text-white font-semibold rounded-lg hover:scale-105 transition disabled:opacity-50">
-            {loading ? "Registering..." : t.submit}
-          </button>
-        </form>
-
-        <p className="text-center text-gray-600 mt-6">
-          Already have an account?{" "}
-          <Link to='/login' className="text-blue-600 hover:underline">{t.login} {t.here}</Link>
-        </p>
+        </div>
       </div>
+      <style>{`
+        .animate-fadeIn { animation: fadeIn 0.7s cubic-bezier(.22,1,.36,1); }
+        .fade-in-up { animation: fadeInUp 0.9s cubic-bezier(.22,1,.36,1); }
+        @keyframes fadeIn { to { opacity: 1; } from { opacity: 0; } }
+        @keyframes fadeInUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform:translateY(0);} }
+        .animate-shake { animation: shake 0.3s; }
+        @keyframes shake { 10%, 90% {transform: translateX(-1px);} 20%, 80% {transform: translateX(3px);} 30%, 50%, 70% {transform: translateX(-4px);} 40%, 60% {transform: translateX(4px);} }
+      `}</style>
     </div>
   );
 };

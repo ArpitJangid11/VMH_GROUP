@@ -43,11 +43,14 @@ const ProfessionalHouseholdModal = ({
   // Submit & update backend
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     try {
       const updated = await updateProfile(formData);
       if (onSuccess) onSuccess(updated.user || updated);  // let parent know
+
       handleClose();
+      window.location.reload(true);
     } catch (err) {
       alert("Failed to update details.",err);
       // You CAN: console.error(err);

@@ -29,10 +29,13 @@ const Login = ({ t, setUser }) => {
         setError("Invalid login credentials");
         return;
       }
-
+        const {jobsTitle} = "";
       localStorage.setItem("token", token);
+      localStorage.setItem("jobsTitle", jobsTitle);
       localStorage.setItem("user", JSON.stringify(user));
       setUser(user);
+      console.log("Jobtitle = ",user.jobTitle);
+      
       navigate(user.role === "admin" ? "/admin" : "/dashboard");
     } catch (err) {
       if(err.response?.data?.message === "Please verify your email first"){
