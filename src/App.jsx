@@ -61,7 +61,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={
               <>
-                <ImageSection />
+                <ImageSection t={t} user={user} />
                 <Home t={t} user={user} />
               </>
               } />

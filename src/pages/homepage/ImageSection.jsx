@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ImageSection = () => {
+const ImageSection = ({t, user}) => {
   return (
     <div className="relative w-full min-h-screen overflow-hidden rounded-b-2xl shadow-1xl">
       {/* Background image */}
@@ -38,12 +39,14 @@ const ImageSection = () => {
           Discover seamless experiences and innovative solutions.
         </p>
 
-        <button
-          aria-label="Get started with our platform"
-          className="px-4 py-2 sm:px-6 sm:py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-sm sm:text-base font-semibold text-white shadow-neumorphism focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-opacity-75 animate-fadeInUp delay-500"
-        >
-          Get Started
-        </button>
+        <Link to={user ? (user.role === "admin" ? "/admin" : "/Dashboard") : "/login"}>
+                    <button
+                      className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-500 text-white text-lg font-semibold rounded-lg hover:from-blue-500 hover:to-blue-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+                    >
+                      {user ? t.dashboard : t.joinNow}
+                    </button>
+                  </Link>
+                  
       </div>
 
       {/* Animations & effects */}

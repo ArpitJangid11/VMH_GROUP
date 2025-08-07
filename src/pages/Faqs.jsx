@@ -38,24 +38,31 @@ export default function Faqs() {
       </h2>
       <div className="w-full max-w-2xl mx-auto">
         {faqData.map((item, idx) => (
-          <div key={idx} className="mb-4 bg-blue-50 rounded-xl shadow mx-3">
+          <div key={idx} className="mb-4 bg-blue-50 rounded-xl shadow mx-3 transition duration-300 hover:shadow-lg">
+            {/* Button with hover/focus effect */}
             <button
-              className="w-full flex justify-between items-center px-6 py-4 text-lg font-medium text-blue-700 focus:outline-none"
+              className="w-full flex justify-between items-center px-6 py-4 text-lg font-medium text-blue-700 focus:outline-none transition 
+                         hover:bg-blue-100 hover:shadow-md focus:bg-blue-100"
               onClick={() => toggleIndex(idx)}
               aria-expanded={openIndex === idx}
             >
               <span>{item.question}</span>
-              {openIndex === idx ? (
-                <FaChevronUp className="text-blue-400" />
-              ) : (
+              <span
+                className={`transition-transform duration-300 ${
+                  openIndex === idx ? 'rotate-180' : ''
+                }`}
+              >
                 <FaChevronDown className="text-blue-400" />
-              )}
+              </span>
             </button>
-            {openIndex === idx && (
-              <div className="px-6 pb-6 text-gray-700 text-base">
-                {item.answer}
-              </div>
-            )}
+            {/* Answer with animated opacity and height */}
+            <div
+              className={`px-6 text-gray-700 text-base transition-all duration-300 overflow-hidden
+                ${openIndex === idx ? 'max-h-40 opacity-100 pb-6' : 'max-h-0 opacity-0 pb-0'}
+              `}
+            >
+              {item.answer}
+            </div>
           </div>
         ))}
       </div>
