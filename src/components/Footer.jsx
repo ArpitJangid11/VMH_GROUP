@@ -22,7 +22,7 @@ export default function Footer() {
       {showModal && (
               <ProfessionalHouseholdModal onClose={() => setShowModal(false)} />
             )}
-      <div className="absolute inset-x-0 -top-6 h-6 bg-gradient-to-b from-blue-400/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 py-2 -top-6 h-6 bg-gradient-to-b from-blue-400/20 to-transparent pointer-events-none" />
       
       <div >
         <div className="mx-auto max-w-7xl px-6 pt-14">

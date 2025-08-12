@@ -23,7 +23,7 @@ export default function ContactUs() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Inject animation styles (same as HowItWorks)
+    // Inject animation styles
     const styleSheet = document.createElement("style");
     styleSheet.textContent = `
       @keyframes slideInUp {
@@ -66,7 +66,7 @@ export default function ContactUs() {
     `;
     document.head.appendChild(styleSheet);
 
-    // IntersectionObserver for scroll reveal
+    // Scroll reveal
     const cards = document.querySelectorAll(".contact-card");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -107,7 +107,6 @@ export default function ContactUs() {
       className="relative bg-gradient-to-b from-slate-50 to-blue-50/20"
     >
       <div className="max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
-        
         {/* ===== HEADER ===== */}
         <header className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 hover:scale-105 hover:text-blue-600 transition-all duration-700 ease-out">
@@ -122,60 +121,61 @@ export default function ContactUs() {
         </header>
 
         {/* ===== CARDS CONTAINER ===== */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12 justify-center items-stretch">
-          
+        <div className="flex flex-col md:flex-row gap-6 md:gap-12 justify-center items-stretch">
           {/* ===== LEFT CARD ===== */}
-          <div className="contact-card h-full flex flex-col w-full md:w-[390px] bg-blue-50 rounded-2xl border border-blue-600/30 px-8 py-7 cursor-pointer transition-all duration-700 cubic-bezier(0.4, 0, 0.2, 1) hover:-translate-y-6 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40">
-            <h3 className="flex items-center text-blue-600 text-lg font-semibold mb-6">
-              <FaPaperPlane className="mr-2" /> Get in Touch
+          <div className="contact-card flex flex-col w-full sm:max-w-sm md:w-[390px] bg-blue-50 rounded-2xl border border-blue-600/30 px-6 sm:px-8 py-6 sm:py-7 cursor-pointer transition-all duration-700 cubic-bezier(0.4,0,0.2,1) hover:-translate-y-6 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40">
+            <h3 className="flex items-center text-blue-600 text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+              <FaPaperPlane className="mr-2 flex-shrink-0" /> Get in Touch
             </h3>
-            <ul className="space-y-4 mb-8 text-slate-700">
+            <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-slate-700 text-sm sm:text-base">
               <li className="flex items-start">
-                <FaMapMarkerAlt className="mt-1 text-blue-600 mr-3" />
+                <FaMapMarkerAlt className="mt-1 text-blue-600 mr-3 flex-shrink-0" />
                 <span>
                   <strong>Office:</strong> Jaipur, Rajasthan, India
                 </span>
               </li>
               <li className="flex items-center">
-                <FaPhoneAlt className="text-blue-600 mr-3" />
+                <FaPhoneAlt className="text-blue-600 mr-3 flex-shrink-0" />
                 <span>
                   <strong>Phone:</strong> +91 98765 43210
                 </span>
               </li>
               <li className="flex items-center">
-                <FaEnvelope className="text-blue-600 mr-3" />
+                <FaEnvelope className="text-blue-600 mr-3 flex-shrink-0" />
                 <a
                   href="mailto:support@vmhgroup.com"
-                  className="hover:text-blue-700"
+                  className="hover:text-blue-700 break-all"
                 >
                   <strong>Email:</strong> support@vmhgroup.com
                 </a>
               </li>
               <li className="flex items-center">
-                <FaClock className="text-blue-600 mr-3" />
+                <FaClock className="text-blue-600 mr-3 flex-shrink-0" />
                 <span>
                   <strong>Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM
                 </span>
               </li>
             </ul>
             <hr className="my-4 text-blue-600" />
-            <p className="text-center text-gray-700 my-8">Follow Us</p>
-            <div className="flex justify-center gap-8 text-gray-700 text-2xl pb-22">
+            <p className="text-center text-gray-700 my-4 sm:my-8 text-sm sm:text-base">
+              Follow Us
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-gray-700 text-xl sm:text-2xl pb-4">
               <a
                 href="#"
-                className="hover:text-blue-700 transform transition-transform duration-200 hover:scale-150"
+                className="hover:text-blue-700 transform transition-transform duration-200 hover:scale-125"
               >
                 <FaFacebook />
               </a>
               <a
                 href="#"
-                className="hover:text-pink-600 transform transition-transform duration-200 hover:scale-150"
+                className="hover:text-pink-600 transform transition-transform duration-200 hover:scale-125"
               >
                 <FaInstagram />
               </a>
               <a
                 href="#"
-                className="hover:text-blue-900 transform transition-transform duration-200 hover:scale-150"
+                className="hover:text-blue-900 transform transition-transform duration-200 hover:scale-125"
               >
                 <FaLinkedin />
               </a>
@@ -183,11 +183,14 @@ export default function ContactUs() {
           </div>
 
           {/* ===== RIGHT CARD ===== */}
-          <div className="contact-card h-full flex flex-col w-full md:w-[390px] bg-white rounded-2xl border border-blue-600/30 px-8 py-7 cursor-pointer transition-all duration-700 cubic-bezier(0.4, 0, 0.2, 1) hover:-translate-y-6 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40">
-            <h3 className="flex items-center text-blue-600 text-lg font-semibold mb-6">
-              <FaPaperPlane className="mr-2" /> Send a Message
+          <div className="contact-card flex flex-col w-full sm:max-w-sm md:w-[390px] bg-white rounded-2xl border border-blue-600/30 px-6 sm:px-8 py-6 sm:py-7 cursor-pointer transition-all duration-700 cubic-bezier(0.4,0,0.2,1) hover:-translate-y-6 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40">
+            <h3 className="flex items-center text-blue-600 text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+              <FaPaperPlane className="mr-2 flex-shrink-0" /> Send a Message
             </h3>
-            <form className="flex flex-col space-y-4 flex-grow" onSubmit={handleSubmit}>
+            <form
+              className="flex flex-col space-y-3 sm:space-y-4 flex-grow"
+              onSubmit={handleSubmit}
+            >
               <input
                 type="text"
                 name="name"
@@ -195,8 +198,9 @@ export default function ContactUs() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+                className="border border-gray-300 rounded-md px-3 sm:px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200 text-sm sm:text-base"
               />
+
               <input
                 type="email"
                 name="email"
@@ -204,8 +208,9 @@ export default function ContactUs() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+                className="border border-gray-300 rounded-md px-3 sm:px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200 text-sm sm:text-base"
               />
+
               <input
                 type="text"
                 name="phone"
@@ -213,16 +218,18 @@ export default function ContactUs() {
                 value={form.phone}
                 onChange={handleChange}
                 required
-                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+                className="border border-gray-300 rounded-md px-3 sm:px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200 text-sm sm:text-base"
               />
+
               <input
                 type="text"
                 name="subject"
                 placeholder="Subject (Optional)"
                 value={form.subject}
                 onChange={handleChange}
-                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
+                className="border border-gray-300 rounded-md px-3 sm:px-4 py-2 focus:outline-none focus:border-blue-500 text-sm sm:text-base"
               />
+
               <textarea
                 name="message"
                 placeholder="Your Message *"
@@ -230,11 +237,12 @@ export default function ContactUs() {
                 value={form.message}
                 onChange={handleChange}
                 required
-                className="border border-gray-300 rounded-md px-4 py-2 resize-none focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+                className="border border-gray-300 rounded-md px-3 sm:px-4 py-2 resize-none focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200 text-sm sm:text-base"
               />
+
               <button
                 type="submit"
-                className="mt-auto flex items-center justify-center gap-2 py-3 w-full rounded-md font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 shadow-sm hover:shadow-lg"
+                className="mt-auto flex items-center justify-center gap-2 py-2 sm:py-3 w-full rounded-md font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 shadow-sm hover:shadow-lg text-sm sm:text-base"
               >
                 <FaPaperPlane /> Send Message
               </button>
