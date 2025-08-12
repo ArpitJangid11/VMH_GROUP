@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import slide5 from "../../assets/HImages/Istockimage.png"
 
 const AboutUs = () => {
   useEffect(() => {
@@ -102,7 +103,7 @@ const AboutUs = () => {
             <figure className="group relative rounded-2xl overflow-hidden shadow-lg border border-blue-600/20 transition-all duration-700 cubic-bezier(0.4, 0, 0.2, 1) hover:-translate-y-4 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40 hover:border-blue-600/50">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <img
-                src="src/assets/HImages/Istockimage.png"
+                src={slide5}
                 alt="Person using laptop on grass with notebooks"
                 className="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 loading="lazy"
