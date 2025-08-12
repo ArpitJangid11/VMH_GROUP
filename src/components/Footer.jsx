@@ -95,12 +95,12 @@ export default function Footer() {
                 { label: "FAQ", href: "/faqs" }
               ].map((item, index) => (
                 <div key={item.label} style={{ animation: `fadeUp 0.5s ease-out ${0.08 * index}s both` }}>
-                  <a 
-                    href={item.href}
+                  <Link 
+                    to={item.href}
                     className="block text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </nav>
