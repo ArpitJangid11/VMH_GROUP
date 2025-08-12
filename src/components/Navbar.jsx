@@ -56,6 +56,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
   };
    // Smooth scroll handler
   const handleNavClick = (id) => {
+    setOpenMenu(false)
     if (pathname === "/") {
       const section = document.getElementById(id);
       if (section) {
@@ -223,19 +224,20 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
           <div className="p-4 space-y-4">
             {/* Mobile Navigation */}
             <div className="space-y-2">
-              {NAV_LINKS.map(({ to, key }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  onClick={() => setOpenMenu(false)}
+              {NAV_LINKS.map(({ id, key }) => (
+                <button
+                  key={id}
+                  // to={to}
+                  onClick={() => handleNavClick(id)}
+                  // onClick={() => }
                   className={`block w-full rounded-2xl px-4 py-3 text-base font-semibold transition-all duration-300
-                    ${isActive(to) 
+                    ${isActive(id) 
                       ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg' 
                       : 'bg-blue-50 text-blue-800 hover:bg-blue-100 hover:scale-[1.02]'
                     }`}
                 >
                   {t[key]}
-                </Link>
+                </button>
               ))}
             </div>
 
