@@ -85,7 +85,7 @@ const EditUserRolesInline = () => {
     return <SurveyLoadingScreen message="Fetching Users..."/>;
   }
   return (
-    <div className="p-4 sm:p-6 max-w-6xl mx-auto mt-27">
+    <div className="p-4 sm:p-6 max-w-6xl mx-auto">
       <div className="relative mb-6">
             <button
                 onClick={handleBack}

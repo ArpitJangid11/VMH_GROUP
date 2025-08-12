@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import translations from './translations';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -24,7 +24,6 @@ import EditUserRole from './pages/adminPages/EditUserRole';
 import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import Notification from './pages/userPages/Notification';
-import ImageSection from './pages/homepage/ImageSection';
 import Footer from './components/Footer';
 import CookieBanner from './components/CookieBanner';
 import GDPRPage from './pages/GDPRPage';
@@ -33,31 +32,44 @@ import HowItWorks from './pages/HowItWorks';
 import ScrollToTop from './components/ScrollToTop';
 import WhyChooseUs from './pages/WhyChooseUs';
 
-const App = () => {
+// Layout wrapper that adds padding conditionally
+const MainLayout = ({ children }) => {
+  const location = useLocation();
+  const isHome = location.pathname === '/'; // check if current page is home
+  return (
+    <main
+      className={`flex-grow w-full mb-20 ${
+        isHome ? '' : 'pt-24'
+      }`}
+    >
+      {children}
+      <CookieBanner />
+    </main>
+  );
+};
+
+const AppContent = () => {
   const [language, setLanguage] = useState('en');
   const [user, setUser] = useState(null);
-  
 
   const t = translations[language];
 
   useEffect(() => {
     try {
-      const savedUserString = localStorage.getItem("user");
-
-      if (savedUserString && savedUserString !== "undefined") {
-        const savedUser = JSON.parse(savedUserString);
-        setUser(savedUser);
+      const savedUserString = localStorage.getItem('user');
+      if (savedUserString && savedUserString !== 'undefined') {
+        setUser(JSON.parse(savedUserString));
       }
     } catch (error) {
-      console.error("Error parsing user from localStorage:", error);
-      localStorage.removeItem("user");
+      console.error('Error parsing user from localStorage:', error);
+      localStorage.removeItem('user');
     }
   }, []);
 
   return (
-    <Router future={{v7_relativeSplatPath: true,}}>
+    <>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen ">
+      <div className="flex flex-col min-h-screen">
         <Navbar
           language={language}
           setLanguage={setLanguage}
@@ -65,34 +77,33 @@ const App = () => {
           user={user}
           setUser={setUser}
         />
-        <main className="min-h-screen w-full mb-20">
+        <MainLayout>
           <Routes>
-            <Route path="/" element={
-              <>
-                {/* <ImageSection t={t} user={user} /> */}
-                <Home t={t} user={user} />
-              </>
-              } />
+            {/* Public Routes */}
+            <Route path="/" element={<Home t={t} user={user} />} />
             <Route path="/about" element={<About t={t} />} />
             <Route path="/login" element={<Login t={t} setUser={setUser} />} />
             <Route path="/signup" element={<Signup t={t} setUser={setUser} />} />
             <Route path="/faqs" element={<Faqs t={t} />} />
             <Route path="/contact" element={<Contact t={t} />} />
-            <Route path="/forgot-password" element={<ForgotPassword t={t}/>} />
+            <Route path="/forgot-password" element={<ForgotPassword t={t} />} />
             <Route path="/reset-password" element={<ResetPassword t={t} />} />
+            <Route path="/gdpr" element={<GDPRPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/why-choose-us" element={<WhyChooseUs />} />
 
-            {/* Admin side routes */}
+            {/* Admin Routes */}
             <Route path="/admin" element={<Admin t={t} user={user} />} />
             <Route path="/admin/manageuser" element={<ManageUsers t={t} user={user} />} />
             <Route path="/admin/managesurvey" element={<ManageSurveys t={t} user={user} />} />
             <Route path="/admin/assignsurvey" element={<AssignSurveys t={t} user={user} />} />
             <Route path="/admin/rewardpanel" element={<RewardsPanel t={t} user={user} />} />
             <Route path="/admin/edit-user-role" element={<EditUserRole />} />
-
-            <Route path="/admin/profile" element={<AdminProfile t={t} user={user} setUser={setUser}/>} />
+            <Route path="/admin/profile" element={<AdminProfile t={t} user={user} setUser={setUser} />} />
             <Route path="/admin/edit-survey/:id" element={<EditSurvey />} />
 
-            {/* user side  routes */}
+            {/* User Routes */}
             <Route path="/dashboard" element={<UserDashboard t={t} user={user} setUser={setUser} />} />
             <Route path="/profile" element={<AdminProfile t={t} user={user} setUser={setUser} />} />
             <Route path="/survey-history" element={<SurveyHistory t={t} user={user} setUser={setUser} />} />
@@ -100,19 +111,18 @@ const App = () => {
             <Route path="/surveys" element={<Surveys t={t} />} />
             <Route path="/refer" element={<Refer t={t} />} />
             <Route path="/notifications" element={<Notification t={t} />} />
-            <Route path="/gdpr" element={<GDPRPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/How-it-works" element={<HowItWorks />} />
-            <Route path="/why-choose-us" element={<WhyChooseUs />} />
-
-            
           </Routes>
-         <CookieBanner />
-        </main>
-        <Footer/>
+        </MainLayout>
+        <Footer />
       </div>
-    </Router>
+    </>
   );
 };
+
+const App = () => (
+  <Router>
+    <AppContent />
+  </Router>
+);
 
 export default App;

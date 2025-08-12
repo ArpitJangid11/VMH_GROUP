@@ -57,7 +57,7 @@ const AssignSurveys = () => {
 };
 
   return (
-    <div className="max-w-md mx-auto mt-27">
+    <div className="max-w-md mx-auto">
       {/* FORM */}
       <div className="bg-white rounded-xl shadow-lg p-8">
         <div className="relative mb-6">

@@ -6,6 +6,7 @@ import {
   TbClipboardList, 
   TbGift 
 } from "react-icons/tb";
+import { Link } from 'react-router-dom';
 
 const steps = [
   {
@@ -34,7 +35,7 @@ const steps = [
   },
 ];
 
-const StepJoinSection = () => {
+const StepJoinSection = ({user}) => {
   useEffect(() => {
     const styleSheet = document.createElement("style");
     styleSheet.textContent = `
@@ -267,22 +268,22 @@ const StepJoinSection = () => {
           <div className="step-content text-center mt-16 sm:mt-20">
             <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mx-auto max-w-sm sm:max-w-md border-2 border-blue-100 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
               <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-3 sm:mb-4">
-                Ready to Join?
+                {!user ? "Ready to Join?": "Ready to Dashboard"}
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-4 sm:mb-6 leading-relaxed">
                 Start your journey with us today and begin earning rewards immediately after verification.
               </p>
-              <button
+              <Link to= {!user ? "/signup" : (user.role === "admin" ? "/admin": "/dashboard")}
                 type="button"
                 className="group inline-flex items-center justify-center rounded-full px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 w-full sm:w-auto transition-all duration-300"
               >
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
-                  JOIN US NOW
+                  {!user ? "JOIN US NOW" : "GO TO DASHBOARD"}
                 </span>
                 <svg className="ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+             </Link>
               <p className="text-xs text-slate-500 mt-3 sm:mt-4">
                 100% Free Registration • Instant Access
               </p>

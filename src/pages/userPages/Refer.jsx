@@ -27,7 +27,7 @@ export default function ReferAndEarn() {
   };
 
   return (
-    <div className="min-h-screen flex items-center mt-10 justify-center ">
+    <div className="min-h-screen flex items-center justify-center ">
       <div className="w-full max-w-md rounded-3xl shadow-2xl sm:mx-4 p-8 mx-4">
         <h2 className="text-2xl font-extrabold text-blue-600 mb-2 text-center tracking-wide">
           Refer & Earn

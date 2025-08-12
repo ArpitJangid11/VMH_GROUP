@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// File: src/components/ContactUs.jsx
+import React, { useState, useEffect, useRef } from "react";
 import {
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -11,7 +12,6 @@ import {
 } from "react-icons/fa";
 
 export default function ContactUs() {
-  // State for form fields
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -20,152 +20,228 @@ export default function ContactUs() {
     message: "",
   });
 
-  // Handle changes in any input
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const sectionRef = useRef(null);
 
-  // Handle form submission
+  useEffect(() => {
+    // Inject animation styles (same as HowItWorks)
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+      @keyframes slideInUp {
+        from { opacity: 0; transform: translateY(50px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes slideLeftRight {
+        0% { transform: translateX(-100%); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+      }
+      .animate-slide-in {
+        animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+      .contact-card {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+      }
+      .animated-underline {
+        position: relative;
+        overflow: hidden;
+        background: rgba(37, 99, 235, 0.2);
+      }
+      .animated-underline::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 40%;
+        background: linear-gradient(90deg,
+          transparent,
+          rgba(37, 99, 235, 0.8),
+          rgba(37, 99, 235, 1),
+          rgba(37, 99, 235, 0.8),
+          transparent
+        );
+        animation: slideLeftRight 2.5s ease-in-out infinite;
+        border-radius: inherit;
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // IntersectionObserver for scroll reveal
+    const cards = document.querySelectorAll(".contact-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, idx) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("animate-slide-in");
+            }, idx * 200);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => {
+      observer.disconnect();
+      if (document.head.contains(styleSheet)) {
+        document.head.removeChild(styleSheet);
+      }
+    };
+  }, []);
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can add validation, API calls here
-    alert(
-      `Thank you, ${form.name}! Your message has been submitted.\n\n(You can replace this alert with your actual submit logic.)`
-    );
-    // Reset form
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
+    alert(`Thank you, ${form.name}! Your message has been submitted.`);
+    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
   return (
-    <div className="min-h-screen bg-white mt-10 flex flex-col items-center justify-start py-12 md:py-20">
-      <h2 className="text-center text-3xl font-bold text-blue-600 mb-10 mt-2">
-        Contact VMH Market Research
-      </h2>
-      <div className="flex flex-col md:flex-row gap-8 md:gap-10 justify-center items-start">
-        {/* Left Card */}
-        <div className="w-full md:w-[390px] bg-blue-50 rounded-2xl shadow-md px-8 py-7
-                        transition-transform duration-300 hover:shadow-xl hover:-translate-y-2 group">
-          {/* ... (Left card code stays the same as before) ... */}
-          <h3 className="flex items-center text-blue-600 text-lg font-semibold mb-6">
-            <FaPaperPlane className="mr-2" />
-            Get in Touch
-          </h3>
-          <ul className="space-y-4 mb-8">
-            <li className="flex items-start transition-colors duration-200 group-hover:text-blue-700">
-              <FaMapMarkerAlt className="mt-1 text-blue-600 mr-3" />
-              <div>
-                <span className="font-bold">Office:</span> Jaipur, Rajasthan, India
-              </div>
-            </li>
-            <li className="flex items-center transition-colors duration-200 group-hover:text-blue-700">
-              <FaPhoneAlt className="text-blue-600 mr-3" />
-              <div>
-                <span className="font-bold">Phone:</span> +91 98765 43210
-              </div>
-            </li>
-            <li className="flex items-center transition-colors duration-200 group-hover:text-blue-700">
-              <FaEnvelope className="text-blue-600 mr-3" />
-              <div>
-                <span className="font-bold">Email:</span> support@vmhgroup.com
-              </div>
-            </li>
-            <li className="flex items-center transition-colors duration-200 group-hover:text-blue-700">
-              <FaClock className="text-blue-600 mr-3" />
-              <div>
-                <span className="font-bold">Hours:</span> Mon - Sat: 9:00 AM - 6:00 PM
-              </div>
-            </li>
-          </ul>
-          <hr className="my-4 text-blue-600" />
-          <p className="text-center text-gray-700 my-8">Follow Us</p>
-          <div className="flex justify-center gap-8 px-3 text-gray-700 text-2xl mt-1 mb-30">
-            <a href="#" aria-label="Facebook"
-              className="hover:text-blue-700 transform transition-transform duration-200 hover:scale-150 active:scale-110"
-            >
-              <FaFacebook />
-            </a>
-            <a href="#" aria-label="Instagram"
-              className="hover:text-pink-600 transform transition-transform duration-200 hover:scale-150 active:scale-110"
-            >
-              <FaInstagram />
-            </a>
-            <a href="#" aria-label="LinkedIn"
-              className="hover:text-blue-900 transform transition-transform duration-200 hover:scale-150 active:scale-110"
-            >
-              <FaLinkedin />
-            </a>
+    <section
+      ref={sectionRef}
+      className="relative bg-gradient-to-b from-slate-50 to-blue-50/20"
+    >
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
+        
+        {/* ===== HEADER ===== */}
+        <header className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 hover:scale-105 hover:text-blue-600 transition-all duration-700 ease-out">
+            CONTACT VMH MARKET RESEARCH
+          </h2>
+          <div className="flex justify-center mb-4">
+            <div className="h-1 w-20 rounded-full animated-underline"></div>
+          </div>
+          <p className="text-slate-500 max-w-2xl mx-auto transition-all duration-500 ease-out hover:text-slate-600 hover:scale-105">
+            We’d love to hear from you — send us a message or connect directly.
+          </p>
+        </header>
+
+        {/* ===== CARDS CONTAINER ===== */}
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 justify-center items-stretch">
+          
+          {/* ===== LEFT CARD ===== */}
+          <div className="contact-card h-full flex flex-col w-full md:w-[390px] bg-blue-50 rounded-2xl border border-blue-600/30 px-8 py-7 cursor-pointer transition-all duration-700 cubic-bezier(0.4, 0, 0.2, 1) hover:-translate-y-6 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40">
+            <h3 className="flex items-center text-blue-600 text-lg font-semibold mb-6">
+              <FaPaperPlane className="mr-2" /> Get in Touch
+            </h3>
+            <ul className="space-y-4 mb-8 text-slate-700">
+              <li className="flex items-start">
+                <FaMapMarkerAlt className="mt-1 text-blue-600 mr-3" />
+                <span>
+                  <strong>Office:</strong> Jaipur, Rajasthan, India
+                </span>
+              </li>
+              <li className="flex items-center">
+                <FaPhoneAlt className="text-blue-600 mr-3" />
+                <span>
+                  <strong>Phone:</strong> +91 98765 43210
+                </span>
+              </li>
+              <li className="flex items-center">
+                <FaEnvelope className="text-blue-600 mr-3" />
+                <a
+                  href="mailto:support@vmhgroup.com"
+                  className="hover:text-blue-700"
+                >
+                  <strong>Email:</strong> support@vmhgroup.com
+                </a>
+              </li>
+              <li className="flex items-center">
+                <FaClock className="text-blue-600 mr-3" />
+                <span>
+                  <strong>Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM
+                </span>
+              </li>
+            </ul>
+            <hr className="my-4 text-blue-600" />
+            <p className="text-center text-gray-700 my-8">Follow Us</p>
+            <div className="flex justify-center gap-8 text-gray-700 text-2xl pb-22">
+              <a
+                href="#"
+                className="hover:text-blue-700 transform transition-transform duration-200 hover:scale-150"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="#"
+                className="hover:text-pink-600 transform transition-transform duration-200 hover:scale-150"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="#"
+                className="hover:text-blue-900 transform transition-transform duration-200 hover:scale-150"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
+          </div>
+
+          {/* ===== RIGHT CARD ===== */}
+          <div className="contact-card h-full flex flex-col w-full md:w-[390px] bg-white rounded-2xl border border-blue-600/30 px-8 py-7 cursor-pointer transition-all duration-700 cubic-bezier(0.4, 0, 0.2, 1) hover:-translate-y-6 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40">
+            <h3 className="flex items-center text-blue-600 text-lg font-semibold mb-6">
+              <FaPaperPlane className="mr-2" /> Send a Message
+            </h3>
+            <form className="flex flex-col space-y-4 flex-grow" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name *"
+                value={form.name}
+                onChange={handleChange}
+                required
+                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email *"
+                value={form.email}
+                onChange={handleChange}
+                required
+                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Your Phone *"
+                value={form.phone}
+                onChange={handleChange}
+                required
+                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject (Optional)"
+                value={form.subject}
+                onChange={handleChange}
+                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message *"
+                rows={4}
+                value={form.message}
+                onChange={handleChange}
+                required
+                className="border border-gray-300 rounded-md px-4 py-2 resize-none focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
+              />
+              <button
+                type="submit"
+                className="mt-auto flex items-center justify-center gap-2 py-3 w-full rounded-md font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 shadow-sm hover:shadow-lg"
+              >
+                <FaPaperPlane /> Send Message
+              </button>
+            </form>
           </div>
         </div>
-        {/* Right Card */}
-        <div className="w-full md:w-[390px] bg-white rounded-2xl shadow-md px-8 py-7
-                        transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
-          <h3 className="flex items-center text-blue-600 text-lg font-semibold mb-6">
-            <FaPaperPlane className="mr-2" />
-            Send a Message
-          </h3>
-          <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
-              type="text"
-              name="name"
-              placeholder="Your Name *"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
-              type="email"
-              name="email"
-              placeholder="Your Email *"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
-              type="text"
-              name="phone"
-              placeholder="Your Phone *"
-              value={form.phone}
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 transition-shadow focus:shadow-lg duration-200"
-              type="text"
-              name="subject"
-              placeholder="Subject (Optional)"
-              value={form.subject}
-              onChange={handleChange}
-            />
-            <textarea
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 resize-none transition-shadow focus:shadow-lg duration-200"
-              rows={4}
-              name="message"
-              placeholder="Your Message *"
-              value={form.message}
-              onChange={handleChange}
-              required
-            />
-            <button
-              type="submit"
-              className="flex items-center justify-center gap-2 py-3 w-full rounded-md font-semibold text-white 
-                bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-700 
-                transform transition-transform duration-150 hover:scale-105
-                shadow-sm hover:shadow-lg"
-            >
-              <FaPaperPlane /> Send Message
-            </button>
-          </form>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }

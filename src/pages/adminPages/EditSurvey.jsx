@@ -73,7 +73,7 @@ const EditSurvey = () => {
   }
 
   return (
-    <div className="max-w-2xl mt-27 mx-auto bg-white p-8 rounded-2xl shadow-lg border border-blue-100">
+    <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-blue-100">
        <div className="relative mb-6">
             <button
                 onClick={handleBack}

@@ -48,8 +48,8 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
   const currentLang = LANGS.find((l) => l.code === language) ?? LANGS[0];
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUser(null);
     navigate('/login');
     setOpenMenu(false);

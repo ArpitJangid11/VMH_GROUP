@@ -63,7 +63,7 @@ const Notification = () => {
   const clearAll = () => setNotifications([]);
 
   return (
-    <main className="min-h-screen flex justify-center py-12 px-2 mt-15">
+    <main className="min-h-screen flex justify-center py-12 px-2">
       <section className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 flex flex-col gap-5">
         {/* Back button & Title */}
         <div className="relative mb-4">

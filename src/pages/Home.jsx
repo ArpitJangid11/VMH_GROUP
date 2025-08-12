@@ -76,7 +76,7 @@ const Home = ({ t, user }) => {
 
       {/* Service Cards */}
       <div className="relative -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32 z-20 px-4 sm:px-6 md:px-12 lg:px-24">
-        <ServiceCards />
+        <ServiceCards user={user}/>
       </div>
 
       {/* Sections with IDs for smooth scroll */}
@@ -94,7 +94,7 @@ const Home = ({ t, user }) => {
         </section>
 
         <section id="steps-to-join" className="scroll-mt-24">
-          <StepJoinSection />
+          <StepJoinSection user={user}/>
         </section>
 
         {/* Optional Rewards section if needed in navbar */}

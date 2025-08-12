@@ -56,7 +56,7 @@ const ManageSurveys = () => {
   };
 
   return (
-    <div className="p-6 mt-27">
+    <div className="p-6 ">
       <div className="relative mb-6">
             <button
                 onClick={handleBack}
