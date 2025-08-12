@@ -5,6 +5,11 @@ const translations = {
     join: "Join Panel",
     faqs: "FAQs",
     contact: "Contact Us",
+    aboutUs: "About Us",
+    howItWorks: "How it Works",
+    whyUs: "Why Us",
+    stepsToJoin: "Steps to Join",
+    admin: "Admin",
     welcome: "Welcome to VMH Groups Market Research",
     slogan: "Your Opinion Matters. Join Our Global Research Community.",
     joinNow: "Join Now",
@@ -53,7 +58,6 @@ const translations = {
     smoking_and_tobacco: "Smoking and Tobacco",
     ethnicity: "Ethnicity",
     region: "Region",
-    admin: "Admin",
   },
 
   fr: {
@@ -182,8 +186,7 @@ const translations = {
     welcome: "مرحباً بك في VMH Groups Market Research",
     slogan: "رأيك مهم. انضم إلى مجتمع البحث العالمي لدينا.",
     joinNow: "انضم الآن",
-    aboutText:
-      "نحن شركة رائدة في أبحاث السوق نربط الشركات بالرؤى القيمة.",
+    aboutText: "نحن شركة رائدة في أبحاث السوق نربط الشركات بالرؤى القيمة.",
     faqTitle: "الأسئلة المتكررة",
     contactText: "تواصل معنا لأي استفسارات.",
     signup: "سجل",
