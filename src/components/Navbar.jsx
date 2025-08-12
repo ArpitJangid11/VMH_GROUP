@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Shield, User, LogOut, ChevronDown } from 'lucide-react';
 import { MdOutlineTranslate } from "react-icons/md";
-import VmhLogo from '/images/vmh-logo.png'; 
+import VmhLogo from '/images/vmh-logo.png';
 
-// ✅ Updated Navigation Links
 const NAV_LINKS = [
-  { to: '/about', key: 'aboutUs' },
-  { to: '/how-it-works', key: 'howItWorks' },
-  { to: '/why-us', key: 'whyUs' },
-  { to: '/steps-to-join', key: 'stepsToJoin' },
+  { id: 'about', key: 'aboutUs' },
+  { id: 'how-it-works', key: 'howItWorks' },
+  { id: 'why-us', key: 'whyUs' },
+  { id: 'steps-to-join', key: 'stepsToJoin' },
 ];
 
 const LANGS = [
@@ -33,18 +32,6 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = () => {
-      setOpenLang(false);
-      setOpenMenu(false);
-    };
-    if (openLang || openMenu) {
-      document.addEventListener('click', handleClickOutside);
-      return () => document.removeEventListener('click', handleClickOutside);
-    }
-  }, [openLang, openMenu]);
-
-  const isActive = (route) => pathname === route;
   const currentLang = LANGS.find((l) => l.code === language) ?? LANGS[0];
 
   const handleLogout = () => {
@@ -55,50 +42,53 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     setOpenMenu(false);
   };
 
+  // Smooth scroll handler
+  const handleNavClick = (id) => {
+    if (pathname === "/") {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      navigate("/", { state: { scrollTo: id } });
+    }
+  };
+
   return (
-    <nav 
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out
-        ${scrolled 
-          ? 'bg-white shadow-lg border-b border-blue-100 backdrop-blur-md' 
+        ${scrolled
+          ? 'bg-white shadow-lg border-b border-blue-100 backdrop-blur-md'
           : 'bg-white/30 backdrop-blur-sm'
         }`}
     >
       <div className="flex items-center justify-between max-w-6xl mx-auto px-2 py-1 lg:px-2">
-        
+
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 group">
-          <img 
-            src={VmhLogo} 
-            alt="VMH Group Logo" 
+        <button onClick={() => navigate("/")} className="flex items-center space-x-3 group">
+          <img
+            src={VmhLogo}
+            alt="VMH Group Logo"
             className="h-20 w-auto group-hover:scale-110 transition-transform duration-300"
           />
           <div className="flex flex-col">
             <span className="font-bold text-blue-700 text-2xl group-hover:text-blue-600 transition-colors">VMH</span>
             <span className="font-medium text-blue-400 text-sm -mt-1 tracking-wide">PANEL REWARDS</span>
           </div>
-        </Link>
+        </button>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex flex-1 justify-center items-center mx-8">
           <div className="flex items-center space-x-2 bg-blue-50 rounded-full p-2 border border-blue-100">
-            {NAV_LINKS.map(({ to, key }) => (
-              <Link
-                key={to}
-                to={to}
-                className={`
-                  relative rounded-full px-6 py-2 text-base font-semibold transition-all duration-300
-                  group hover:scale-105
-                  ${isActive(to) 
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg' 
-                    : 'text-blue-700 hover:bg-white hover:shadow-md'
-                  }
-                `}
+            {NAV_LINKS.map(({ id, key }) => (
+              <button
+                key={id}
+                onClick={() => handleNavClick(id)}
+                className="relative rounded-full px-6 py-2 text-base font-semibold transition-all duration-300
+                           group hover:scale-105 text-blue-700 hover:bg-white hover:shadow-md"
               >
                 <span className="relative z-10">{t[key]}</span>
-                {isActive(to) && (
-                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-300 rounded-full animate-pulse"></div>
-                )}
-              </Link>
+              </button>
             ))}
           </div>
         </div>
@@ -109,13 +99,13 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
             <div className="hidden md:flex items-center space-x-2">
               {user.role === 'admin' ? (
                 <>
-                  <Link   
-                    to="/admin"
+                  <button
+                    onClick={() => navigate("/admin")}
                     className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 text-sm flex items-center font-semibold space-x-2 hover:from-blue-200 hover:to-blue-100 transition-all duration-300 border border-blue-200 hover:scale-105"
                   >
                     <Shield size={16} />
                     <span>{t.admin}</span>
-                  </Link>
+                  </button>
                   <button
                     onClick={handleLogout}
                     className="px-4 py-2 rounded-full bg-gradient-to-r from-red-100 to-red-50 text-red-600 flex items-center text-sm font-medium space-x-2 hover:from-red-200 hover:to-red-100 transition-all duration-300 border border-red-200 hover:scale-105"
@@ -126,13 +116,13 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                 </>
               ) : (
                 <>
-                  <Link 
-                    to="/dashboard"
+                  <button
+                    onClick={() => navigate("/dashboard")}
                     className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 text-sm flex items-center font-semibold space-x-2 hover:from-blue-200 hover:to-blue-100 transition-all duration-300 border border-blue-200 hover:scale-105"
                   >
                     <User size={16} />
                     <span>{t.dashboard}</span>
-                  </Link>
+                  </button>
                   <button
                     onClick={handleLogout}
                     className="px-4 py-2 rounded-full bg-gradient-to-r from-red-100 to-red-50 text-red-600 flex items-center text-sm font-medium space-x-2 hover:from-red-200 hover:to-red-100 transition-all duration-300 border border-red-200 hover:scale-105"
@@ -144,17 +134,17 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
               )}
             </div>
           ) : (
-            <Link
-              to="/login"
+            <button
+              onClick={() => navigate("/login")}
               className="hidden md:block px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-full shadow-lg hover:from-blue-700 hover:to-blue-600 text-base transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               {t.join}
-            </Link>
+            </button>
           )}
 
           {/* Language Picker */}
           <div className="hidden lg:block relative" onClick={(e) => e.stopPropagation()}>
-            <button 
+            <button
               onClick={() => setOpenLang(!openLang)}
               className="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-blue-100 hover:bg-blue-50 transition-all duration-300 text-blue-700 font-medium hover:scale-105 hover:shadow-md"
             >
@@ -162,31 +152,30 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
               <span className="text-lg">{currentLang.flag}</span>
               <ChevronDown size={14} className={`transition-transform duration-200 ${openLang ? 'rotate-180' : ''}`} />
             </button>
-            
+
             {openLang && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl border-2 border-blue-100 shadow-2xl z-50 overflow-hidden">
-                  {LANGS.map((l) => (
-                    <button
-                      key={l.code}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setLanguage(l.code);
-                        setOpenLang(false);
-                      }}
-                      className={`flex w-full items-center gap-3 px-4 py-3 text-left text-sm hover:bg-blue-50 transition-all duration-200
-                        ${language === l.code ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-blue-800'}`}
-                    >
-                      <span className="text-lg">{l.flag}</span>
-                      <span>{l.label}</span>
-                      {language === l.code && <div className="ml-auto w-2 h-2 bg-blue-500 rounded-full"></div>}
-                    </button>
-                  ))}
+                {LANGS.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLanguage(l.code);
+                      setOpenLang(false);
+                    }}
+                    className={`flex w-full items-center gap-3 px-4 py-3 text-left text-sm hover:bg-blue-50 transition-all duration-200
+                      ${language === l.code ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-blue-800'}`}
+                  >
+                    <span className="text-lg">{l.flag}</span>
+                    <span>{l.label}</span>
+                  </button>
+                ))}
               </div>
             )}
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={(e) => {
               e.stopPropagation();
               setOpenMenu(!openMenu);
@@ -204,94 +193,24 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
 
       {/* Mobile Menu */}
       {openMenu && (
-        <div 
+        <div
           className="lg:hidden absolute top-full left-0 right-0 mt-1 mx-2 bg-white rounded-3xl shadow-2xl border-2 border-blue-100 overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-4 space-y-4">
-            {/* Mobile Navigation */}
             <div className="space-y-2">
-              {NAV_LINKS.map(({ to, key }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  onClick={() => setOpenMenu(false)}
-                  className={`block w-full rounded-2xl px-4 py-3 text-base font-semibold transition-all duration-300
-                    ${isActive(to) 
-                      ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg' 
-                      : 'bg-blue-50 text-blue-800 hover:bg-blue-100 hover:scale-[1.02]'
-                    }`}
+              {NAV_LINKS.map(({ id, key }) => (
+                <button
+                  key={id}
+                  onClick={() => {
+                    handleNavClick(id);
+                    setOpenMenu(false);
+                  }}
+                  className="block w-full rounded-2xl px-4 py-3 text-base font-semibold transition-all duration-300 bg-blue-50 text-blue-800 hover:bg-blue-100 hover:scale-[1.02]"
                 >
                   {t[key]}
-                </Link>
+                </button>
               ))}
-            </div>
-
-            {/* Mobile Auth Section */}
-            <div className="border-t border-blue-100 pt-4 space-y-3">
-              {user ? (
-                user.role === 'admin' ? (
-                  <>
-                      <Link
-                        to="/admin"
-                        onClick={() => setOpenMenu(false)}
-                        className="w-full flex items-center gap-3 rounded-2xl bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 px-4 py-3 font-semibold hover:from-blue-200 hover:to-blue-100 transition-all border border-blue-200"
-                      >
-                        <Shield size={18} />
-                        <span>{t.admin}</span>
-                      </Link>
-                      <button
-                        onClick={handleLogout}
-                        className="w-full flex items-center gap-3 rounded-2xl bg-gradient-to-r from-red-100 to-red-50 text-red-600 px-4 py-3 font-medium hover:from-red-200 hover:to-red-100 transition-all border border-red-200"
-                      >
-                        <LogOut size={18} />
-                        <span>{t.logout}</span>
-                      </button>
-                    </>
-                ) : (
-                  <>
-                      <Link
-                        to="/dashboard"
-                        onClick={() => setOpenMenu(false)}
-                        className="w-full flex items-center gap-3 rounded-2xl bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 px-4 py-3 font-semibold hover:from-blue-200 hover:to-blue-100 transition-all border border-blue-200"
-                      >
-                        <User size={18} />
-                        <span>{t.dashboard}</span>
-                      </Link>
-                      <button
-                        onClick={handleLogout}
-                        className="w-full flex items-center gap-3 rounded-2xl bg-gradient-to-r from-red-100 to-red-50 text-red-600 px-4 py-3 font-medium hover:from-red-200 hover:to-red-100 transition-all border border-red-200"
-                      >
-                        <LogOut size={18} />
-                        <span>{t.logout}</span>
-                      </button>
-                    </>
-                )
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={() => setOpenMenu(false)}
-                  className="block w-full rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-3 font-bold text-center hover:from-blue-700 hover:to-blue-600 transition-all shadow-lg"
-                >
-                  {t.join}
-                </Link>
-              )}
-
-              {/* Mobile Language Picker */}
-              <div className="bg-blue-50 rounded-2xl p-4 border border-blue-100">
-                <label className="block text-blue-700 font-semibold mb-2 text-sm">Language</label>
-                <select
-                  value={language}
-                  onChange={(e) => setLanguage(e.target.value)}
-                  className="w-full rounded-xl bg-white py-2 px-3 font-medium text-blue-800 border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                >
-                  {LANGS.map((l) => (
-                    <option key={l.code} value={l.code}>
-                      {l.flag} {l.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
             </div>
           </div>
         </div>
