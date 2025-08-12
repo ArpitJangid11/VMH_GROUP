@@ -81,7 +81,7 @@ const AppContent = () => {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home t={t} user={user} />} />
-            <Route path="/about" element={<About t={t} />} />
+            <Route path="/about" element={<About t={t} user={user} />} />
             <Route path="/login" element={<Login t={t} setUser={setUser} />} />
             <Route path="/signup" element={<Signup t={t} setUser={setUser} />} />
             <Route path="/faqs" element={<Faqs t={t} />} />

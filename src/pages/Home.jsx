@@ -82,7 +82,7 @@ const Home = ({ t, user }) => {
       {/* Sections with IDs for smooth scroll */}
       <div className="mt-8 sm:mt-12 md:mt-16">
         <section id="about" className="scroll-mt-24">
-          <AboutUs />
+          <AboutUs user={user} />
         </section>
 
         <section id="how-it-works" className="scroll-mt-24">

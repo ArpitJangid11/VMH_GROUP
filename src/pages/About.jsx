@@ -1,183 +1,247 @@
-import React from 'react';
+// File: src/components/AboutUs.jsx
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaSmile, FaStar, FaThumbsUp, FaClock } from "react-icons/fa";
 
-const AboutUs = () => {
+const AboutUs = ({user}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const testimonials = [
+    {
+      quote:
+        "If you like taking surveys this is the site for you. Plenty of opportunities and quick payouts via PayPal.",
+      author: "Geetika (India)",
+    },
+    { quote: "Great platform with amazing rewards.", author: "John (USA)" },
+    { quote: "Very quick payouts and a friendly community.", author: "Sara (UK)" },
+    { quote: "Surveys are interesting and valuable.", author: "Ahmed (UAE)" },
+    { quote: "Happy to be part of this community!", author: "Yuki (Japan)" },
+  ];
+
+  // Auto-advance testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  // Inject animation styles and observe cards for slide-in
+  useEffect(() => {
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+      @keyframes slideInUp {
+        from { opacity: 0; transform: translateY(50px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes slideLeftRight {
+        0% { transform: translateX(-100%); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+      }
+      @keyframes slideInRightToLeft {
+        0% { opacity: 0; transform: translateX(50px); }
+        100% { opacity: 1; transform: translateX(0); }
+      }
+      .animate-slide-in {
+        animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+      .animate-slide-in-testimonial {
+        animation: slideInRightToLeft 0.7s ease forwards;
+      }
+      .about-card {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+      }
+      .animated-underline {
+        position: relative;
+        overflow: hidden;
+        background: rgba(37, 99, 235, 0.2);
+      }
+      .animated-underline::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 40%; height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 99, 235, 0.8),
+          rgba(37, 99, 235, 1),
+          rgba(37, 99, 235, 0.8),
+          transparent
+        );
+        animation: slideLeftRight 2.5s ease-in-out infinite;
+        border-radius: inherit;
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    const cards = document.querySelectorAll(".about-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("animate-slide-in");
+            }, index * 200);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    cards.forEach((card) => observer.observe(card));
+
+    return () => {
+      observer.disconnect();
+      if (document.head.contains(styleSheet)) {
+        document.head.removeChild(styleSheet);
+      }
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-400 to-red-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">T2O</span>
-              </div>
-            </div>
-            
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
-              We Started In 2015 & Currently Have More Than{' '}
-              <span className="text-red-500">3 Million Members Worldwide</span>
-            </h1>
-            
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Turn2Opinion is a world wide Consumer and Business Community of Frequent Research.
-                Turn2Opinion welcomes you as our new panel members to take participate and share your
-                opinion and perspective to wide-ranging market research survey campaigns.
-              </p>
-              
-              <p>
-                It is a platform which helps you to generate more and more revenues in high incentive
-                rewards. You get the studies that are best fit for you. The more participation you do in the
-                surveys, You will be able to earn more and more money.
-              </p>
-            </div>
+    <main className="relative min-h-screen bg-gradient-to-b from-white to-blue-50">
+      {/* Page Title */}
+      <header className="text-center py-8 about-card">
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600">
+          About Us
+        </h2>
+        <div className="flex justify-center mt-4">
+          <div className="h-1 w-28 rounded-full animated-underline" />
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
+        <header className="text-center about-card mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 leading-tight">
+            We Started In 2015 & Currently Have More Than{" "}
+            <span className="text-blue-600">3 Million Members Worldwide</span>
+          </h2>
+          <div className="flex justify-center mt-5">
+            <div className="h-1 w-24 rounded-full animated-underline" />
           </div>
-          
-          {/* Right Visual Elements */}
-          <div className="relative">
-            <div className="flex flex-col items-center space-y-8">
-              {/* Top emoji with magnifying glass */}
+        </header>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left Info */}
+          <article className="about-card rounded-2xl border border-blue-600/20 bg-white p-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-700">
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-xl flex items-center justify-center">
+                T2O
+              </div>
+            </div>
+            <p className="text-slate-700 mb-4">
+              Turn2Opinion is a worldwide Consumer and Business Community of Frequent Research. Participate and share opinions in wide-ranging survey campaigns.
+            </p>
+            <p className="text-slate-700">
+              Earn rewards for participation—contribute more to receive more incentives.
+            </p>
+          </article>
+
+          {/* Right Icons (trimmed to essentials) */}
+          <aside className="about-card relative rounded-2xl border border-blue-600/20 bg-white p-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-700">
+            <div className="flex flex-col items-center space-y-10">
               <div className="relative">
-                <div className="w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-4xl">
-                  😲
-                </div>
-                <div className="absolute -top-2 -right-2 w-12 h-12 bg-green-400 rounded-full flex items-center justify-center">
-                  🔍
+                <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center text-white text-4xl">
+                  <FaSmile />
                 </div>
               </div>
-              
-              {/* Stack of cards */}
               <div className="relative">
-                <div className="w-32 h-8 bg-amber-600 rounded transform rotate-6"></div>
-                <div className="w-32 h-8 bg-amber-700 rounded transform -rotate-3 -mt-2"></div>
-                <div className="w-32 h-8 bg-amber-800 rounded -mt-2"></div>
+                <div className="w-36 h-8 bg-blue-500 rounded transform rotate-6" />
+                <div className="w-36 h-8 bg-blue-600 rounded transform -rotate-3 -mt-2" />
+                <div className="w-36 h-8 bg-blue-700 rounded -mt-2" />
               </div>
-              
-              {/* Bottom happy emoji with stars */}
               <div className="relative">
-                <div className="w-32 h-32 bg-yellow-400 rounded-full flex items-center justify-center text-6xl">
-                  😊
+                <div className="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center text-6xl text-white">
+                  <FaSmile />
                 </div>
                 <div className="absolute -top-4 -right-4 flex space-x-1">
-                  <div className="w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center text-lg">⭐</div>
-                  <div className="w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center text-lg">⭐</div>
-                  <div className="w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center text-lg">⭐</div>
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white"
+                    >
+                      <FaStar />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+          </aside>
+        </div>
+      </section>
+
+      {/* Testimonial Slider */}
+      <section className="relative bg-gradient-to-r from-blue-100 to-blue-200/80">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
+          <header className="text-center about-card mb-6">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800">
+              What Members Say
+            </h2>
+            <div className="flex justify-center mt-4">
+              <div className="h-1 w-20 rounded-full animated-underline" />
+            </div>
+          </header>
+
+          <article
+            key={currentIndex}
+            className="about-card max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-lg text-center animate-slide-in-testimonial"
+          >
+            <blockquote className="text-gray-800 text-lg leading-relaxed mb-4">
+              “{testimonials[currentIndex].quote}”
+            </blockquote>
+            <footer>
+              <p className="text-blue-600 font-semibold italic">
+                — {testimonials[currentIndex].author}
+              </p>
+            </footer>
+          </article>
+
+          {/* Decorative icons */}
+          <div className="pointer-events-none" aria-hidden="true">
+            <div className=" md:block absolute top-8 left-8 w-12 h-12 bg-blue-300 rounded-full opacity-30 flex items-center justify-center text-white">
+              <FaThumbsUp />
+            </div>
+            <div className=" md:block absolute bottom-8 right-24 w-12 h-12 bg-blue-200 rounded-full opacity-30 flex items-center justify-center text-white">
+              <FaClock />
+            </div>
+            <div className=" md:block absolute top-24 right-12 w-12 h-12 bg-blue-400 rounded-full opacity-30 flex items-center justify-center text-white">
+              <FaSmile />
+            </div>
           </div>
         </div>
-      </div>
-      
-      {/* Testimonial Section */}
-      <div className="bg-gradient-to-r from-orange-200 to-yellow-200 py-16">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-white rounded-full p-12 shadow-lg inline-block mb-8">
-              <div className="max-w-2xl">
-                <p className="text-gray-800 text-lg leading-relaxed mb-6">
-                  "If you like taking surveys this has to be the site for you. There's always plenty
-                  of surveys and the money soon mounts up. You can cash out with as little as a
-                  $2 via paypal which is far better than sites that make you hang on until you've hit
-                  $20+."
-                </p>
-                <p className="text-orange-500 font-semibold italic">
-                  - Geetika (India)
-                </p>
-              </div>
-            </div>
-            
-            {/* Background decorative icons */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute top-20 left-20 w-12 h-12 bg-orange-300 rounded-full opacity-30 flex items-center justify-center">
-                👍
-              </div>
-              <div className="absolute bottom-32 right-32 w-12 h-12 bg-yellow-300 rounded-full opacity-30 flex items-center justify-center">
-                ⏰
-              </div>
-              <div className="absolute top-40 right-20 w-12 h-12 bg-red-300 rounded-full opacity-30 flex items-center justify-center">
-                😊
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Call to Action Section */}
-      <div className="bg-white py-16">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center justify-between max-w-4xl mx-auto">
-            <div className="flex items-center space-x-6 mb-8 lg:mb-0">
-              <div className="w-20 h-20 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-4xl">
-                👍
+      </section>
+
+      {/* CTA */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
+          <div className="about-card flex flex-col lg:flex-row items-center justify-between rounded-2xl border border-blue-600/20 bg-white p-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-700">
+            <div className="flex items-center space-x-6 mb-6 lg:mb-0">
+              <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white text-3xl">
+                <FaThumbsUp />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">Let's Get Started</h2>
-                <p className="text-gray-600">
-                  Be our community member and get rewarded with points and credit your paypal account after
-                  your loyal inputs.
+                <h3 className="text-2xl font-bold text-slate-800 mb-1">
+                  Let’s Get Started
+                </h3>
+                <p className="text-slate-600">
+                  Join the community and get rewarded for valuable input.
                 </p>
               </div>
             </div>
-            
-            <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200">
-              JOIN NOW
-            </button>
+            <Link to={!user ? ("/signup"):(user.role === "admin" ? "/admin" : "/dashboard")}>
+              <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-all duration-200">
+                {!user ? "JOIN NOW" : "GO TO DASHBOARD"}
+              </button>
+            </Link>
           </div>
         </div>
-      </div>
-      
-      {/* Footer Section */}
-      <footer className="bg-gradient-to-r from-orange-100 to-yellow-100 py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Company Info */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl font-bold text-blue-600">Turn2</span>
-                <span className="text-2xl font-bold text-orange-500">Opinion</span>
-              </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Turn2Opinion is a world wide Consumer and Business
-                Community of Frequent Research. Turn2Opinion
-                welcomes you as our new panel members to take
-                participate and share your opinion and perspective to
-                wide-ranging market research survey campaigns.
-              </p>
-            </div>
-            
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold text-orange-600 mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li><a href="#" className="hover:text-orange-600 transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-orange-600 transition-colors">GDPR Compliance</a></li>
-                <li><a href="#" className="hover:text-orange-600 transition-colors">Cookie Policy</a></li>
-                <li><a href="#" className="hover:text-orange-600 transition-colors">FAQ</a></li>
-              </ul>
-            </div>
-            
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-lg font-semibold text-orange-600 mb-4">Contact Info</h3>
-              <div className="space-y-2 text-gray-600 text-sm">
-                <p>Third Floor, B-96, Pushpanjali Enclave, Pitampura,</p>
-                <p>Delhi 110034 India</p>
-                <p className="mt-3">📞 +91 8130015743</p>
-                <p>✉️ support@frequentresearch.com</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-300 mt-8 pt-6 text-center">
-            <p className="text-gray-500 text-sm">
-              © 2025 Frequent Research Fieldwork Solutions Pvt. Ltd. (dba Turn2Opinion). All Rights Reserved
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </section>
+    </main>
   );
 };
 

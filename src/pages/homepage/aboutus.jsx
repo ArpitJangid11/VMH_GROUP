@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import slide5 from "../../assets/HImages/Istockimage.png"
+import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   useEffect(() => {
@@ -147,7 +148,7 @@ const AboutUs = () => {
 
             {/* Optional CTA Button matching HowItWorks style */}
             <div className="mt-8">
-              <button
+              <Link to ="/about"
                 type="button"
                 className="group inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) hover:scale-110 hover:-translate-y-2 hover:shadow-xl bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-600/50"
               >
@@ -157,7 +158,7 @@ const AboutUs = () => {
                 <svg className="ml-2 w-4 h-4 transition-all duration-400 cubic-bezier(0.4, 0, 0.2, 1) group-hover:translate-x-1 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
