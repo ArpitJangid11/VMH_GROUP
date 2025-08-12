@@ -26,10 +26,17 @@ import ForgotPassword from './pages/ForgotPassword';
 import Notification from './pages/userPages/Notification';
 import ImageSection from './pages/homepage/ImageSection';
 import Footer from './components/Footer';
+import CookieBanner from './components/CookieBanner';
+import GDPRPage from './pages/GDPRPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import HowItWorks from './pages/HowItWorks';
+import ScrollToTop from './components/ScrollToTop';
+import WhyChooseUs from './pages/WhyChooseUs';
 
 const App = () => {
   const [language, setLanguage] = useState('en');
   const [user, setUser] = useState(null);
+  
 
   const t = translations[language];
 
@@ -49,7 +56,8 @@ const App = () => {
 
   return (
     <Router future={{v7_relativeSplatPath: true,}}>
-      <div className="flex flex-col min-h-screen">
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen ">
         <Navbar
           language={language}
           setLanguage={setLanguage}
@@ -57,11 +65,11 @@ const App = () => {
           user={user}
           setUser={setUser}
         />
-        <main className="container self-center mb-20">
+        <main className="min-h-screen w-full mb-20">
           <Routes>
             <Route path="/" element={
               <>
-                <ImageSection t={t} user={user} />
+                {/* <ImageSection t={t} user={user} /> */}
                 <Home t={t} user={user} />
               </>
               } />
@@ -92,9 +100,14 @@ const App = () => {
             <Route path="/surveys" element={<Surveys t={t} />} />
             <Route path="/refer" element={<Refer t={t} />} />
             <Route path="/notifications" element={<Notification t={t} />} />
+            <Route path="/gdpr" element={<GDPRPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/How-it-works" element={<HowItWorks />} />
+            <Route path="/why-choose-us" element={<WhyChooseUs />} />
 
             
           </Routes>
+         <CookieBanner />
         </main>
         <Footer/>
       </div>

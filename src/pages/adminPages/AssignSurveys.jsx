@@ -3,7 +3,7 @@ import { createSurvey } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
-const preferenceOptions = ["B2B", "B2C", "Corporate"];
+const preferenceOptions = ["B2B", "B2C", "Healthcare"];
 
 const AssignSurveys = () => {
   const [formData, setFormData] = useState({

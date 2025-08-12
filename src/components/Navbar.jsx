@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Shield, User, LogOut, ChevronDown } from 'lucide-react';
 import { MdOutlineTranslate } from "react-icons/md";
-
+// 1. ADD YOUR LOGO IMPORT
+// Make sure to place your logo file in your project (e.g., src/assets/) and update the path.
+import VmhLogo from '/images/vmh-logo.png'; 
 
 const NAV_LINKS = [
   { to: '/', key: 'home' },
@@ -11,15 +13,13 @@ const NAV_LINKS = [
   { to: '/contact', key: 'contact' },
 ];
 
-
 const LANGS = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
   { code: 'fr', label: 'Français', flag: '🇫🇷' },
   { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
   { code: 'ar', label: 'عربي',   flag: '🇸🇦' },
-  { code: 'zh', label: '中國人',  flag: '🇨🇳' },
+  { code: 'zh', label: '中國人',   flag: '🇨🇳' },
 ];
-
 
 export default function Navbar({ language, setLanguage, t, user, setUser }) {
   const navigate = useNavigate();
@@ -28,14 +28,12 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
   const [openLang, setOpenLang] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -49,10 +47,8 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     }
   }, [openLang, openMenu]);
 
-
   const isActive = (route) => pathname === route;
   const currentLang = LANGS.find((l) => l.code === language) ?? LANGS[0];
-
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -62,31 +58,29 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     setOpenMenu(false);
   };
 
-
   return (
+    // 2. MODIFIED NAVBAR: Full-width, not rounded, and updated scroll effect.
     <nav 
-      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-6xl 
-        rounded-full transition-all duration-300 ease-out
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out
         ${scrolled 
-          ? 'bg-white shadow-2xl border-2 border-blue-100' 
-          : 'bg-white/95 shadow-xl border-2 border-blue-200'
+          ? 'bg-white shadow-lg border-b border-blue-100' 
+          : 'bg-white/30'
         }`}
     >
-      <div className="flex items-center justify-between px-4 py-2 lg:px-5 lg:py-1">
+      <div className="flex items-center justify-between max-w-6xl mx-auto px-2 py-1 lg:px-2">
         
-        {/* CLEAN BRAND */}
+        {/* 3. UPDATED BRAND: Using an <img> tag for the logo */}
         <Link to="/" className="flex items-center space-x-3 group">
-          <div className="relative">
-            <div className="h-12 w-12 flex items-center justify-center bg-gradient-to-tr from-blue-600 via-blue-500 to-blue-400 rounded-full shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <span className="text-xl font-bold text-white">V</span>
-            </div>
-          </div>
+          <img 
+            src={VmhLogo} // Your imported logo
+            alt="VMH Group Logo" 
+            className="h-20 w-auto group-hover:scale-110 transition-transform duration-300"
+          />
           <div className="flex flex-col">
             <span className="font-bold text-blue-700 text-2xl group-hover:text-blue-600 transition-colors">VMH</span>
-            <span className="font-medium text-blue-400 text-sm -mt-1 tracking-wide">Market Research</span>
+            <span className="font-medium text-blue-400 text-sm -mt-1 tracking-wide">PANEL REWARDS</span>
           </div>
         </Link>
-
 
         {/* CLEAN DESKTOP MENU */}
         <div className="hidden lg:flex flex-1 justify-center items-center mx-8">
@@ -112,7 +106,6 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
             ))}
           </div>
         </div>
-
 
         {/* CLEAN RIGHT SECTION */}
         <div className="flex items-center space-x-3">
@@ -164,7 +157,6 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
             </Link>
           )}
 
-
           {/* Language Picker - Desktop Only */}
           <div className="hidden lg:block relative" onClick={(e) => e.stopPropagation()}>
             <button 
@@ -178,7 +170,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
             
             {openLang && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl border-2 border-blue-100 shadow-2xl z-50 overflow-hidden">
-                {LANGS.map((l, index) => (
+                {LANGS.map((l) => (
                   <button
                     key={l.code}
                     onClick={(e) => {
@@ -187,8 +179,6 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                       setOpenLang(false);
                     }}
                     className={`flex w-full items-center gap-3 px-4 py-3 text-left text-sm hover:bg-blue-50 transition-all duration-200
-                      ${index === 0 ? 'rounded-t-2xl' : ''}
-                      ${index === LANGS.length - 1 ? 'rounded-b-2xl' : ''}
                       ${language === l.code ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-blue-800'}`}
                   >
                     <span className="text-lg">{l.flag}</span>
@@ -199,7 +189,6 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
               </div>
             )}
           </div>
-
 
           {/* Mobile Burger */}
           <button 
@@ -218,14 +207,13 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
         </div>
       </div>
 
-
-      {/* CLEAN MOBILE MENU */}
+      {/* CLEAN MOBILE MENU (No changes needed here, it adapts automatically) */}
       {openMenu && (
         <div 
           className="lg:hidden absolute top-full left-0 right-0 mt-1 mx-2 bg-white rounded-3xl shadow-2xl border-2 border-blue-100 overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-1 space-y-4">
+          <div className="p-4 space-y-4">
             {/* Mobile Navigation */}
             <div className="space-y-2">
               {NAV_LINKS.map(({ to, key }) => (
@@ -243,7 +231,6 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                 </Link>
               ))}
             </div>
-
 
             {/* Mobile Auth Section */}
             <div className="border-t border-blue-100 pt-4 space-y-3">
@@ -294,7 +281,6 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                   {t.join}
                 </Link>
               )}
-
 
               {/* Mobile Language Selection */}
               <div className="bg-blue-50 rounded-2xl p-4 border border-blue-100">

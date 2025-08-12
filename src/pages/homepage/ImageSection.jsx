@@ -1,115 +1,114 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { slide1, slide2, slide3, slide4, slide5 } from "../../assets/HImages/HeroImages";
 
-const ImageSection = ({t, user}) => {
+const slides = [
+  { image: slide1, title: "First Slide", description: "Beautiful background with smooth transitions." },
+  { image: slide2, title: "Second Slide", description: "Custom Tailwind animations without Framer Motion." },
+  { image: slide3, title: "Third Slide", description: "React Icons for navigation arrows." },
+  { image: slide4, title: "Fourth Slide", description: "React Icons for navigation arrows." },
+  { image: slide5, title: "Fifth Slide", description: "React Icons for navigation arrows." },
+];
+
+export default function TailwindSlider() {
+  const [current, setCurrent] = useState(0);
+  const timerRef = useRef(null);
+
+  const nextSlide = () => setCurrent(prev => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrent(prev => prev === 0 ? slides.length - 1 : prev - 1);
+
+  useEffect(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(nextSlide, 4000);
+    return () => clearInterval(timerRef.current);
+  }, [current]);
+
   return (
-    <div className="relative w-full min-h-screen overflow-hidden rounded-b-2xl shadow-1xl">
-      {/* Background image */}
-      <img
-        src="/images/homepage.png"
-        alt="Homepage Banner"
-        className="
-          absolute inset-0 w-full h-full p-3
-          object-contain lg:object-cover object-center
-          animate-zoomSlow
-        "
-      />
+    <div className="relative w-full h-screen overflow-hidden bg-gray-900 group">
+      {/* Slides with Hover Effects */}
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === current ? "opacity-100 z-10" : "opacity-0"
+          }`}
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+            style={{ backgroundImage: `url(${slide.image})` }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 hover:from-black/40 hover:to-black/20 transition-all duration-500" />
+          </div>
 
+          <div className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center p-4">
+            <h2 className="text-2xl sm:text-4xl font-bold mb-4 transition-all duration-300 hover:scale-105 hover:text-yellow-300 cursor-default">
+              {slide.title}
+            </h2>
+            <p className="text-sm sm:text-lg max-w-xl transition-all duration-300 hover:scale-102 hover:text-gray-200 cursor-default">
+              {slide.description}
+            </p>
+          </div>
+        </div>
+      ))}
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 object-contain bg-black/4 lg:bg-black/20 mix-blend-multiply" />
-      <div className="absolute inset-0 object-contain bg-gradient-to-t from-black/10 via-transparent to-black/20" />
+      {/* Left Navigation Button with Enhanced Hover Effects */}
+      <button
+        onClick={prevSlide}
+        aria-label="Previous slide"
+        className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 z-30 
+                   bg-black/40 hover:bg-white/20 backdrop-blur-sm
+                   p-2 sm:p-3 rounded-full text-white 
+                   transition-all duration-300 
+                   hover:scale-110 hover:shadow-lg
+                   opacity-70 hover:opacity-100
+                   group-hover:translate-x-1"
+      >
+        <FaChevronLeft 
+          size={16} 
+          className="sm:w-6 sm:h-6 transition-transform duration-300 hover:scale-110" 
+        />
+      </button>
+      
+      {/* Right Navigation Button with Enhanced Hover Effects */}
+      <button
+        onClick={nextSlide}
+        aria-label="Next slide"
+        className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 z-30 
+                   bg-black/40 hover:bg-white/20 backdrop-blur-sm
+                   p-2 sm:p-3 rounded-full text-white 
+                   transition-all duration-300 
+                   hover:scale-110 hover:shadow-lg
+                   opacity-70 hover:opacity-100
+                   group-hover:-translate-x-1"
+      >
+        <FaChevronRight 
+          size={16} 
+          className="sm:w-6 sm:h-6 transition-transform duration-300 hover:scale-110" 
+        />
+      </button>
 
-      {/* Spotlight effect */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="w-32 h-10 sm:w-48 sm:h-48 lg:w-72 lg:h-72 rounded-full bg-white/5 shadow-lg blur-2xl opacity-50" />
+      {/* Dots Navigation with Hover Effects */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="flex space-x-3 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full px-4 py-3 transition-all duration-300">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`relative transition-all duration-300 
+                         hover:scale-125 hover:-translate-y-1 
+                         active:scale-95 group/dot ${
+                idx === current 
+                  ? "w-8 h-2 bg-white rounded-full shadow-lg" 
+                  : "w-3 h-3 bg-gray-400 rounded-full hover:bg-white hover:w-4"
+              }`}
+            >
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 bg-white/30 rounded-full scale-0 group-hover/dot:scale-150 transition-transform duration-300 -z-10" />
+            </button>
+          ))}
+        </div>
       </div>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 md:px-8">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wide text-white drop-shadow-2xl mb-4 animate-fadeInUp">
-          Welcome Home
-        </h1>
-
-        <p className="text-sm sm:text-lg md:text-xl font-light text-white drop-shadow-xl max-w-sm sm:max-w-xl mb-4 animate-fadeInUp delay-150">
-          Modern design, stunning visuals, crafted for you.
-        </p>
-
-        <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-xs sm:max-w-md mb-6 animate-fadeInUp delay-300">
-          Discover seamless experiences and innovative solutions.
-        </p>
-
-        <Link to={user ? (user.role === "admin" ? "/admin" : "/Dashboard") : "/login"}>
-                    <button
-                      className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-500 text-white text-lg font-semibold rounded-lg hover:from-blue-500 hover:to-blue-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-                    >
-                      {user ? t.dashboard : t.joinNow}
-                    </button>
-                  </Link>
-                  
-      </div>
-
-      {/* Animations & effects */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          0% {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-        }
-        .delay-150 {
-          animation-delay: 0.15s;
-        }
-        .delay-300 {
-          animation-delay: 0.3s;
-        }
-        .delay-500 {
-          animation-delay: 0.5s;
-        }
-
-        @keyframes gradientX {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        .animate-gradientX {
-          background-size: 200% 200%;
-          animation: gradientX 8s ease infinite;
-        }
-
-        @keyframes zoomSlow {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.2);
-          }
-        }
-        .animate-zoomSlow {
-          animation: zoomSlow 18s ease-in-out infinite;
-        }
-
-        .shadow-neumorphism {
-          box-shadow: 6px 6px 12px rgba(98, 98, 255, 0.25),
-            -6px -6px 12px rgba(160, 160, 255, 0.4);
-        }
-      `}</style>
     </div>
   );
-};
-
-export default ImageSection;
+}
