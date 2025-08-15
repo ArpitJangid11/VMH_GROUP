@@ -42,8 +42,8 @@ export default function Footer() {
                 </Link>
                   </div>
                 <div onClick={() => handleCardClick()}>
-                  <h3 className="text-lg font-semibold">VMH Panel Rewards</h3>
-                  <p className="text-sm text-white/70">Get Unlimited Rewards With Your Opinion</p>
+                  <h3 className="text-lg font-semibold">VMH Global Insights</h3>
+                  <p className="text-sm text-white/70">Turning Opinions Into Decisions</p>
                 </div>
               </div>
 
@@ -129,8 +129,8 @@ export default function Footer() {
               {/* Email */}
               <div className="flex items-center gap-2 text-white/90 hover:text-white transition-all duration-200 hover:translate-x-1">
                 <MdEmail className="text-blue-300" />
-                <a href="mailto:support@frequentresearch.com" className="hover:underline break-all">
-                  support@frequentresearch.com
+                <a href="mailto:support@vmhglobalinsights.com" className="hover:underline break-all">
+                  support@vmhglobalinsights.com
                 </a>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Copyright Section */}
         <div className="mt-10 border-t border-white/40  bg-white/20 pb-8 pt-6 text-center">
           <h3 className="text-md text-white">
-            © {currentYear} VMH Panel Rewards (dba VMHPanelRewards). All Rights Reserved
+            © {currentYear} VMH Global Insights (dba VMH Global Insights). All Rights Reserved
           </h3>
         </div>
       </div>

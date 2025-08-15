@@ -40,7 +40,8 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     };
     if (openLang || openMenu) {
       document.addEventListener('click', handleClickOutside);
-      return () => document.removeEventListener('click', handleClickOutside);
+      
+      return () => document.removeEventListener('click', handleClickOutside,window.location.reload());
     }
   }, [openLang, openMenu]);
 
@@ -55,6 +56,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     setOpenMenu(false);
   };
    // Smooth scroll handler
+  
   const handleNavClick = (id) => {
     setOpenMenu(false)
     if (pathname === "/") {
@@ -86,7 +88,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
           />
           <div className="flex flex-col">
             <span className="font-bold text-blue-700 text-2xl group-hover:text-blue-600 transition-colors">VMH</span>
-            <span className="font-medium text-blue-400 text-sm -mt-1 tracking-wide">PANEL REWARDS</span>
+            <span className="font-medium text-blue-400 text-sm -mt-1 tracking-wide">GLOBAL INSIGHTS</span>
           </div>
         </Link>
 

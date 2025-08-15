@@ -16,38 +16,39 @@ import {
 } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
-const steps = [
+
+const HowItWorks = ({t}) => {
+  const steps = [
   {
-    title: 'Register Online',
-    description: 'Join our research community with lifetime free membership. Create your account in a few quick steps and verify your email.',
-    cta: 'Read More',
+    title: t["how.steps.register.title"],
+    description: t["how.steps.register.desc"],
+    cta: t["how.steps.register.cta"],
     icon: <HiOutlineCheckBadge size={24} className="text-blue-600" />,
     hoverIcon: <FaUserPlus size={24} className="text-blue-600" />,
   },
   {
-    title: 'Profiler Survey',
-    description: 'Complete your profile survey as soon as you login. This helps us match you with the most relevant surveys and rewards.',
-    cta: 'Read More',
+    title: t["how.steps.profiler.title"],
+    description: t["how.steps.profiler.desc"],
+    cta: t["how.steps.profiler.cta"],
     icon: <HiOutlineClipboardDocumentList size={24} className="text-blue-600" />,
     hoverIcon: <FaClipboardList size={24} className="text-blue-600" />,
   },
   {
-    title: 'Daily Surveys',
-    description: 'After finishing your profiling, receive a wide range of daily surveys tailored to your interests and demographics.',
-    cta: 'Read More',
+    title: t["how.steps.daily.title"],
+    description: t["how.steps.daily.desc"],
+    cta: t["how.steps.daily.cta"],
     icon: <HiOutlineClipboardDocumentCheck size={24} className="text-blue-600" />,
     hoverIcon: <FaClipboardCheck size={24} className="text-blue-600" />,
   },
   {
-    title: 'How You Grow',
-    description: 'The more you participate, the higher your rank and the better your survey eligibility, rewards, and bonuses.',
-    cta: 'Read More',
+    title: t["how.steps.grow.title"],
+    description: t["how.steps.grow.desc"],
+    cta: t["how.steps.grow.cta"],
     icon: <HiOutlineChartBar size={24} className="text-blue-600" />,
     hoverIcon: <FaChartLine size={24} className="text-blue-600" />,
   },
 ];
 
-const HowItWorks = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -147,14 +148,14 @@ const HowItWorks = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <header className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600">
-            HOW IT WORKS
+            {t.howItWorksTitle}
           </h2>
           <div className="flex justify-center mb-4">
             <div className="h-1 w-20 rounded-full animated-underline">
             </div>
           </div>
           <p className="text-slate-500 max-w-2xl mx-auto transition-all duration-500 ease-out hover:text-slate-600 hover:scale-105">
-            Register free and activate your account with a valid email in seconds.
+            {t.howItWorksSubtitle}
           </p>
         </header>
 

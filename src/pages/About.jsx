@@ -131,11 +131,11 @@ const AboutUs = ({user}) => {
           <article className="about-card rounded-2xl border border-blue-600/20 bg-white p-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-700">
             <div className="flex items-center space-x-4 mb-6">
               <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-xl flex items-center justify-center">
-                T2O
+                VMH
               </div>
             </div>
             <p className="text-slate-700 mb-4">
-              Turn2Opinion is a worldwide Consumer and Business Community of Frequent Research. Participate and share opinions in wide-ranging survey campaigns.
+              VMH Global Insights is a worldwide Consumer and Business Community of Frequent Research. Participate and share opinions in wide-ranging survey campaigns.
             </p>
             <p className="text-slate-700">
               Earn rewards for participation—contribute more to receive more incentives.

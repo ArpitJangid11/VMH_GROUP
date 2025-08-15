@@ -10,21 +10,21 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const ServiceCards = ({ user }) => {
+const ServiceCards = ({ user ,t}) => {
   const cardDashs = user
     ? [
         {
           icon: <FaTachometerAlt size={32} className="text-white" />,
           hoverIcon: <FaUsers size={32} className="text-blue-500" />,
-          title: "Ready to Participate",
-          buttonText: "Go to Dashboard",
+          title: t.serviceCards["readyToParticipate"],
+          buttonText: t.serviceCards["goToDashboard"],
           link: user?.role === "admin" ? "/admin" : "/dashboard",
         },
         {
           icon: <FaQuoteLeft size={32} className="text-white" />,
           hoverIcon: <FaCalculator size={32} className="text-blue-500" />,
-          title: "Get a Quote",
-          buttonText: "Request Quote",
+          title: t.serviceCards["getAQuote"],
+          buttonText: t.serviceCards["requestQuote"],
           link: "/contact",
         },
       ]
@@ -34,25 +34,26 @@ const ServiceCards = ({ user }) => {
     {
       icon: <FaUsers size={32} className="text-white" />,
       hoverIcon: <FaHandshake size={32} className="text-blue-500" />,
-      title: "Ready to Participate",
-      buttonText: "Join Our Panel",
+      title: t.serviceCards["readyToParticipate"],
+      buttonText: t.serviceCards["joinOurPanel"],
       link: "/signup",
     },
     {
       icon: <FaUserCheck size={32} className="text-white" />,
       hoverIcon: <FaSignInAlt size={32} className="text-blue-500" />,
-      title: "Already Registered",
-      buttonText: "Login",
+      title: t.serviceCards["alreadyRegistered"],
+      buttonText: t.serviceCards["login"],
       link: "/login",
     },
     {
       icon: <FaQuoteLeft size={32} className="text-white" />,
       hoverIcon: <FaCalculator size={32} className="text-blue-500" />,
-      title: "Get a Quote",
-      buttonText: "Request Quote",
+      title: t.serviceCards["getAQuote"],
+      buttonText: t.serviceCards["requestQuote"],
       link: "/contact",
     },
   ];
+
 
   const cardsToShow = !user ? cardData : cardDashs;
 

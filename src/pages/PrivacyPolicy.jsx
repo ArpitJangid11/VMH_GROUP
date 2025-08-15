@@ -127,13 +127,13 @@ export default function PrivacyPolicy() {
           {/* Content */}
           <article className="prose prose-slate max-w-none">
             <p className="text-sm text-slate-500 -mt-2 lg:mt-0">
-              This policy explains how VMH Group Market Research handles your data across our
+              This policy explains how VMH Global Insights handles your data across our
               websites and apps.
             </p>
 
             <Section id="overview" title="1. Overview" copyAnchor={copyAnchor}>
               <p>
-                This document establishes the privacy policies of VMH Group Market Research, its
+                This document establishes the privacy policies of VMH Global Insights, its
                 websites and mobile applications, as well as its compliance with specific
                 national and international jurisdictions (including the privacy regulations
                 and laws thereof). The publication of this document rescinds all previous
@@ -148,10 +148,10 @@ export default function PrivacyPolicy() {
             >
               <p>
                 Modern information and communication technologies play a fundamental role in
-                the activities of VMH Group Market Research.
+                the activities of VMH Global Insights.
               </p>
               <p>
-                VMH Group Market Research is based in United States and at the following postal
+                VMH Global Insights is based in United States and at the following postal
                 address:
               </p>
               <address className="not-italic bg-slate-50 rounded-lg p-4 border border-slate-200">
@@ -162,7 +162,7 @@ export default function PrivacyPolicy() {
                 United States
               </address>
               <p>
-                VMH Group Market Research can be reached via e-mail at{" "}
+                VMH Global Insights can be reached via e-mail at{" "}
                 <a href="mailto:support@vmhgroup.com">
                   support@vmhgroup.com
                 </a>
@@ -186,12 +186,12 @@ export default function PrivacyPolicy() {
               copyAnchor={copyAnchor}
             >
               <p>
-                VMH Group Market Research websites allow communication with other visitors and post
+                VMH Global Insights websites allow communication with other visitors and post
                 information that can be accessed by other visitors. Communication via these
                 posts is voluntary. All information communicated is the responsibility and
                 discretion of the individual and may be collected by other visitors. The
                 Rewards Nation sites may include links to third-party web/mobile service
-                providers. VMH Group Market Research is not responsible for the content, accuracy,
+                providers. VMH Global Insights is not responsible for the content, accuracy,
                 or privacy policies of third-party web/mobile services
               </p>
             </Section>
@@ -202,7 +202,7 @@ export default function PrivacyPolicy() {
               copyAnchor={copyAnchor}
             >
               <p>
-                VMH Group Market Research may collect information from your computer, mobile phone
+                VMH Global Insights may collect information from your computer, mobile phone
                 or other access device. The information sent to us includes, but is not
                 limited to, data on the pages you access, your computer IP address, referral
                 data, device identifiers, the type of operating system you’re using, your
@@ -228,7 +228,7 @@ export default function PrivacyPolicy() {
                 including, but not limited to, offers and market research survey
                 opportunities offered by our clients and/or partners. Your participation in
                 these opportunities is completely voluntary and you can opt-out at any time
-                of promotional emails, VMH Group Market Research employs a strict email policy
+                of promotional emails, VMH Global Insights employs a strict email policy
                 against sending unsolicited emails. You may opt out by changing your email
                 settings in the Edit Account/Edit Preferences section. Please note that
                 opting out from promotional emails does not exempt you from receiving
@@ -281,7 +281,7 @@ export default function PrivacyPolicy() {
                 through our support system. You can opt-out by selecting the privacy
                 category on our support page and submitting your request. If you opt-out,
                 it is the responsibility of us to inform the specific Third Party Market
-                Research Companies. Please note that VMH Group Market Research is solely liable and
+                Research Companies. Please note that VMH Global Insights is solely liable and
                 responsible for managing all opt-out requests.
               </p>
 
@@ -295,7 +295,7 @@ export default function PrivacyPolicy() {
 
             <Section id="cookies" title="7. Sharing and Cookies" copyAnchor={copyAnchor}>
               <p>
-                VMH Group Market Research uses cookies and similar technologies to recognize you
+                VMH Global Insights uses cookies and similar technologies to recognize you
                 when you visit our websites. Our cookie policy explains what these
                 technologies are and why we use them, as well as your rights to control our
                 use of them. Read our cookie policy.
@@ -304,7 +304,7 @@ export default function PrivacyPolicy() {
 
             <Section id="children" title="8. Children's Privacy" copyAnchor={copyAnchor}>
               <p>
-                VMH Group Market Research does not knowingly collect personal data from
+                VMH Global Insights does not knowingly collect personal data from
                 individuals under the age of 16 in the EU and 13 outside of the EU. Minors
                 16 to 18 in the EU and 13 to 18 outside the EU are permitted to access the
                 services of the site only with parental permission. It is the responsibility
@@ -318,12 +318,12 @@ export default function PrivacyPolicy() {
 
             <Section id="disclosure" title="9. Disclosure" copyAnchor={copyAnchor}>
               <p>
-                Except as set forth herein, VMH Group Market Research does not disclose personal
+                Except as set forth herein, VMH Global Insights does not disclose personal
                 data to subsidiaries or other organizations without your permission or where
                 it can reasonably be inferred from the circumstances that you consent to the
-                disclosure to the third parties. VMH Group Market Research tries to limit the
+                disclosure to the third parties. VMH Global Insights tries to limit the
                 information it provides to third parties to the information they need to
-                help VMH Group Market Research provide goods and services to you.
+                help VMH Global Insights provide goods and services to you.
               </p>
             </Section>
 
@@ -333,11 +333,11 @@ export default function PrivacyPolicy() {
               copyAnchor={copyAnchor}
             >
               <p>
-                VMH Group Market Research websites and emails contain links to various other sites
-                that are not owned by us. While VMH Group Market Research makes every effort to
+                VMH Global Insights websites and emails contain links to various other sites
+                that are not owned by us. While VMH Global Insights makes every effort to
                 ensure that our advertisers post clear and complete Privacy Policies and
                 observe appropriate data practices, each of these sites/applications has a
-                privacy policy that may differ from that of VMH Group Market Research. The privacy
+                privacy policy that may differ from that of VMH Global Insights. The privacy
                 practices of other websites/applications and companies are not covered by
                 this policy. Please be aware that we are not responsible for the privacy
                 practices of such other sites/applications. We encourage you to be aware
@@ -346,7 +346,7 @@ export default function PrivacyPolicy() {
               </p>
 
               <p>
-                VMH Group Market Research may share non-personally identifiable information
+                VMH Global Insights may share non-personally identifiable information
                 collected via the service in aggregate, anonymous form with advertisers or
                 other third parties so that they may better evaluate what products and
                 services are most appealing to different segments of the user base. The
@@ -362,22 +362,22 @@ export default function PrivacyPolicy() {
               copyAnchor={copyAnchor}
             >
               <p>
-                VMH Group Market Research does not employ the use of secure transmission methods to
+                VMH Global Insights does not employ the use of secure transmission methods to
                 send personal data.
               </p>
               <p>
-                VMH Group Market Research has implemented security policies, rules and technical
+                VMH Global Insights has implemented security policies, rules and technical
                 measures to protect the personal data from unauthorized access, improper use
                 or disclosure, unauthorized modification and unlawful destruction or
                 accidental loss.
               </p>
               <p>
-                VMH Group Market Research employees and data processors with access or association
+                VMH Global Insights employees and data processors with access or association
                 to the processing of personal data are obliged to respect the confidentiality
                 of visitor personal data.
               </p>
               <p>
-                VMH Group Market Research does not disclose personal data to State institutions and
+                VMH Global Insights does not disclose personal data to State institutions and
                 authorities unless required by law.
               </p>
             </Section>
@@ -523,8 +523,8 @@ export default function PrivacyPolicy() {
 
               <p>
                 Visitors from areas other than the EU may request access to their own
-                specific personal information collected by VMH Group Market Research by visiting the
-                member account information section of the VMH Group Market Research website:{" "}
+                specific personal information collected by VMH Global Insights by visiting the
+                member account information section of the VMH Global Insights website:{" "}
                 <a href="https://vmhgroup.com/profile/">
                   https://vmhgroup.com/profile/
                 </a>
@@ -534,7 +534,7 @@ export default function PrivacyPolicy() {
                 Access to personal information may require proof of identity. Access to
                 personal data is provided without charge. Personal data may be challenged or
                 updated and, where appropriate, data will be completed, erased, rectified or
-                amended. VMH Group Market Research reserves the right to refuse access to personal
+                amended. VMH Global Insights reserves the right to refuse access to personal
                 data. In such a case, reasons will be given for refusal.
               </p>
 
@@ -591,7 +591,7 @@ export default function PrivacyPolicy() {
               copyAnchor={copyAnchor}
             >
               <p>
-                The VMH Group Market Research privacy policy is compliant with the following
+                The VMH Global Insights privacy policy is compliant with the following
                 international and national regulations:
               </p>
 
@@ -743,11 +743,11 @@ export default function PrivacyPolicy() {
 
             <Section id="support" title="16. Privacy Support" copyAnchor={copyAnchor}>
               <p>
-                Enquiries or concerns about the VMH Group Market Research privacy policy can be
+                Enquiries or concerns about the VMH Global Insights privacy policy can be
                 directed to:
               </p>
               <address className="not-italic bg-slate-50 rounded-lg p-4 border border-slate-200">
-                VMH Group Market Research
+                VMH Global Insights
                 <br />
                 110, Houston St San Antonio,
                 <br />

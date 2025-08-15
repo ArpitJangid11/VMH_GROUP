@@ -14,16 +14,16 @@ import {
 } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-const features = [
-  { icon: FaUserCheck, title: "100% Free Membership", desc: "Join without fees. Start earning immediately." },
-  { icon: FaDollarSign, title: "High earning per survey", desc: "Competitive payouts with frequent opportunities." },
-  { icon: FaLock, title: "Secure & confidential", desc: "Data encrypted and handled with care." },
-  { icon: FaBolt, title: "Quick money transfer", desc: "Fast withdrawals to preferred methods." },
-  { icon: FaComments, title: "Share opinions anytime", desc: "Access surveys on any device, anywhere." },
-  { icon: FaSlidersH, title: "Easy profile updates", desc: "Keep details current for better matches." },
-];
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({t}) {
+  const features = [
+    { icon: FaUserCheck, title: t.whyChooseUs["title1"], desc: t.whyChooseUs["desc1"]},
+    { icon: FaDollarSign, title: t.whyChooseUs["title2"], desc: t.whyChooseUs["desc2"] },
+    { icon: FaLock, title: t.whyChooseUs["title3"], desc: t.whyChooseUs["desc3"]},
+    { icon: FaBolt, title: t.whyChooseUs["title4"], desc: t.whyChooseUs["desc4"]},
+    { icon: FaComments,title: t.whyChooseUs["title5"], desc: t.whyChooseUs["desc5"] },
+    { icon: FaSlidersH, title: t.whyChooseUs["title6"], desc: t.whyChooseUs["desc6"] },
+  ];
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -108,7 +108,7 @@ export default function WhyChooseUs() {
             id="why-title"
             className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600 cursor-default"
           >
-            WHY CHOOSE US
+            {t.whyChooseUs["heading"]}
           </h2>
 
           <div className="mt-6 flex items-center justify-center group">
@@ -116,7 +116,7 @@ export default function WhyChooseUs() {
           </div>
 
           <p className="mt-6 text-slate-700 text-lg transition-all duration-500 hover:text-slate-900 hover:scale-[1.02] cursor-default">
-            A trusted global survey panel with reliable, high‑payout opportunities.
+            {t.whyChooseUs["description"]}
           </p>
         </header>
 
@@ -215,7 +215,7 @@ export default function WhyChooseUs() {
                   aria-label="Read more about our features"
                 >
                   <span className="transition-all duration-400 group-hover:translate-x-1">
-                    Read more
+                    {t.whyChooseUs["readMore"]}
                   </span>
                   <FaArrowRight className="h-5 w-5 transition-all duration-400 group-hover:translate-x-1 group-hover:scale-110" />
                 </button>

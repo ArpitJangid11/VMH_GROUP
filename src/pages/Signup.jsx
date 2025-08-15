@@ -344,7 +344,6 @@ const Signup = ({ t = {}, setUser }) => {
                     className="mt-1 h-4 w-4 text-blue-600"
                   />
                   <span className="text-sm text-gray-700">
-                    I agree to{" "}
                     <Link to="/gdpr" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">
                       {t?.consent || "terms & policies"}
                     </Link>

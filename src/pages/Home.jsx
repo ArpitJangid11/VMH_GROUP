@@ -26,7 +26,7 @@ const Home = ({ t, user }) => {
   return (
     <div>
       {/* Hero Section */}
-      <ImageSection className="relative min-h-screen flex items-center">
+      <ImageSection t={t} className="relative min-h-screen flex items-center">
         <div className="relative z-10 w-full px-4 sm:px-6 md:px-12 lg:px-24">
           <div className="max-w-2xl text-left text-white">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 leading-tight">
@@ -76,30 +76,30 @@ const Home = ({ t, user }) => {
 
       {/* Service Cards */}
       <div className="relative -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32 z-20 px-4 sm:px-6 md:px-12 lg:px-24">
-        <ServiceCards user={user}/>
+        <ServiceCards t={t} user={user}/>
       </div>
 
       {/* Sections with IDs for smooth scroll */}
       <div className="mt-8 sm:mt-12 md:mt-16">
         <section id="about" className="scroll-mt-24">
-          <AboutUs user={user} />
+          <AboutUs t={t} user={user} />
         </section>
 
         <section id="how-it-works" className="scroll-mt-24">
-          <HowItWorks />
+          <HowItWorks t={t} />
         </section>
 
         <section id="why-us" className="scroll-mt-24">
-          <WhyChooseUs />
+          <WhyChooseUs t={t} />
         </section>
 
         <section id="steps-to-join" className="scroll-mt-24">
-          <StepJoinSection user={user}/>
+          <StepJoinSection t={t} user={user}/>
         </section>
 
         {/* Optional Rewards section if needed in navbar */}
         <section id="rewards" className="scroll-mt-24">
-          <RewardsStats />
+          <RewardsStats t={t} />
         </section>
       </div>
     </div>

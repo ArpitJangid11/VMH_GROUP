@@ -49,10 +49,17 @@ const MainLayout = ({ children }) => {
 };
 
 const AppContent = () => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('language') || 'en'; // Load saved language
+  });
   const [user, setUser] = useState(null);
 
   const t = translations[language];
+  useEffect(() => {
+    
+    localStorage.setItem('language', language);
+     
+  }, [language]);
 
   useEffect(() => {
     try {

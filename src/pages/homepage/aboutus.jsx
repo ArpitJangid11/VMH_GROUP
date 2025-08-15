@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import slide5 from "../../assets/HImages/Istockimage.png"
 import { Link } from 'react-router-dom';
 
-const AboutUs = () => {
+const AboutUs = ({t}) => {
   useEffect(() => {
     const styleSheet = document.createElement("style");
     styleSheet.textContent = `
@@ -117,7 +117,7 @@ const AboutUs = () => {
           <div className="about-content text-left">
             <header className="mb-8">
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600">
-                About Us
+                {t.aboutUsTitle}
               </h2>
               
               <div className="mt-6 flex items-center group">
@@ -127,18 +127,13 @@ const AboutUs = () => {
 
             <div className="relative">
               <p className="text-slate-700 text-base lg:text-lg leading-8 transition-all duration-500 hover:text-slate-900 hover:scale-[1.02] hover:-translate-y-1 cursor-default">
-                MyFrequentRewards is a world wide Consumer and Business Community of Frequent Research.
-                MyFrequentRewards welcomes you as our new panel members to take participate and share
-                your opinion and perspective to wide-ranging market research survey campaigns. It is a
-                platform which helps you to{' '}
+                 {t.aboutUsParagraph.part1}
                 <span className="font-semibold text-blue-600 hover:text-blue-700 hover:scale-105 transition-all duration-300 cursor-pointer inline-block hover:-translate-y-0.5 hover:shadow-lg hover:bg-blue-50 px-1 py-0.5 rounded">
-                  generate more and more revenues
+                   {t.aboutUsParagraph.earnMore}
                 </span>{' '}
-                in high incentive rewards.
-                You get the studies that are best fit for you. The more participation you do in the
-                surveys, You will be able to{' '}
+                 {t.aboutUsParagraph.part2}{' '}
                 <span className="font-semibold text-blue-600 hover:text-blue-700 hover:scale-105 transition-all duration-300 cursor-pointer inline-block hover:-translate-y-0.5 hover:shadow-lg hover:bg-blue-50 px-1 py-0.5 rounded">
-                  earn more and more money
+                 {t.aboutUsParagraph.earnMoney}
                 </span>.
               </p>
               
@@ -153,7 +148,7 @@ const AboutUs = () => {
                 className="group inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) hover:scale-110 hover:-translate-y-2 hover:shadow-xl bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-600/50"
               >
                 <span className="transition-all duration-400 cubic-bezier(0.4, 0, 0.2, 1) group-hover:translate-x-1">
-                  Learn More
+                  {t.learnMore}
                 </span>
                 <svg className="ml-2 w-4 h-4 transition-all duration-400 cubic-bezier(0.4, 0, 0.2, 1) group-hover:translate-x-1 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

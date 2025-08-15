@@ -1,47 +1,47 @@
 import React, { useEffect } from "react";
 import { FaUsers, FaCheckCircle, FaGift, FaUserFriends, FaCheck, FaAward } from "react-icons/fa";
 
-const statsData = [
-  {
-    icon: <FaUsers size={32} className="text-blue-500" />,
-    hoverIcon: <FaUserFriends size={32} className="text-blue-500" />,
-    title: "Happy Panel Members",
-    target: 8000000,
-    display: "8M+",
-    bg: "bg-blue-500",
-    text: "text-white",
-    hoverBg: "hover:bg-white",
-    // Separate hover colors for number and title
-    numberHover: "group-hover:text-blue-500",
-    titleHover: "group-hover:text-blue-400", // Slightly different shade
-  },
-  {
-    icon: <FaCheckCircle size={36} className="text-blue-500" />,
-    hoverIcon: <FaCheck size={36} className="text-blue-500" />,
-    title: "Completes",
-    target: 10000000,
-    display: "10M+",
-    bg: "bg-blue-100",
-    text: "text-blue-500",
-    hoverBg: "hover:bg-blue-500",
-    numberHover: "group-hover:text-white",
-    titleHover: "group-hover:text-blue-100",
-  },
-  {
-    icon: <FaGift size={32} className="text-blue-500" />,
-    hoverIcon: <FaAward size={32} className="text-blue-500" />,
-    title: "Rewards Given",
-    target: 15000000,
-    display: "15M+",
-    bg: "bg-blue-500",
-    text: "text-white",
-    hoverBg: "hover:bg-white",
-    numberHover: "group-hover:text-blue-500",
-    titleHover: "group-hover:text-blue-400",
-  },
-];
 
-const RewardsNationStats = () => {
+const RewardsNationStats = ({t}) => {
+  const statsData = [
+    {
+      icon: <FaUsers size={32} className="text-blue-500" />,
+      hoverIcon: <FaUserFriends size={32} className="text-blue-500" />,
+      title: t.rewardsNationStats["happyPanelMembers"],
+      target: 8000000,
+      display: "8M+",
+      bg: "bg-blue-500",
+      text: "text-white",
+      hoverBg: "hover:bg-white",
+      // Separate hover colors for number and title
+      numberHover: "group-hover:text-blue-500",
+      titleHover: "group-hover:text-blue-400", // Slightly different shade
+    },
+    {
+      icon: <FaCheckCircle size={36} className="text-blue-500" />,
+      hoverIcon: <FaCheck size={36} className="text-blue-500" />,
+      title: t.rewardsNationStats["completes"],
+      target: 10000000,
+      display: "10M+",
+      bg: "bg-blue-100",
+      text: "text-blue-500",
+      hoverBg: "hover:bg-blue-500",
+      numberHover: "group-hover:text-white",
+      titleHover: "group-hover:text-blue-100",
+    },
+    {
+      icon: <FaGift size={32} className="text-blue-500" />,
+      hoverIcon: <FaAward size={32} className="text-blue-500" />,
+      title: t.rewardsNationStats["rewardsGiven"] ,
+      target: 15000000,
+      display: "15M+",
+      bg: "bg-blue-500",
+      text: "text-white",
+      hoverBg: "hover:bg-white",
+      numberHover: "group-hover:text-blue-500",
+      titleHover: "group-hover:text-blue-400",
+    },
+  ];
   useEffect(() => {
     const counters = document.querySelectorAll(".count-up");
     function animateCounter(counter) {

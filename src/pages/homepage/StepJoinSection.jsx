@@ -8,34 +8,34 @@ import {
 } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 
-const steps = [
-  {
-    title: "REGISTER",
-    text: "Register with your active email id and contact number",
-    Icon: TbUserPlus,
-    align: "left",
-  },
-  {
-    title: "VERIFY",
-    text: "Check your mail and Phone and click on verification links to complete your registration",
-    Icon: TbShieldCheck,
-    align: "right",
-  },
-  {
-    title: "ACCESS SURVEYS",
-    text: "After activating your account participate in available surveys and start sharing your ideas",
-    Icon: TbClipboardList,
-    align: "left",
-  },
-  {
-    title: "GET REWARDED",
-    text: "Achieve your threshold to claim the rewards via paypal",
-    Icon: TbGift,
-    align: "right",
-  },
-];
 
-const StepJoinSection = ({user}) => {
+const StepJoinSection = ({t, user}) => {
+  const steps = [
+    {
+      title: t.stepJoin["registerTitle"],
+      text: t.stepJoin["registerText"],
+      Icon: TbUserPlus,
+      align: "left",
+    },
+    {
+      title: t.stepJoin["verifyTitle"],
+      text: t.stepJoin["verifyText"],
+      Icon: TbShieldCheck,
+      align: "right",
+    },
+    {
+      title: t.stepJoin["accessTitle"],
+      text: t.stepJoin["accessText"],
+      Icon: TbClipboardList,
+      align: "left",
+    },
+    {
+      title: t.stepJoin["rewardTitle"],
+      text: t.stepJoin["rewardText"],
+      Icon: TbGift,
+      align: "right",
+    },
+  ];
   useEffect(() => {
     const styleSheet = document.createElement("style");
     styleSheet.textContent = `
@@ -205,7 +205,7 @@ const StepJoinSection = ({user}) => {
       <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="step-content text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600">
-            STEPS TO BE A COMMUNITY MEMBER
+            {t.stepJoin.heading}
           </h2>
           
           <div className="flex justify-center mb-6 group">
@@ -213,7 +213,7 @@ const StepJoinSection = ({user}) => {
           </div>
 
           <p className="text-slate-700 text-sm sm:text-base lg:text-lg leading-6 sm:leading-8 max-w-3xl lg:max-w-5xl mx-auto hover:text-slate-900 hover:scale-[1.02] cursor-default px-4 transition-all duration-300">
-            MyFrequentRewards research panel community provides a very simple and easy way to engage you as our new community member. Follow these complete steps to join our global community and start earning rewards with free registration.
+            {t.stepJoin.description}
           </p>
         </div>
 
@@ -236,7 +236,7 @@ const StepJoinSection = ({user}) => {
                   }`}
                 >
                   <span className="bg-blue-600 text-white text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 inline-block hover:scale-110 hover:bg-blue-700 transition-all duration-300">
-                    STEP {index + 1}
+                    {t.stepJoin.stepLable} {index + 1}
                   </span>
                   
                   <h3 className="step-title text-base sm:text-lg font-bold tracking-wider mb-3 sm:mb-4">
@@ -268,24 +268,24 @@ const StepJoinSection = ({user}) => {
           <div className="step-content text-center mt-16 sm:mt-20">
             <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mx-auto max-w-sm sm:max-w-md border-2 border-blue-100 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
               <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-3 sm:mb-4">
-                {!user ? "Ready to Join?": "Ready to Dashboard"}
+                {!user ? t.stepJoin.ctaTitle: t.stepJoin.ctaDashBoard}
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-4 sm:mb-6 leading-relaxed">
-                Start your journey with us today and begin earning rewards immediately after verification.
+                {t.stepJoin.ctaText}
               </p>
               <Link to= {!user ? "/signup" : (user.role === "admin" ? "/admin": "/dashboard")}
                 type="button"
                 className="group inline-flex items-center justify-center rounded-full px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 w-full sm:w-auto transition-all duration-300"
               >
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
-                  {!user ? "JOIN US NOW" : "GO TO DASHBOARD"}
+                  {!user ? t.stepJoin.ctaButtonJoin : t.stepJoin.ctaButtonDashboard}
                 </span>
                 <svg className="ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
              </Link>
               <p className="text-xs text-slate-500 mt-3 sm:mt-4">
-                100% Free Registration • Instant Access
+                {t.stepJoin.ctaFooter}
               </p>
             </div>
           </div>
