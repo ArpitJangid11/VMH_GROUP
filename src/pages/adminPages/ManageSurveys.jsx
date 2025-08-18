@@ -2,7 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  deleteSurvey,
+  endSurvey,
   getAllSurveysByAdmin,
+  pauseSurvey,
+  resumeSurvey,
   updateSurveyByAdmin,
 } from "../../services/userService";
 import SurveysTab from "../../components/TabSurveys";
@@ -13,6 +17,35 @@ const ManageSurveys = () => {
   const [surveys, setSurveys] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const handleAction = async (survey, action) => {
+    try {
+      let updated;
+      switch (action) {
+        case "pause":
+          updated = await pauseSurvey(survey.survey_id);
+          break;
+        case "resume":
+          updated = await resumeSurvey(survey.survey_id);
+          break;
+        case "end":
+          updated = await endSurvey(survey.survey_id);
+          break;
+        case "delete":
+          updated = await deleteSurvey(survey.survey_id);
+          break;
+        default:
+          return;
+      }
+      setSurveys((prev) =>
+        prev.map((s) =>
+          s.survey_id === updated.survey.survey_id ? updated.survey : s
+        )
+      );
+    } catch (err) {
+      console.error(`Error performing ${action} on survey:`, err);
+    }
+  };
+
       
   const handleBack = () => {
     navigate(-1); // Go back one page in browser history
@@ -77,6 +110,7 @@ const ManageSurveys = () => {
               key={survey.survey_id}
               survey={survey}
               onEdit={handleEdit}
+               onAction={handleAction}
               onToggleStatus={handleToggleStatus}
             />
           ))}

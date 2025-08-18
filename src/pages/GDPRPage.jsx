@@ -47,11 +47,38 @@ export default function GDPRPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-800">
    <section className="relative isolate align-center overflow-hidden">
-    <div className="relative mx-auto max-w-6xl px-1 py-1 sm:py-20">
+    {/* <div className="relative mx-auto max-w-6xl px-1 py-1 sm:py-20">
         <h1 className="text-4xl font-semibold leading-tight text-blue-600 sm:text-5xl">
-        GDPR Compliance
+          GDPR Compliance
         </h1>
-    </div>
+    </div> */}
+
+    <header
+        className="relative h-64 sm:h-56 md:h-72 lg:h-80 bg-cover bg-center flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage:
+            "url('https://vmhgroup.com/assets/images/privacy-bg.jpg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-900/60 to-blue-900/70 backdrop-blur-[1px]"></div>
+        <div className="relative text-center px-4">
+          
+          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-white drop-shadow">
+            GDPR Compliance
+          </h1>
+          <nav className="mt-2 text-xs sm:text-sm text-blue-100/90">
+            <a
+              href="/"
+              className="hover:underline focus:outline-none focus:ring-2 focus:ring-white/50 rounded"
+            >
+              Home
+            </a>
+            <span className="mx-1">-</span>
+            <span className="opacity-90">GDPR Compliance</span>
+          </nav>
+        </div>
+        <div className="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-white to-transparent"></div>
+      </header>
     
     </section>
 
@@ -59,9 +86,9 @@ export default function GDPRPage() {
 
 
       {/* Content grid */}
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 pb-20 md:grid-cols-[280px_1fr]">
+      <div className="mx-auto grid mt-20 max-w-6xl grid-cols-1 md:mt-10 sm:mt-10 gap-8 px-6 pb-20 md:grid-cols-[280px_1fr]">
         {/* Sidebar */}
-        <aside className="-mt-10 md:pt-8">
+        <aside className="-mt-10  md:pt-8">
           <nav className="sticky top-28 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur">
             <div className="mb-3 flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Sections</p>

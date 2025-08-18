@@ -1,13 +1,13 @@
 // components/SurveysTab.jsx
 import React, { useState, useEffect } from "react";
 
-const SurveysTabs = ({ survey, onEdit, onToggleStatus }) => {
-  const [isPaused, setIsPaused] = useState(!survey.isActive);
-  const [isStarted, setIsStarted] = useState(survey.isActive);
+const SurveysTab = ({ survey, onEdit, onAction }) => {
+  const [isPaused, setIsPaused] = useState(survey.status === "paused");
+  const [isStarted, setIsStarted] = useState(survey.status === "active");
   const [progress, setProgress] = useState(0);
-  const targetResponses=100;
+  const targetResponses = 100;
 
-  //  Update progress whenever responseCount or targetResponses changes
+  // Update progress bar
   useEffect(() => {
     if (targetResponses && survey.responseCount !== undefined) {
       const calculated = Math.min(
@@ -21,12 +21,13 @@ const SurveysTabs = ({ survey, onEdit, onToggleStatus }) => {
   const handleStart = () => {
     setIsStarted(true);
     setIsPaused(false);
-    onToggleStatus({ ...survey, isActive: true });
+    onAction && onAction(survey, "resume"); // Start = resume
   };
 
   const handlePauseToggle = () => {
     if (isStarted) {
       setIsPaused((prev) => !prev);
+      onAction && onAction(survey, isPaused ? "resume" : "pause");
     }
   };
 
@@ -34,7 +35,13 @@ const SurveysTabs = ({ survey, onEdit, onToggleStatus }) => {
     setIsStarted(false);
     setIsPaused(true);
     setProgress(0);
-    onToggleStatus({ ...survey, isActive: false });
+    onAction && onAction(survey, "end");
+  };
+
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this survey?")) {
+      onAction && onAction(survey, "delete");
+    }
   };
 
   return (
@@ -80,7 +87,7 @@ const SurveysTabs = ({ survey, onEdit, onToggleStatus }) => {
         <strong>Reward:</strong> {survey.rewardPoints} Points
       </p>
 
-      {/* ✅ Progress Bar based on responseCount */}
+      {/* Progress Bar */}
       <div className="w-full bg-gray-200 h-3 rounded-full mt-4 overflow-hidden">
         <div
           className="h-full bg-blue-500 transition-all duration-500"
@@ -110,9 +117,15 @@ const SurveysTabs = ({ survey, onEdit, onToggleStatus }) => {
         >
           Edit
         </button>
+        <button
+          onClick={handleDelete}
+          className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
 };
 
-export default SurveysTabs;
+export default SurveysTab;

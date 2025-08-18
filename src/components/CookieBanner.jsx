@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function CookieBanner() {
-  const KEY = "cookie-consent:v1";
+  const COOKIE_KEY = "cookieConsent";
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
 
+  // Check if consent cookie exists
   useEffect(() => {
-    const val = localStorage.getItem(KEY);
-    if (!val) {
+    const consent = Cookies.get(COOKIE_KEY);
+    if (!consent) {
       setOpen(true);
       setTimeout(() => setShow(true), 10);
     }
   }, []);
 
+  // Save user choice in cookie
   function save(choice) {
-    localStorage.setItem(KEY, choice);
+    Cookies.set(COOKIE_KEY, choice, { expires: 365, path: "/" }); // 1 year
     setShow(false);
     setTimeout(() => setOpen(false), 300);
   }
@@ -36,17 +39,12 @@ export default function CookieBanner() {
           </p>
           <div className="flex gap-2">
             <button
-              onClick={() => save("rejected")}
-              className="rounded-lg border border-blue-300 bg-white px-4 py-2 text-sm text-blue-700 transform transition-all duration-200 hover:bg-blue-50 hover:shadow-sm hover:scale-105 active:scale-95"
-            >
-              Reject
-            </button>
-            <button
               onClick={() => save("accepted")}
               className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transform transition-all duration-200 hover:bg-blue-500 hover:shadow-md hover:scale-105 active:scale-95"
             >
               Accept
             </button>
+            
           </div>
         </div>
       </div>

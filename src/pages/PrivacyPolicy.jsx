@@ -1,5 +1,5 @@
 // src/pages/PrivacyPolicy.jsx
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const sections = [
   { id: "overview", label: "1. Overview" },
@@ -23,11 +23,6 @@ const sections = [
 export default function PrivacyPolicy() {
   const [activeId, setActiveId] = useState(sections[0].id);
   const containerRef = useRef(null);
-
-  const readingTime = useMemo(() => {
-    const minutes = 12; // rough estimate
-    return `${minutes} min read`;
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,11 +65,7 @@ export default function PrivacyPolicy() {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-900/60 to-blue-900/70 backdrop-blur-[1px]"></div>
         <div className="relative text-center px-4">
-          <div className="inline-flex items-center gap-2 bg-white/10 text-blue-100 rounded-full px-3 py-1 text-xs sm:text-sm backdrop-blur ring-1 ring-white/20">
-            <span className="opacity-90">Last updated: May 10, 2022</span>
-            <span className="opacity-50">-</span>
-            <span className="opacity-90">{readingTime}</span>
-          </div>
+          
           <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-white drop-shadow">
             Privacy Policy
           </h1>

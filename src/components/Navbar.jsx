@@ -41,7 +41,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
     if (openLang || openMenu) {
       document.addEventListener('click', handleClickOutside);
       
-      return () => document.removeEventListener('click', handleClickOutside,window.location.reload());
+      return () => document.removeEventListener('click', handleClickOutside);
     }
   }, [openLang, openMenu]);
 
@@ -187,6 +187,7 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                         e.stopPropagation();
                         setLanguage(l.code);
                         setOpenLang(false);
+                        window.location.reload();
                       }}
                       className={`flex w-full items-center gap-3 px-4 py-3 text-left text-sm hover:bg-blue-50 transition-all duration-200
                         ${language === l.code ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-blue-800'}`}
@@ -298,7 +299,9 @@ export default function Navbar({ language, setLanguage, t, user, setUser }) {
                 <label className="block text-blue-700 font-semibold mb-2 text-sm">Language</label>
                 <select
                   value={language}
-                  onChange={(e) => setLanguage(e.target.value)}
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                     window.location.reload();}}
                   className="w-full rounded-xl bg-white py-2 px-3 font-medium text-blue-800 border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
                 >
                   {LANGS.map((l) => (

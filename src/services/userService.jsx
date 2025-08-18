@@ -216,3 +216,40 @@ export const getUserSurveyHistory = async (userId) => {
 
   return res.data; // returns the response history array
 };
+
+
+// Admin: Pause a survey
+export const pauseSurvey = async (id) => {
+  const token = localStorage.getItem("token");
+  const res = await API.put(`/api/admin/surveys/${id}/pause`, {}, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data; // { survey }
+};
+
+// Admin: Resume a survey
+export const resumeSurvey = async (id) => {
+  const token = localStorage.getItem("token");
+  const res = await API.put(`/api/admin/surveys/${id}/resume`, {}, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data; // { survey }
+};
+
+// Admin: End a survey
+export const endSurvey = async (id) => {
+  const token = localStorage.getItem("token");
+  const res = await API.put(`/api/admin/surveys/${id}/end`, {}, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data; // { survey }
+};
+
+// Admin: Soft delete a survey
+export const deleteSurvey = async (id) => {
+  const token = localStorage.getItem("token");
+  const res = await API.put(`/api/admin/surveys/${id}/delete`, {}, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data; // { survey }
+};
