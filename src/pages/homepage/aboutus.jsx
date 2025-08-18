@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
-import slide5 from "../../assets/HImages/Istockimage.png"
+import slide5 from "../../assets/HImages/Istockimage.png";
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";   // ✅ i18n hook
 
-const AboutUs = ({t}) => {
+const AboutUs = () => {
+  const { t } = useTranslation();   // ✅ use translations directly
+
   useEffect(() => {
     const styleSheet = document.createElement("style");
     styleSheet.textContent = `
@@ -70,7 +73,6 @@ const AboutUs = ({t}) => {
     document.head.appendChild(styleSheet);
 
     const elements = document.querySelectorAll('.about-content');
-    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, index) => {
@@ -99,6 +101,7 @@ const AboutUs = ({t}) => {
     <section className="relative bg-gradient-to-b from-slate-50 to-blue-50/20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          
           {/* Part 1: Image with Advanced Hover Effects */}
           <div className="about-content">
             <figure className="group relative rounded-2xl overflow-hidden shadow-lg border border-blue-600/20 transition-all duration-700 cubic-bezier(0.4, 0, 0.2, 1) hover:-translate-y-4 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/40 hover:border-blue-600/50">
@@ -117,7 +120,7 @@ const AboutUs = ({t}) => {
           <div className="about-content text-left">
             <header className="mb-8">
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600">
-                {t.aboutUsTitle}
+                {t("aboutUsTitle")}
               </h2>
               
               <div className="mt-6 flex items-center group">
@@ -127,13 +130,13 @@ const AboutUs = ({t}) => {
 
             <div className="relative">
               <p className="text-slate-700 text-base lg:text-lg leading-8 transition-all duration-500 hover:text-slate-900 hover:scale-[1.02] hover:-translate-y-1 cursor-default">
-                 {t.aboutUsParagraph.part1}
+                {t("aboutUsParagraph.part1")}{" "}
                 <span className="font-semibold text-blue-600 hover:text-blue-700 hover:scale-105 transition-all duration-300 cursor-pointer inline-block hover:-translate-y-0.5 hover:shadow-lg hover:bg-blue-50 px-1 py-0.5 rounded">
-                   {t.aboutUsParagraph.earnMore}
-                </span>{' '}
-                 {t.aboutUsParagraph.part2}{' '}
+                  {t("aboutUsParagraph.earnMore")}
+                </span>{" "}
+                {t("aboutUsParagraph.part2")}{" "}
                 <span className="font-semibold text-blue-600 hover:text-blue-700 hover:scale-105 transition-all duration-300 cursor-pointer inline-block hover:-translate-y-0.5 hover:shadow-lg hover:bg-blue-50 px-1 py-0.5 rounded">
-                 {t.aboutUsParagraph.earnMoney}
+                  {t("aboutUsParagraph.earnMoney")}
                 </span>.
               </p>
               
@@ -141,14 +144,14 @@ const AboutUs = ({t}) => {
               <div className="absolute -left-4 top-0 w-1 h-0 bg-gradient-to-b from-blue-500 to-blue-600 transition-all duration-700 hover:h-full opacity-0 hover:opacity-100 rounded-full"></div>
             </div>
 
-            {/* Optional CTA Button matching HowItWorks style */}
+            {/* CTA Button */}
             <div className="mt-8">
-              <Link to ="/about"
-                type="button"
+              <Link
+                to="/about"
                 className="group inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) hover:scale-110 hover:-translate-y-2 hover:shadow-xl bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-600/50"
               >
                 <span className="transition-all duration-400 cubic-bezier(0.4, 0, 0.2, 1) group-hover:translate-x-1">
-                  {t.learnMore}
+                  {t("learnMore")}
                 </span>
                 <svg className="ml-2 w-4 h-4 transition-all duration-400 cubic-bezier(0.4, 0, 0.2, 1) group-hover:translate-x-1 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -156,6 +159,7 @@ const AboutUs = ({t}) => {
               </Link>
             </div>
           </div>
+
         </div>
       </div>
     </section>

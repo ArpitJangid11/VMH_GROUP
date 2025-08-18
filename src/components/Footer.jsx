@@ -113,24 +113,24 @@ export default function Footer() {
               <div className="flex gap-2 text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1 cursor-pointer">
                 <MdLocationOn className="text-blue-300 mt-0.5 shrink-0" />
                 <span>
-                  A-168/169 Sector 4 Rohini<br />
-                  Delhi - 110085 (India)
+                  5 Penn Plaza, 14th floor<br />
+                  New York - NY 10001 (US)
                 </span>
               </div>
 
               {/* Phone */}
-              <div className="flex items-center gap-2 text-white/90 hover:text-white transition-all duration-200 hover:translate-x-1">
-                <MdPhone className="text-blue-300" />
-                <a href="tel:+918130015743" className="hover:underline">
-                  +91 8130015743
-                </a>
+               <div className="flex gap-2 text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1 cursor-pointer">
+                <MdLocationOn className="text-blue-300 mt-0.5 shrink-0" />
+                <span>USA Office<br />UK Office<br />India Office</span>
+                {/* <span>UK Office<br /></span>
+                <span>India Office</span> */}
               </div>
 
               {/* Email */}
               <div className="flex items-center gap-2 text-white/90 hover:text-white transition-all duration-200 hover:translate-x-1">
                 <MdEmail className="text-blue-300" />
-                <a href="mailto:support@vmhglobalinsights.com" className="hover:underline break-all">
-                  support@vmhglobalinsights.com
+                <a href="mailto:info@vmhgroupsmr.com" className="hover:underline break-all">
+                  info@vmhgroupsmr.com
                 </a>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Copyright Section */}
         <div className="mt-10 border-t border-white/40  bg-white/20 pb-8 pt-6 text-center">
           <h3 className="text-md text-white">
-            © {currentYear} VMH Global Insights (dba VMH Global Insights). All Rights Reserved
+            © {currentYear} VMH GLOBAL INSIGHTS. All Rights Reserved
           </h3>
         </div>
       </div>

@@ -1,26 +1,27 @@
 import React, { useEffect } from "react";
 import { FaUsers, FaCheckCircle, FaGift, FaUserFriends, FaCheck, FaAward } from "react-icons/fa";
+import { useTranslation } from "react-i18next";  // ✅ i18n
 
+const RewardsNationStats = () => {
+  const { t } = useTranslation();  // ✅ translations available here
 
-const RewardsNationStats = ({t}) => {
   const statsData = [
     {
       icon: <FaUsers size={32} className="text-blue-500" />,
       hoverIcon: <FaUserFriends size={32} className="text-blue-500" />,
-      title: t.rewardsNationStats["happyPanelMembers"],
+      title: t("rewardsNationStats.happyPanelMembers"),  // ✅ i18n key
       target: 8000000,
       display: "8M+",
       bg: "bg-blue-500",
       text: "text-white",
       hoverBg: "hover:bg-white",
-      // Separate hover colors for number and title
       numberHover: "group-hover:text-blue-500",
-      titleHover: "group-hover:text-blue-400", // Slightly different shade
+      titleHover: "group-hover:text-blue-400",
     },
     {
       icon: <FaCheckCircle size={36} className="text-blue-500" />,
       hoverIcon: <FaCheck size={36} className="text-blue-500" />,
-      title: t.rewardsNationStats["completes"],
+      title: t("rewardsNationStats.completes"),  // ✅ i18n key
       target: 10000000,
       display: "10M+",
       bg: "bg-blue-100",
@@ -32,7 +33,7 @@ const RewardsNationStats = ({t}) => {
     {
       icon: <FaGift size={32} className="text-blue-500" />,
       hoverIcon: <FaAward size={32} className="text-blue-500" />,
-      title: t.rewardsNationStats["rewardsGiven"] ,
+      title: t("rewardsNationStats.rewardsGiven"),  // ✅ i18n key
       target: 15000000,
       display: "15M+",
       bg: "bg-blue-500",
@@ -42,14 +43,17 @@ const RewardsNationStats = ({t}) => {
       titleHover: "group-hover:text-blue-400",
     },
   ];
+
   useEffect(() => {
     const counters = document.querySelectorAll(".count-up");
+
     function animateCounter(counter) {
       const target = +counter.getAttribute("data-target");
       const display = counter.getAttribute("data-display");
       const duration = 2000;
       let current = 0;
       const increment = target / (duration / 16);
+
       function update() {
         current += increment;
         if (current < target) {
@@ -61,6 +65,7 @@ const RewardsNationStats = ({t}) => {
       }
       update();
     }
+
     const observer = new window.IntersectionObserver(
       (entries, observerInstance) => {
         entries.forEach((entry) => {
@@ -72,7 +77,9 @@ const RewardsNationStats = ({t}) => {
       },
       { threshold: 0.5 }
     );
+
     counters.forEach((counter) => observer.observe(counter));
+
     return () => observer.disconnect();
   }, []);
 
@@ -91,19 +98,17 @@ const RewardsNationStats = ({t}) => {
               hover:shadow-2xl hover:scale-105
             `}
           >
-            {/* Icon container with switching effect */}
+            {/* Icon with switching effect */}
             <div className="flex items-center justify-center w-16 h-16 rounded-full mb-4 bg-white relative overflow-hidden group-hover:bg-blue-50 transition-colors duration-500">
-              {/* Default icon */}
               <div className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-in-out group-hover:-translate-y-full group-hover:rotate-180 group-hover:scale-75">
                 {stat.icon}
               </div>
-              {/* Hover icon */}
               <div className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-in-out translate-y-full rotate-180 scale-75 group-hover:translate-y-0 group-hover:rotate-0 group-hover:scale-100">
                 {stat.hoverIcon}
               </div>
             </div>
-            
-            {/* Count number - separate hover effect */}
+
+            {/* Number Counter */}
             <span
               className={`
                 count-up text-4xl font-bold mb-2 
@@ -116,8 +121,8 @@ const RewardsNationStats = ({t}) => {
             >
               0
             </span>
-            
-            {/* Title - separate hover effect */}
+
+            {/* Title */}
             <span className={`
               text-lg font-semibold text-center leading-tight 
               ${stat.text} ${stat.titleHover}

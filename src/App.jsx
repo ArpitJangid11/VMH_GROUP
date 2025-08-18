@@ -39,7 +39,7 @@ const MainLayout = ({ children }) => {
   return (
     <main
       className={`flex-grow w-full mb-20 ${
-        isHome ? '' : 'pt-24'
+        isHome ? 'mt-24' : 'pt-24'
       }`}
     >
       {children}
@@ -84,6 +84,7 @@ const AppContent = () => {
           user={user}
           setUser={setUser}
         />
+            <div className="mt-2">
         <MainLayout>
           <Routes>
             {/* Public Routes */}
@@ -120,6 +121,7 @@ const AppContent = () => {
             <Route path="/notifications" element={<Notification t={t} />} />
           </Routes>
         </MainLayout>
+          </div>
         <Footer />
       </div>
     </>

@@ -63,7 +63,7 @@
   "aboutUsTitle": "About Us",
   "learnMore": "Learn More",
   "aboutUsParagraph": {
-    "part1": "VMH Global Insights is a world wide Consumer and Business Community of Frequent Research. VMH Global Insights welcomes you as our new panel members to take participate and share your opinion and perspective to wide-ranging market research survey campaigns. It is a platform which helps you to ",
+    "part1": "VMH Global Insights is a world wide Consumer and Business Community of VMH Global Insights. VMH Global Insights welcomes you as our new panel members to take participate and share your opinion and perspective to wide-ranging market research survey campaigns. It is a platform which helps you to ",
     "earnMore": "generate more and more revenues",
     "part2": " in high incentive rewards. You get the studies that are best fit for you. The more participation you do in the surveys, You will be able to ",
     "earnMoney": "earn more and more money",
@@ -145,7 +145,40 @@
     "ctaButtonJoin": "JOIN US NOW",
     "ctaButtonDashboard": "GO TO DASHBOARD",
     "ctaFooter": "100% Free Registration • Instant Access"
-  }
+  },
+  "ctaButtonJoin": "JOIN US NOW",
+  "ctaButtonDashboard": "GO TO DASHBOARD",
+  
 
+  "aboutHeroTitle1": "We Started In 2019 & Currently Have More Than",
+  "aboutHeroTitle2": "3 Million Members Worldwide",
+  "aboutUsParagraph1": {
+    "part1": "VMH Global Insights is a worldwide Consumer and Business Community of VMH Global Insights. Participate and share opinions in wide-ranging survey campaigns.",
+    "earnMore": "Earn rewards for participation—",
+    "part2": "contribute more to receive more incentives.",
+    "earnMoney": "",
+    "part3": ""
+  },
+  "aboutUsParagraphExtra": "You get the studies that are best fit for you. The more participation you do in the surveys, the more rewards you earn.",
+
+  "testimonialTitle": "What Members Say",
+  "testimonials": {
+    "quote1": "If you like taking surveys this is the site for you. Plenty of opportunities and quick payouts via PayPal.",
+    "author1": "Geetika (India)",
+    "quote2": "Great platform with amazing rewards.",
+    "author2": "John (USA)",
+    "quote3": "Very quick payouts and a friendly community.",
+    "author3": "Sara (UK)",
+    "quote4": "Surveys are interesting and valuable.",
+    "author4": "Ahmed (UAE)",
+    "quote5": "Happy to be part of this community!",
+    "author5": "Yuki (Japan)"
+  },
+  "cta": {
+  "heading": "Ready to Get Started?",
+  "text": "Join VMH today and start earning in simple steps.",
+  "buttonJoin": "Join Now",
+  "buttonDashboard": "Go to Dashboard"
+}
 
 }
