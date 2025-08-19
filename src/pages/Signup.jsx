@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FiMail, FiPhone, FiUser, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 import { signupUser, verifyOtp, loginUser, resendVerificationOtp } from "../services/userService";
+import VmhLogo from '/images/vmh-logo.png';
 
 const Signup = ({ t = {}, setUser }) => {
   const [formData, setFormData] = useState({
@@ -119,10 +120,11 @@ const Signup = ({ t = {}, setUser }) => {
             <div className="backdrop-blur-md bg-white/75 rounded-2xl border border-white/40 shadow-xl sm:shadow-2xl">
               <div className="px-5 sm:px-8 pt-8 pb-4 text-center">
                 <div className="flex items-center justify-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-lg sm:text-xl">V</span>
-                  </div>
-                  <span className="text-xl sm:text-2xl font-bold text-gray-800">VMH Group</span>
+                   <img 
+                      src={VmhLogo} 
+                      alt="VMH Group Logo" 
+                      className="h-12 sm:h-16 lg:h-20 w-auto group-hover:scale-110 transition-transform duration-300"
+                    />
                 </div>
                 <h2 className="text-lg sm:text-xl font-bold mb-2 text-blue-900">Verify Your Email</h2>
                 <p className="text-gray-600 mb-2 sm:mb-4">
@@ -205,10 +207,11 @@ const Signup = ({ t = {}, setUser }) => {
           <div className="backdrop-blur-md bg-white/75 rounded-2xl shadow-xl sm:shadow-2xl border border-white/40 overflow-hidden">
             <div className="px-5 sm:px-8 pt-8 pb-5 text-center">
               <div className="flex items-center justify-center mb-5 sm:mb-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-white font-bold text-lg sm:text-xl">V</span>
-                </div>
-                <span className="text-xl sm:text-2xl font-bold text-gray-800">VMH Group</span>
+                 <img 
+                    src={VmhLogo} 
+                    alt="VMH Group Logo" 
+                    className="h-12 sm:h-16 lg:h-20 w-auto group-hover:scale-110 transition-transform duration-300"
+                  />
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">Welcome!</h2>
               <p className="text-gray-700 text-sm sm:text-base">

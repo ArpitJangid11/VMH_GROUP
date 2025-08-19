@@ -16,48 +16,50 @@ import {
   HiOutlineChatBubbleLeftRight,
   HiOutlineUserCircle
 } from 'react-icons/hi2';
-
-const features = [
-  {
-    title: '100% FREE MEMBERSHIP',
-    description: 'To be of part of MyFrequent rewards Panel community you are not charged a single amount of penny. You can be a member by just completing the Signup form and can enjoy free membership for lifetime.',
-    icon: <HiOutlineShieldCheck size={24} className="text-blue-600" />,
-    hoverIcon: <FaShieldAlt size={24} className="text-blue-600" />,
-  },
-  {
-    title: 'HIGH EARNING PER SURVEY',
-    description: 'We value your feedback and you are compensated for all the hard-work efforts and time that you put to share your valuable opinion on each survey with us in the form of high rewards earning and process those rewards into cash money.',
-    icon: <HiOutlineBanknotes size={24} className="text-blue-600" />,
-    hoverIcon: <FaDollarSign size={24} className="text-blue-600" />,
-  },
-  {
-    title: 'INFORMATION ARE SECURED AND CONFIDENTIAL',
-    description: 'Our panel is a community of people who have signed up to join our database. All of the information you share with us will remain confidential and secured and are not share with any third party without your permission. We only use your information for research purpose only.',
-    icon: <HiOutlineLockClosed size={24} className="text-blue-600" />,
-    hoverIcon: <FaLock size={24} className="text-blue-600" />,
-  },
-  {
-    title: 'QUICK MODES OF MONEY TRANSFER',
-    description: 'We understand your opinion and rewards your opinion by our exclusive gift card and PayPal cash. Once you complete your paid survey and once you redeem your rewards points we collect and transfer your earning from paid survey panel\'s account to your bank account through PayPal, UPI, Cheque or Net Banking as per your preferable mode of transfer.',
-    icon: <HiOutlineArrowPath size={24} className="text-blue-600" />,
-    hoverIcon: <FaExchangeAlt size={24} className="text-blue-600" />,
-  },
-  {
-    title: 'SHARE YOUR OPINION ANYTIME, ANYWHERE, ANYPLACE',
-    description: 'We have a created a very quick and easy way of survey access to users with the help of that they can choose the surveys anytime and can share their Opinion anywhere at any point of time. They can install the application into their gadgets and also on their mobile phones and can have updates on real time base on their fingertips wherever they are.',
-    icon: <HiOutlineChatBubbleLeftRight size={24} className="text-blue-600" />,
-    hoverIcon: <FaComments size={24} className="text-blue-600" />,
-  },
-  {
-    title: 'PROFILE UPDATION',
-    description: 'Our platform allows registered users to edit their information as per their need and preferences time to time. You can edit your profile preferences anytime as per your daily life style taste changes and professional changes that will help you to engage in more and more opportunities to earn and will help to increase your ranking to have bonus points every months.',
-    icon: <HiOutlineUserCircle size={24} className="text-blue-600" />,
-    hoverIcon: <FaUser size={24} className="text-blue-600" />,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const WhyChooseUs = () => {
   const sectionRef = useRef(null);
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      title: t("why.features.freeMembership.title"),
+      description: t("why.features.freeMembership.description"),
+      icon: <HiOutlineShieldCheck size={24} className="text-blue-600" />,
+      hoverIcon: <FaShieldAlt size={24} className="text-blue-600" />,
+    },
+    {
+      title: t("why.features.highEarning.title"),
+      description: t("why.features.highEarning.description"),
+      icon: <HiOutlineBanknotes size={24} className="text-blue-600" />,
+      hoverIcon: <FaDollarSign size={24} className="text-blue-600" />,
+    },
+    {
+      title: t("why.features.secureConfidential.title"),
+      description: t("why.features.secureConfidential.description"),
+      icon: <HiOutlineLockClosed size={24} className="text-blue-600" />,
+      hoverIcon: <FaLock size={24} className="text-blue-600" />,
+    },
+    {
+      title: t("why.features.quickTransfer.title"),
+      description: t("why.features.quickTransfer.description"),
+      icon: <HiOutlineArrowPath size={24} className="text-blue-600" />,
+      hoverIcon: <FaExchangeAlt size={24} className="text-blue-600" />,
+    },
+    {
+      title: t("why.features.anytimeAnywhere.title"),
+      description: t("why.features.anytimeAnywhere.description"),
+      icon: <HiOutlineChatBubbleLeftRight size={24} className="text-blue-600" />,
+      hoverIcon: <FaComments size={24} className="text-blue-600" />,
+    },
+    {
+      title: t("why.features.profileUpdate.title"),
+      description: t("why.features.profileUpdate.description"),
+      icon: <HiOutlineUserCircle size={24} className="text-blue-600" />,
+      hoverIcon: <FaUser size={24} className="text-blue-600" />,
+    },
+  ];
 
   useEffect(() => {
     const styleSheet = document.createElement("style");
@@ -156,14 +158,14 @@ const WhyChooseUs = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <header className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-800 mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600">
-            WHY CHOOSE US
+            {t("why.title")} {/* e.g., WHY CHOOSE US */}
           </h2>
           <div className="flex justify-center mb-4">
             <div className="h-1 w-20 rounded-full animated-underline">
             </div>
           </div>
           <p className="text-slate-500 max-w-2xl mx-auto transition-all duration-500 ease-out hover:text-slate-600 hover:scale-105">
-            Discover the benefits of joining our rewards community and start earning today.
+            {t("why.subtitle")}
           </p>
         </header>
 

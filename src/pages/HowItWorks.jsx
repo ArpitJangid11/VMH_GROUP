@@ -12,40 +12,42 @@ import {
   HiOutlineClipboardDocumentCheck,
   HiOutlineChartBar,
 } from 'react-icons/hi2';
-
-const steps = [
-  {
-    title: 'REGISTER ONLINE',
-    description: 'We have a lifetime free membership to join our research community, we have a very simple and quick way to join, you just need to register with your active email id and in a single click you become our community member. Once you make registration you are able to get free bonus points of 200Pts.',
-    additionalText: 'You do not have to spend much time on being a member, as you will receive an email invitation, when there is a new survey available. So you do not have to login to the site to check yourself every time.',
-    icon: <HiOutlineCheckBadge size={28} className="text-blue-600" />,
-    hoverIcon: <FiUserPlus size={28} className="text-blue-600" />,
-  },
-  {
-    title: 'PROFILER SURVEY',
-    description: 'Click on Profile Survey as soon as you get enter into your Dashboard to get rewarded with your first Reward and complete your profiling with few quick inputs to earn more rewards value.',
-    additionalText: 'You will be rewarded with value points to complete each your profiling. Our profiling points system have a higher pay-out to achieve your threshold therefore as compare to other earning portals, it does not take too long to reach the threshold on MyFrequent Rewards.',
-    icon: <HiOutlineClipboardDocumentList size={28} className="text-blue-600" />,
-    hoverIcon: <FiClipboard size={28} className="text-blue-600" />,
-  },
-  {
-    title: 'DAILY SURVEYS',
-    description: 'Once you complete your all profiling survey you start receiving wide range of Surveys daily according to your profiling. After each survey participation and achieving your threshold or more, you will be rewarded with value points and those points will be redeemed to your PayPal account on every month billing Cycle into cash.',
-    additionalText: 'Incase, you are unable to achieve your threshold in current month then all your existing rewards point will be forwarded to your coming month points and it will be continued till the threshold will not be achieved , you will be paid once you achieve your threshold or more.',
-    icon: <HiOutlineClipboardDocumentCheck size={28} className="text-blue-600" />,
-    hoverIcon: <FiCalendar size={28} className="text-blue-600" />,
-  },
-  {
-    title: 'HOW YOU GROW',
-    description: 'The higher your survey participation , climbs you in the survey ranking, and the more attractive it becomes for potential participants - and the more people participate in it.',
-    additionalText: 'The better your survey is ranked in the Survey Ranking, the more points others receive for their participation (You will get Incentivise Points of 1500 every month with your current points if you achieve your threshold or more continuously for 6 months in the Survey Ranking).',
-    icon: <HiOutlineChartBar size={28} className="text-blue-600" />,
-    hoverIcon: <FiTrendingUp size={28} className="text-blue-600" />,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const HowItWorks = () => {
   const sectionRef = useRef(null);
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      title: t("how.steps.register.title"),
+      description: t("how.steps.register.description"),
+      additionalText: t("how.steps.register.additionalText"),
+      icon: <HiOutlineCheckBadge size={28} className="text-blue-600" />,
+      hoverIcon: <FiUserPlus size={28} className="text-blue-600" />,
+    },
+    {
+      title: t("how.steps.profiler.title"),
+      description: t("how.steps.profiler.description"),
+      additionalText: t("how.steps.profiler.additionalText"),
+      icon: <HiOutlineClipboardDocumentList size={28} className="text-blue-600" />,
+      hoverIcon: <FiClipboard size={28} className="text-blue-600" />,
+    },
+    {
+      title: t("how.steps.daily.title"),
+      description: t("how.steps.daily.description"),
+      additionalText: t("how.steps.daily.additionalText"),
+      icon: <HiOutlineClipboardDocumentCheck size={28} className="text-blue-600" />,
+      hoverIcon: <FiCalendar size={28} className="text-blue-600" />,
+    },
+    {
+      title: t("how.steps.grow.title"),
+      description: t("how.steps.grow.description"),
+      additionalText: t("how.steps.grow.additionalText"),
+      icon: <HiOutlineChartBar size={28} className="text-blue-600" />,
+      hoverIcon: <FiTrendingUp size={28} className="text-blue-600" />,
+    },
+  ];
 
   useEffect(() => {
     const styleSheet = document.createElement("style");
@@ -156,14 +158,14 @@ const HowItWorks = () => {
         {/* Header - Fully Responsive */}
         <header className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-slate-800 mb-3 sm:mb-4 transition-all duration-700 ease-out hover:scale-105 hover:text-blue-600">
-            HOW IT WORKS
+            {t("how.title")} {/* e.g., HOW IT WORKS */}
           </h2>
           <div className="flex justify-center mb-3 sm:mb-4">
             <div className="h-0.5 sm:h-1 w-16 sm:w-20 rounded-full animated-underline">
             </div>
           </div>
           <p className="text-sm sm:text-base lg:text-lg text-slate-500 max-w-xl lg:max-w-2xl mx-auto px-2 sm:px-0 transition-all duration-500 ease-out hover:text-slate-600 hover:scale-105">
-            Register free and activate your account with a valid email in seconds.
+            {t("how.subtitle")}
           </p>
         </header>
 

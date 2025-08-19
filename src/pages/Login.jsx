@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 import { loginUser, resendVerificationOtp, verifyOtps } from "../services/userService";
+import VmhLogo from '/images/vmh-logo.png';
 
 const Login = ({ t, setUser }) => {
   const [email, setEmail] = useState("");
@@ -98,10 +99,11 @@ const Login = ({ t, setUser }) => {
             {/* Header */}
             <div className="px-6 sm:px-8 pt-8 pb-6 text-center">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-white font-bold text-xl">V</span>
-                </div>
-                <span className="text-2xl font-bold text-gray-800">VMH Group</span>
+                <img 
+                  src={VmhLogo} 
+                  alt="VMH Group Logo" 
+                  className="h-12 sm:h-16 lg:h-20 w-auto group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome Back!</h2>
               <p className="text-gray-700">

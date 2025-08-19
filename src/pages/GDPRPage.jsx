@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-const sections = [
-  { id: "overview", label: "Overview" },
-  { id: "principles", label: "Principles" },
-  { id: "consent", label: "Consent & Transparency" },
-  { id: "research", label: "Research Outreach" },
-  { id: "cloud", label: "Cloud & Storage" },
-  { id: "data", label: "Data We Collect" },
-  { id: "use", label: "How We Use Data" },
-  { id: "legal", label: "Legal Bases" },
-  { id: "sharing", label: "Sharing & Processors" },
-  { id: "cookies", label: "Cookies" },
-  { id: "intl", label: "International Transfers" },
-  { id: "retention", label: "Retention" },
-  { id: "rights", label: "Your Rights" },
-  { id: "security", label: "Security" },
-  { id: "contact", label: "Contact" },
+const rawSections = [
+  { id: "overview", labelKey: "gdpr.toc.overview" },
+  { id: "principles", labelKey: "gdpr.toc.principles" },
+  { id: "consent", labelKey: "gdpr.toc.consent" },
+  { id: "research", labelKey: "gdpr.toc.research" },
+  { id: "cloud", labelKey: "gdpr.toc.cloud" },
+  { id: "data", labelKey: "gdpr.toc.data" },
+  { id: "use", labelKey: "gdpr.toc.use" },
+  { id: "legal", labelKey: "gdpr.toc.legal" },
+  { id: "sharing", labelKey: "gdpr.toc.sharing" },
+  { id: "cookies", labelKey: "gdpr.toc.cookies" },
+  { id: "intl", labelKey: "gdpr.toc.intl" },
+  { id: "retention", labelKey: "gdpr.toc.retention" },
+  { id: "rights", labelKey: "gdpr.toc.rights" },
+  { id: "security", labelKey: "gdpr.toc.security" },
+  { id: "contact", labelKey: "gdpr.toc.contact" }
 ];
 
 export default function GDPRPage() {
+  const { t } = useTranslation();
   const [active, setActive] = useState("overview");
 
+  const sections = rawSections.map(s => ({ id: s.id, label: t(s.labelKey) }));
+
   useEffect(() => {
-    // Smooth scroll if not globally enabled
     if (!document.documentElement.style.scrollBehavior) {
       document.documentElement.style.scrollBehavior = "smooth";
     }
@@ -42,48 +45,37 @@ export default function GDPRPage() {
       if (el) obs.observe(el);
     });
     return () => obs.disconnect();
-  }, []);
+  }, [sections]);
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-800">
-   <section className="relative isolate align-center overflow-hidden">
-    {/* <div className="relative mx-auto max-w-6xl px-1 py-1 sm:py-20">
-        <h1 className="text-4xl font-semibold leading-tight text-blue-600 sm:text-5xl">
-          GDPR Compliance
-        </h1>
-    </div> */}
-
-    <header
-        className="relative h-64 sm:h-56 md:h-72 lg:h-80 bg-cover bg-center flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage:
-            "url('https://vmhgroup.com/assets/images/privacy-bg.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-900/60 to-blue-900/70 backdrop-blur-[1px]"></div>
-        <div className="relative text-center px-4">
-          
-          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-white drop-shadow">
-            GDPR Compliance
-          </h1>
-          <nav className="mt-2 text-xs sm:text-sm text-blue-100/90">
-            <a
-              href="/"
-              className="hover:underline focus:outline-none focus:ring-2 focus:ring-white/50 rounded"
-            >
-              Home
-            </a>
-            <span className="mx-1">-</span>
-            <span className="opacity-90">GDPR Compliance</span>
-          </nav>
-        </div>
-        <div className="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-white to-transparent"></div>
-      </header>
-    
-    </section>
-
-
-
+      <section className="relative isolate align-center overflow-hidden">
+        <header
+          className="relative h-64 sm:h-56 md:h-72 lg:h-80 bg-cover bg-center flex items-center justify-center overflow-hidden"
+          style={{
+            backgroundImage:
+              "url('https://vmhgroup.com/assets/images/privacy-bg.jpg')",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-900/60 to-blue-900/70 backdrop-blur-[1px]"></div>
+          <div className="relative text-center px-4">
+            <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-white drop-shadow">
+              {t("gdpr.hero.title")}
+            </h1>
+            <nav className="mt-2 text-xs sm:text-sm text-blue-100/90">
+              <a
+                href="/"
+                className="hover:underline focus:outline-none focus:ring-2 focus:ring-white/50 rounded"
+              >
+                {t("gdpr.hero.home")}
+              </a>
+              <span className="mx-1">-</span>
+              <span className="opacity-90">{t("gdpr.hero.here")}</span>
+            </nav>
+          </div>
+          <div className="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-white to-transparent"></div>
+        </header>
+      </section>
 
       {/* Content grid */}
       <div className="mx-auto grid mt-20 max-w-6xl grid-cols-1 md:mt-10 sm:mt-10 gap-8 px-6 pb-20 md:grid-cols-[280px_1fr]">
@@ -91,12 +83,14 @@ export default function GDPRPage() {
         <aside className="-mt-10  md:pt-8">
           <nav className="sticky top-28 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur">
             <div className="mb-3 flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Sections</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                {t("gdpr.sidebar.sections")}
+              </p>
               <a
                 href="#contact"
                 className="rounded-md bg-slate-900 px-2 py-1 text-xs text-white hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               >
-                Contact
+                {t("gdpr.sidebar.contactCta")}
               </a>
             </div>
             <ul className="space-y-1.5">
@@ -124,152 +118,152 @@ export default function GDPRPage() {
         {/* Main */}
         <article className="max-w-none pt-8">
           <Card>
-            <Section id="overview" title="Overview">
-              We process personal data in accordance with the EU General Data Protection Regulation (GDPR) and applicable local laws. Since methods of data collection, storage, processing, and analysis have evolved, we follow stricter standards to protect individuals’ privacy and be transparent about our practices.
+            <Section id="overview" title={t("gdpr.sections.overview.title")}>
+              {t("gdpr.sections.overview.body")}
             </Section>
           </Card>
 
           <Card>
-            <Section id="principles" title="Key principles we follow">
+            <Section id="principles" title={t("gdpr.sections.principles.title")}>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Purpose limitation: specific, explicit, and legitimate purposes only.</li>
-                <li>Data minimization: only what is necessary.</li>
-                <li>Accuracy: keep data accurate and up to date where required.</li>
-                <li>Storage limitation: retain only as long as necessary.</li>
-                <li>Integrity and confidentiality: appropriate technical and organizational measures.</li>
-                <li>Accountability: document processing and demonstrate compliance.</li>
+                <li>{t("gdpr.sections.principles.items.purpose")}</li>
+                <li>{t("gdpr.sections.principles.items.minimization")}</li>
+                <li>{t("gdpr.sections.principles.items.accuracy")}</li>
+                <li>{t("gdpr.sections.principles.items.storage")}</li>
+                <li>{t("gdpr.sections.principles.items.integrity")}</li>
+                <li>{t("gdpr.sections.principles.items.accountability")}</li>
               </ul>
             </Section>
           </Card>
 
           <Card>
-            <Section id="consent" title="Consent and transparency">
+            <Section id="consent" title={t("gdpr.sections.consent.title")}>
               <ul className="list-disc pl-5 space-y-1">
-                <li>We obtain clear, informed consent when required (marketing, optional analytics, certain research).</li>
-                <li>Cookie use is disclosed via a banner/pop‑up with options to accept, reject, or manage categories.</li>
-                <li>When collecting data directly, we explain purpose, storage, retention where applicable, and any sharing with third parties.</li>
+                <li>{t("gdpr.sections.consent.items.clearConsent")}</li>
+                <li>{t("gdpr.sections.consent.items.cookieBanner")}</li>
+                <li>{t("gdpr.sections.consent.items.collectionNotice")}</li>
               </ul>
             </Section>
           </Card>
 
           <Card>
-            <Section id="research" title="When contacting people for research">
+            <Section id="research" title={t("gdpr.sections.research.title")}>
               <ul className="list-disc pl-5 space-y-1">
-                <li>We ensure the audience has opted in or can lawfully be contacted.</li>
-                <li>We rely on a valid legal basis (consent, contract, legitimate interests, legal obligation).</li>
-                <li>Data is used solely for the stated research purpose.</li>
+                <li>{t("gdpr.sections.research.items.optInLawful")}</li>
+                <li>{t("gdpr.sections.research.items.legalBasis")}</li>
+                <li>{t("gdpr.sections.research.items.purposeLimitation")}</li>
               </ul>
             </Section>
           </Card>
 
           <Card>
-            <Section id="cloud" title="Cloud and storage">
-              We may store research responses and operational data in databases or trusted cloud providers under data processing agreements. We ensure access controls, encryption in transit (and at rest where applicable), backups with rolling purges, vendor due diligence, and clear responsibility allocation between us and processors.
+            <Section id="cloud" title={t("gdpr.sections.cloud.title")}>
+              {t("gdpr.sections.cloud.body")}
             </Section>
           </Card>
 
           <Card>
-            <Section id="data" title="Data we collect">
+            <Section id="data" title={t("gdpr.sections.data.title")}>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Account data: name, email, role, password hash.</li>
-                <li>Preferences/profile: language, communication preferences.</li>
-                <li>Usage/device: pages viewed, actions, IP, user agent, approximate location from IP.</li>
-                <li>Cookies/tech: necessary, preferences, analytics (subject to consent).</li>
-                <li>Research/surveys: voluntary responses; special categories only with explicit consent.</li>
+                <li>{t("gdpr.sections.data.items.account")}</li>
+                <li>{t("gdpr.sections.data.items.preferences")}</li>
+                <li>{t("gdpr.sections.data.items.usage")}</li>
+                <li>{t("gdpr.sections.data.items.cookies")}</li>
+                <li>{t("gdpr.sections.data.items.research")}</li>
               </ul>
             </Section>
           </Card>
 
           <Card>
-            <Section id="use" title="How we use data">
+            <Section id="use" title={t("gdpr.sections.use.title")}>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Provide, operate, and improve services and research.</li>
-                <li>Authenticate users, prevent fraud, and secure systems.</li>
-                <li>Personalize content and remember preferences.</li>
-                <li>Measure performance and analyze product usage.</li>
-                <li>Communicate service updates and, where permitted, marketing.</li>
-                <li>Comply with legal obligations and enforce terms.</li>
+                <li>{t("gdpr.sections.use.items.provide")}</li>
+                <li>{t("gdpr.sections.use.items.authSecure")}</li>
+                <li>{t("gdpr.sections.use.items.personalize")}</li>
+                <li>{t("gdpr.sections.use.items.measure")}</li>
+                <li>{t("gdpr.sections.use.items.communicate")}</li>
+                <li>{t("gdpr.sections.use.items.comply")}</li>
               </ul>
             </Section>
           </Card>
 
           <Card>
-            <Section id="legal" title="Legal bases">
+            <Section id="legal" title={t("gdpr.sections.legal.title")}>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Contract</li>
-                <li>Consent</li>
-                <li>Legitimate interests</li>
-                <li>Legal obligation</li>
-                <li>Vital interests/public task (where applicable)</li>
+                <li>{t("gdpr.sections.legal.items.contract")}</li>
+                <li>{t("gdpr.sections.legal.items.consent")}</li>
+                <li>{t("gdpr.sections.legal.items.legitInterests")}</li>
+                <li>{t("gdpr.sections.legal.items.legalObligation")}</li>
+                <li>{t("gdpr.sections.legal.items.vitalPublic")}</li>
               </ul>
             </Section>
           </Card>
 
           <Card>
-            <Section id="sharing" title="Sharing and processors">
-              We share data with vetted service providers acting as processors (hosting, analytics, email, customer support) under written contracts with confidentiality, security, and GDPR-compliant processing terms. We may disclose data to comply with law or protect rights, safety, or property.
+            <Section id="sharing" title={t("gdpr.sections.sharing.title")}>
+              {t("gdpr.sections.sharing.body")}
             </Section>
           </Card>
 
           <Card>
-            <Section id="cookies" title="Cookies">
-              We use strictly necessary cookies to operate the site and optional analytics cookies subject to consent. Visitors can accept, reject, or manage categories via the cookie banner or settings.
+            <Section id="cookies" title={t("gdpr.sections.cookies.title")}>
+              {t("gdpr.sections.cookies.body")}
             </Section>
           </Card>
 
           <Card>
-            <Section id="intl" title="International transfers">
-              If data is transferred outside the EEA/UK, we use appropriate safeguards such as the European Commission’s Standard Contractual Clauses and supplementary measures where needed.
+            <Section id="intl" title={t("gdpr.sections.intl.title")}>
+              {t("gdpr.sections.intl.body")}
             </Section>
           </Card>
 
           <Card>
-            <Section id="retention" title="Retention">
-              We keep personal data only as long as necessary for the purposes described or as required by law. Backups are purged on a rolling basis, and data is deleted or anonymized at the end of retention periods.
+            <Section id="retention" title={t("gdpr.sections.retention.title")}>
+              {t("gdpr.sections.retention.body")}
             </Section>
           </Card>
 
           <Card>
-            <Section id="rights" title="Your rights (EU/EEA)">
-              Subject to conditions and exemptions, individuals may request access, rectification, erasure, restriction, objection, portability, withdraw consent at any time without affecting prior processing, and lodge a complaint with a supervisory authority.
+            <Section id="rights" title={t("gdpr.sections.rights.title")}>
+              {t("gdpr.sections.rights.body")}
             </Section>
           </Card>
 
           <Card>
-            <Section id="security" title="Security">
-              We implement layered security: encryption in transit, hardened infrastructure, role‑based access, monitoring, least‑privilege practices, and incident response procedures including notification where required.
+            <Section id="security" title={t("gdpr.sections.security.title")}>
+              {t("gdpr.sections.security.body")}
             </Section>
           </Card>
 
           <div className="mt-10 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur">
             <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-              <p className="text-sm text-slate-600">Last updated: 10 Aug 2025</p>
+              <p className="text-sm text-slate-600">
+                {t("gdpr.footer.updated")}
+              </p>
               <div className="flex gap-3">
                 <a
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
-                  Back
+                  {t("gdpr.footer.back")}
                 </a>
                 <a
                   href="/"
                   className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
-                  Back to Home
+                  {t("gdpr.footer.home")}
                 </a>
               </div>
             </div>
           </div>
 
           <Card>
-            <Section id="contact" title="Contact">
-              To ask questions or exercise your rights, contact: privacy@vmhgroup.example. Postal: VMH GROUP, 123 Market Street, City, Country.
+            <Section id="contact" title={t("gdpr.sections.contact.title")}>
+              {t("gdpr.sections.contact.body")}
             </Section>
           </Card>
         </article>
       </div>
-
-      
     </main>
   );
 }

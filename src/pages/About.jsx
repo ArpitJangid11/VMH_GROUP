@@ -2,17 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSmile, FaStar, FaThumbsUp, FaClock } from "react-icons/fa";
-import { useTranslation } from "react-i18next"; // assuming react-i18next is set up
+import { useTranslation } from "react-i18next";
 
 const AboutUs = ({ user }) => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
-    {
-      quote: t("testimonials.quote1"),
-      author: t("testimonials.author1"),
-    },
+    { quote: t("testimonials.quote1"), author: t("testimonials.author1") },
     { quote: t("testimonials.quote2"), author: t("testimonials.author2") },
     { quote: t("testimonials.quote3"), author: t("testimonials.author3") },
     { quote: t("testimonials.quote4"), author: t("testimonials.author4") },
@@ -94,7 +91,10 @@ const AboutUs = ({ user }) => {
               </div>
             </div>
             <p className="text-slate-700 mb-4">{t("aboutUsParagraph.part1")}</p>
-            <p className="text-slate-700">{t("aboutUsParagraph.earnMore")}{t("aboutUsParagraph.part2")}</p>
+            <p className="text-slate-700">
+              {t("aboutUsParagraph.earnMore")}
+              {t("aboutUsParagraph.part2")}
+            </p>
           </article>
 
           {/* Right Icons */}
@@ -139,7 +139,10 @@ const AboutUs = ({ user }) => {
             </div>
           </header>
 
-          <article key={currentIndex} className="about-card max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-lg text-center animate-slide-in-testimonial">
+          <article
+            key={currentIndex}
+            className="about-card max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-lg text-center animate-slide-in-testimonial"
+          >
             <blockquote className="text-gray-800 text-lg leading-relaxed mb-4">
               “{testimonials[currentIndex].quote}”
             </blockquote>

@@ -195,7 +195,7 @@ const StepJoinSection = ({ user }) => {
                 {/* Step Icon */}
                 <div className="relative flex justify-center lg:block">
                   <div
-                    className={`absolute top-1/2 hidden lg:block h-1 w-16 xl:w-24 -translate-y-1/2 bg-gradient-to-r from-blue-300 to-blue-400 rounded ${step.align === "left" ? "-right-16 xl:-right-24" : "-left-16 xl:-left-24"}`}
+                    className={`absolute top-1/2 hidden lg:block h-1 w-16 xl:w-24 -translate-y-1/2 bg-gradient-to-r from-blue-300 to-blue-400 rounded ${step.align === "left" ? "-right-16 xl:-right-24 mr-8" : "-left-16 xl:-left-24 ml-8"}`}
                   />
                   <div className="relative z-10 mx-auto grid h-20 w-20 sm:h-24 sm:w-24 place-items-center rounded-full bg-white shadow-xl border-4 border-blue-200 hover:border-blue-600/50 hover:scale-110 cursor-pointer transition-all">
                     <step.Icon className="icon-rotate text-3xl sm:text-4xl text-blue-500" />
