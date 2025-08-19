@@ -131,7 +131,8 @@ export default function ContactUs() {
               <li className="flex items-start">
                 <FaMapMarkerAlt className="mt-1 text-blue-600 mr-3 flex-shrink-0" />
                 <span>
-                  <strong>Office:</strong> Jaipur, Rajasthan, India
+                  <strong>Office:</strong> 5 Penn Plaza, 14th floor <br />
+                  New York - NY 10001 (US)
                 </span>
               </li>
               <li className="flex items-center">
@@ -143,10 +144,10 @@ export default function ContactUs() {
               <li className="flex items-center">
                 <FaEnvelope className="text-blue-600 mr-3 flex-shrink-0" />
                 <a
-                  href="mailto:support@vmhgroup.com"
+                  href="mailto:info@vmhgroupsmr.com"
                   className="hover:text-blue-700 break-all"
                 >
-                  <strong>Email:</strong> support@vmhgroup.com
+                  <strong>Email:</strong> info@vmhgroupsmr.com
                 </a>
               </li>
               <li className="flex items-center">
@@ -174,7 +175,8 @@ export default function ContactUs() {
                 <FaInstagram />
               </a>
               <a
-                href="#"
+                href="https://in.linkedin.com/company/vmh-groups"
+                target="_blanck"
                 className="hover:text-blue-900 transform transition-transform duration-200 hover:scale-125"
               >
                 <FaLinkedin />

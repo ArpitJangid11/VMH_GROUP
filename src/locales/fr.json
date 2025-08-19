@@ -1,36 +1,35 @@
 {
-  "Language-": "Français",
-  "Language": "Français",
+  "Language-": "Français (FR)",
   "home": "Accueil",
   "about": "À propos",
   "join": "Rejoindre le panel",
   "faqs": "FAQ",
-  "contact": "Contactez-nous",
-  "aboutUs": "À propos de nous",
+  "contact": "Contact",
+  "aboutUs": "À propos",
   "howItWorks": "Comment ça marche",
   "whyUs": "Pourquoi nous",
   "stepsToJoin": "Étapes pour rejoindre",
   "admin": "Admin",
   "welcome": "Bienvenue chez VMH Groups Market Research",
-  "slogan": "Votre opinion compte. Rejoignez notre communauté mondiale de recherche.",
+  "slogan": "Votre avis compte. Rejoignez notre communauté mondiale.",
   "joinNow": "Rejoindre maintenant",
-  "aboutText": "Nous sommes une société leader en études de marché reliant les entreprises à des insights précieux.",
-  "faqTitle": "Foire aux questions",
-  "contactText": "Contactez-nous pour toute demande.",
-  "signup": "S’inscrire",
+  "aboutText": "Nous sommes une société d’études de marché leader reliant les entreprises à des insights précieux.",
+  "faqTitle": "Questions fréquentes",
+  "contactText": "Contactez-nous pour toute question.",
+  "signup": "Inscription",
   "name": "Nom",
   "email": "E-mail",
   "phone": "Téléphone",
   "age": "Âge",
   "gender": "Genre",
   "country": "Pays",
-  "jobTitle": "Intitulé du poste",
+  "jobTitle": "Poste",
   "industry": "Secteur",
   "consent": "J’accepte les conditions et la politique de confidentialité RGPD",
   "submit": "Envoyer",
   "dashboard": "Tableau de bord",
-  "surveys": "Sondages disponibles",
-  "history": "Historique des sondages",
+  "surveys": "Enquêtes disponibles",
+  "history": "Historique des enquêtes",
   "earnings": "Gains",
   "refer": "Parrainer un ami",
   "notification": "Notifications",
@@ -39,61 +38,61 @@
   "password": "Mot de passe",
   "confirmPassword": "Confirmer le mot de passe",
   "here": "Ici",
-  "hi": "Salut, ",
-  "completedSurvey": "Sondage complété",
+  "hi": "Bonjour, ",
+  "completedSurvey": "Enquête terminée",
   "questionsToAnswer": "({count} questions à répondre)",
   "household": "Foyer",
   "occupation": "Profession",
-  "auto": "Auto",
+  "auto": "Automobile",
   "electronics": "Électronique",
   "healthcare": "Santé",
-  "hobbies_and_interests": "Loisirs et centres d’intérêt",
+  "hobbies_and_interests": "Loisirs et intérêts",
   "notifications": "Notifications",
   "media": "Médias",
   "education": "Éducation",
-  "computer_and_video_gaming": "Jeux informatiques et vidéo",
+  "computer_and_video_gaming": "Jeux vidéo et informatiques",
   "travel": "Voyage",
-  "food_and_beverage": "Alimentation et boisson",
+  "food_and_beverage": "Alimentation & boissons",
   "research": "Recherche",
-  "smoking_and_tobacco": "Tabac et cigarette",
-  "ethnicity": "Origine ethnique",
+  "smoking_and_tobacco": "Tabagisme & tabac",
+  "ethnicity": "Ethnicité",
   "region": "Région",
 
-  "aboutUsTitle": "À propos de nous",
+  "aboutUsTitle": "À propos",
   "learnMore": "En savoir plus",
   "aboutUsParagraph": {
-    "part1": "VMH Global Insights est une communauté mondiale de consommateurs et d’entreprises dédiée aux études fréquentes. VMH Global Insights vous accueille comme nouveaux membres du panel pour participer et partager votre opinion dans de vastes campagnes d’enquêtes. C’est une plateforme qui vous aide à ",
-    "earnMore": "générer toujours plus de revenus",
-    "part2": " grâce à des récompenses à forte incitation. Vous recevez les études qui vous correspondent le mieux. Plus vous participez aux enquêtes, plus vous pourrez ",
-    "earnMoney": "gagner de plus en plus d’argent",
+    "part1": "VMH Global Insights est une communauté mondiale de consommateurs et d’entreprises de VMH Global Insights. VMH Global Insights vous accueille en tant que nouveau membre du panel pour participer et partager votre opinion et votre perspective sur de vastes campagnes d’enquêtes de recherche de marché. C’est une plateforme qui vous aide à ",
+    "earnMore": "générer de plus en plus de revenus",
+    "part2": " grâce à des récompenses incitatives élevées. Vous obtenez les études qui vous conviennent le mieux. Plus vous participez aux enquêtes, plus vous pourrez ",
+    "earnMoney": "gagner de l’argent",
     "part3": "."
   },
 
   "howItWorksTitle": "COMMENT ÇA MARCHE",
-  "howItWorksSubtitle": "Inscrivez-vous gratuitement et activez votre compte par e-mail en quelques secondes.",
-  "how.steps.register.title": "Inscription en ligne",
-  "how.steps.register.desc": "Rejoignez notre communauté d’études avec une adhésion gratuite à vie. Créez votre compte en quelques étapes et vérifiez votre e-mail.",
+  "howItWorksSubtitle": "Inscrivez-vous gratuitement et activez votre compte avec un e-mail valide en quelques secondes.",
+  "how.steps.register.title": "S’inscrire en ligne",
+  "how.steps.register.desc": "Rejoignez notre communauté de recherche avec une adhésion gratuite à vie. Créez votre compte en quelques étapes rapides et vérifiez votre e-mail.",
   "how.steps.register.cta": "En savoir plus",
-  "how.steps.profiler.title": "Questionnaire profil",
-  "how.steps.profiler.desc": "Complétez votre questionnaire de profil dès la connexion. Cela nous aide à vous proposer les sondages et récompenses les plus pertinents.",
+  "how.steps.profiler.title": "Enquête de profilage",
+  "how.steps.profiler.desc": "Complétez votre enquête de profil dès que vous vous connectez. Cela nous aide à vous associer aux enquêtes et récompenses les plus pertinentes.",
   "how.steps.profiler.cta": "En savoir plus",
-  "how.steps.daily.title": "Sondages quotidiens",
-  "how.steps.daily.desc": "Après votre profilage, recevez une large gamme de sondages adaptés à vos intérêts et à votre démographie.",
+  "how.steps.daily.title": "Enquêtes quotidiennes",
+  "how.steps.daily.desc": "Après avoir terminé votre profilage, recevez une large gamme d’enquêtes quotidiennes adaptées à vos intérêts et démographie.",
   "how.steps.daily.cta": "En savoir plus",
-  "how.steps.grow.title": "Votre progression",
-  "how.steps.grow.desc": "Plus vous participez, plus votre rang augmente et meilleures sont vos éligibilités, récompenses et bonus.",
+  "how.steps.grow.title": "Comment vous progressez",
+  "how.steps.grow.desc": "Plus vous participez, plus votre rang est élevé et meilleures sont votre éligibilité aux enquêtes, récompenses et bonus.",
   "how.steps.grow.cta": "En savoir plus",
 
   "hero.slide1.title": "Première diapositive",
-  "hero.slide1.desc": "Beau fond avec transitions fluides.",
+  "hero.slide1.desc": "Bel arrière-plan avec transitions fluides.",
   "hero.slide2.title": "Deuxième diapositive",
   "hero.slide2.desc": "Animations Tailwind personnalisées sans Framer Motion.",
   "hero.slide3.title": "Troisième diapositive",
-  "hero.slide3.desc": "Icônes React pour les flèches de navigation.",
+  "hero.slide3.desc": "Icônes React pour navigation.",
   "hero.slide4.title": "Quatrième diapositive",
-  "hero.slide4.desc": "Icônes React pour les flèches de navigation.",
+  "hero.slide4.desc": "Icônes React pour navigation.",
   "hero.slide5.title": "Cinquième diapositive",
-  "hero.slide5.desc": "Icônes React pour les flèches de navigation.",
+  "hero.slide5.desc": "Icônes React pour navigation.",
   "hero.aria.prev": "Diapositive précédente",
   "hero.aria.next": "Diapositive suivante",
   "hero.aria.goto": "Aller à la diapositive ",
@@ -110,47 +109,437 @@
 
   "whyChooseUs": {
     "heading": "POURQUOI NOUS CHOISIR",
-    "description": "Un panel d’enquêtes mondial fiable avec des opportunités bien rémunérées.",
-    "title1": "Adhésion 100% gratuite",
-    "desc1": "Rejoignez sans frais. Commencez à gagner immédiatement.",
-    "title2": "Gains élevés par sondage",
-    "desc2": "Paiements compétitifs et opportunités fréquentes.",
-    "title3": "Sécurisé et confidentiel",
+    "description": "Un panel d’enquêtes mondial fiable avec des opportunités de gains élevés.",
+    "title1": "Adhésion 100 % gratuite",
+    "desc1": "Rejoignez sans frais et commencez à gagner immédiatement.",
+    "title2": "Gains élevés par enquête",
+    "desc2": "Rémunérations compétitives avec de nombreuses opportunités.",
+    "title3": "Sûr & confidentiel",
     "desc3": "Données chiffrées et traitées avec soin.",
     "title4": "Transfert d’argent rapide",
     "desc4": "Retraits rapides vers vos méthodes préférées.",
-    "title5": "Partagez vos opinions à tout moment",
-    "desc5": "Accédez aux sondages depuis n’importe quel appareil, partout.",
+    "title5": "Partagez votre avis à tout moment",
+    "desc5": "Accédez aux enquêtes sur n’importe quel appareil, partout.",
     "title6": "Mise à jour facile du profil",
-    "desc6": "Gardez vos informations à jour pour de meilleures correspondances.",
+    "desc6": "Maintenez vos détails à jour pour de meilleurs matchs.",
     "readMore": "En savoir plus"
   },
 
   "rewardsNationStats": {
-    "happyPanelMembers": "Membres du panel satisfaits",
-    "completes": "Achèvements",
-    "rewardsGiven": "Récompenses attribuées"
+    "happyPanelMembers": "Membres satisfaits",
+    "completes": "Enquêtes complètes",
+    "rewardsGiven": "Récompenses accordées"
   },
 
   "stepJoin": {
-    "heading": "ÉTAPES POUR DEVENIR MEMBRE",
-    "description": "La communauté du panel VMH Global Insights offre un parcours simple et facile...",
-    "stepLabel": "ÉTAPE {{number}}",
-    "registerTitle": "INSCRIPTION",
-    "registerText": "Inscrivez-vous avec un e-mail actif et un numéro de contact",
-    "verifyTitle": "VÉRIFICATION",
-    "verifyText": "Vérifiez votre e-mail et téléphone puis cliquez sur les liens de vérification...",
-    "accessTitle": "ACCÉDER AUX SONDAGES",
-    "accessText": "Après l’activation de votre compte, participez aux sondages disponibles...",
+    "heading": "ÉTAPES POUR DEVENIR MEMBRE DE LA COMMUNAUTÉ",
+    "description": "La communauté du panel de recherche VMH Global Insights offre une façon très simple et facile...",
+    "stepLabel": "ÉTAPE ",
+    "registerTitle": "S'INSCRIRE",
+    "registerText": "Inscrivez-vous avec votre identifiant e-mail actif et votre numéro de contact",
+    "verifyTitle": "VÉRIFIER",
+    "verifyText": "Vérifiez votre e-mail et votre téléphone et cliquez sur les liens de vérification...",
+    "accessTitle": "ACCÉDER AUX ENQUÊTES",
+    "accessText": "Après activation de votre compte, participez aux enquêtes disponibles...",
     "rewardTitle": "OBTENIR DES RÉCOMPENSES",
-    "rewardText": "Atteignez le seuil pour recevoir des récompenses via PayPal",
+    "rewardText": "Atteignez votre seuil pour réclamer les récompenses via PayPal",
     "ctaTitle": "Prêt à rejoindre ?",
     "ctaDashboard": "Prêt pour le tableau de bord",
-    "ctaText": "Commencez dès aujourd’hui et gagnez immédiatement après la vérification.",
+    "ctaText": "Commencez votre voyage avec nous aujourd'hui et commencez à gagner des récompenses immédiatement après vérification.",
     "ctaButtonJoin": "REJOIGNEZ-NOUS MAINTENANT",
     "ctaButtonDashboard": "ALLER AU TABLEAU DE BORD",
     "ctaFooter": "Inscription 100% gratuite • Accès instantané"
+  },
+  "ctaButtonJoin": "REJOIGNEZ-NOUS MAINTENANT",
+  "ctaButtonDashboard": "ALLER AU TABLEAU DE BORD",
+
+  "aboutHeroTitle1": "Nous avons commencé en 2019 et avons actuellement plus de",
+  "aboutHeroTitle2": "3 millions de membres dans le monde",
+  "aboutUsParagraph1": {
+    "part1": "VMH Global Insights est une communauté mondiale de consommateurs et d’entreprises de VMH Global Insights. Participez et partagez des opinions dans de vastes campagnes d’enquêtes.",
+    "earnMore": "Gagnez des récompenses pour la participation —",
+    "part2": "contribuez plus pour recevoir plus d’incitatifs.",
+    "earnMoney": "",
+    "part3": ""
+  },
+  "aboutUsParagraphExtra": "Vous obtenez les études qui vous conviennent le mieux. Plus vous participez aux enquêtes, plus vous gagnez de récompenses.",
+
+  "testimonialTitle": "Ce que disent les membres",
+  "testimonials": {
+    "quote1": "Si vous aimez répondre aux enquêtes, ce site est pour vous. Beaucoup d'opportunités et paiements rapides via PayPal.",
+    "author1": "Geetika (Inde)",
+    "quote2": "Excellente plateforme avec des récompenses incroyables.",
+    "author2": "John (USA)",
+    "quote3": "Paiements très rapides et communauté amicale.",
+    "author3": "Sara (Royaume-Uni)",
+    "quote4": "Enquêtes intéressantes et précieuses.",
+    "author4": "Ahmed (Émirats arabes unis)",
+    "quote5": "Heureux de faire partie de cette communauté !",
+    "author5": "Yuki (Japon)"
+  },
+  "cta": {
+    "heading": "Prêt à commencer ?",
+    "text": "Rejoignez VMH aujourd'hui et commencez à gagner en étapes simples.",
+    "buttonJoin": "Rejoindre maintenant",
+    "buttonDashboard": "Aller au tableau de bord"
+  },
+  "how": {
+    "title": "COMMENT ÇA MARCHE",
+    "subtitle": "Inscrivez-vous gratuitement et activez votre compte avec un e-mail valide en quelques secondes.",
+    "steps": {
+      "register": {
+        "title": "S'INSCRIRE EN LIGNE",
+        "description": "Nous avons une adhésion gratuite à vie pour rejoindre notre communauté de recherche, nous avons une façon très simple et rapide de rejoindre, vous devez simplement vous inscrire avec votre identifiant e-mail actif et en un seul clic, vous devenez membre de notre communauté. Une fois que vous vous inscrivez, vous pouvez obtenir des points bonus gratuits de 200 Pts.",
+        "additionalText": "Vous n'avez pas à passer beaucoup de temps à être membre, car vous recevrez une invitation par e-mail lorsqu'une nouvelle enquête sera disponible. Vous n'avez donc pas à vous connecter au site pour vérifier vous-même à chaque fois."
+      },
+      "profiler": {
+        "title": "ENQUÊTE DE PROFILAGE",
+        "description": "Cliquez sur Enquête de profil dès que vous entrez dans votre tableau de bord pour être récompensé avec votre première récompense et complétez votre profilage avec quelques entrées rapides pour gagner plus de valeur de récompenses.",
+        "additionalText": "Vous serez récompensé avec des points de valeur pour compléter chaque profilage. Notre système de points de profilage a un paiement plus élevé pour atteindre votre seuil, donc par rapport à d'autres portails de gains, il ne faut pas trop de temps pour atteindre le seuil sur VMH Global Insights."
+      },
+      "daily": {
+        "title": "ENQUÊTES QUOTIDIENNES",
+        "description": "Une fois que vous avez complété toutes les enquêtes de profilage, vous commencez à recevoir une large gamme d'enquêtes quotidiennes selon votre profilage. Après chaque participation à l'enquête et l'atteinte de votre seuil ou plus, vous serez récompensé avec des points de valeur et ces points seront échangés sur votre compte PayPal à chaque cycle de facturation mensuel en espèces.",
+        "additionalText": "Au cas où vous ne pourriez pas atteindre votre seuil dans le mois en cours, tous vos points de récompense existants seront transférés à vos points du mois à venir et cela continuera jusqu'à ce que le seuil soit atteint, vous serez payé une fois que vous aurez atteint votre seuil ou plus."
+      },
+      "grow": {
+        "title": "COMMENT VOUS PROGRESSEZ",
+        "description": "Plus votre participation aux enquêtes est élevée, plus vous montez dans le classement des enquêtes, et plus cela devient attractif pour les participants potentiels - et plus de personnes participent.",
+        "additionalText": "Plus votre enquête est bien classée dans le classement des enquêtes, plus les autres reçoivent de points pour leur participation (vous obtiendrez des points d'incitation de 1500 chaque mois avec vos points actuels si vous atteignez votre seuil ou plus de manière continue pendant 6 mois dans le classement des enquêtes)."
+      }
+    }
+  },
+  "why": {
+    "title": "POURQUOI NOUS CHOISIR",
+    "subtitle": "Découvrez les avantages de rejoindre notre communauté de récompenses et commencez à gagner aujourd'hui.",
+    "features": {
+      "freeMembership": {
+        "title": "ADHÉSION 100% GRATUITE",
+        "description": "Pour faire partie de la communauté VMH Global Insights, vous n'êtes pas facturé un seul centime. Vous pouvez devenir membre en complétant simplement le formulaire d'inscription et profiter d'une adhésion gratuite à vie."
+      },
+      "highEarning": {
+        "title": "GAINS ÉLEVÉS PAR ENQUÊTE",
+        "description": "Nous valorisons vos retours et vous compensons pour tous les efforts et le temps que vous mettez à partager votre opinion précieuse sur chaque enquête avec nous sous forme de gains de récompenses élevés et traitons ces récompenses en argent liquide."
+      },
+      "secureConfidential": {
+        "title": "LES INFORMATIONS SONT SÉCURISÉES ET CONFIDENTIELLES",
+        "description": "Notre panel est une communauté de personnes qui se sont inscrites pour rejoindre notre base de données. Toutes les informations que vous partagez avec nous resteront confidentielles et sécurisées et ne seront pas partagées avec un tiers sans votre permission. Nous utilisons vos informations uniquement à des fins de recherche."
+      },
+      "quickTransfer": {
+        "title": "MODES RAPIDES DE TRANSFERT D'ARGENT",
+        "description": "Nous comprenons votre opinion et récompensons votre opinion par notre carte cadeau exclusive et de l'argent PayPal. Une fois que vous avez complété votre enquête payée et une fois que vous avez échangé vos points de récompense, nous collectons et transférons vos gains du compte du panel d'enquêtes payées à votre compte bancaire via PayPal, UPI, chèque ou banque en ligne selon votre mode de transfert préféré."
+      },
+      "anytimeAnywhere": {
+        "title": "PARTAGEZ VOTRE OPINION À TOUT MOMENT, PARTOUT",
+        "description": "Nous avons créé une façon très rapide et facile d'accès aux enquêtes pour les utilisateurs, grâce à laquelle ils peuvent choisir les enquêtes à tout moment et partager leur opinion n'importe où à tout moment. Ils peuvent installer l'application sur leurs gadgets et aussi sur leurs téléphones mobiles et avoir des mises à jour en temps réel du bout des doigts où qu'ils soient."
+      },
+      "profileUpdate": {
+        "title": "MISE À JOUR DU PROFIL",
+        "description": "Notre plateforme permet aux utilisateurs enregistrés de modifier leurs informations selon leurs besoins et préférences de temps en temps. Vous pouvez modifier vos préférences de profil à tout moment selon les changements de style de vie quotidien et les changements professionnels qui vous aideront à vous engager dans de plus en plus d'opportunités de gains et aideront à augmenter votre classement pour avoir des points bonus chaque mois."
+      }
+    }
+  },
+  "privacy": {
+    "hero": {
+      "title": "Politique de confidentialité",
+      "breadcrumbHome": "Accueil",
+      "breadcrumbHere": "Politique de confidentialité"
+    },
+    "toc": {
+      "title": "Sur cette page",
+      "overview": "1. Aperçu",
+      "orgInfo": "2. Informations sur l'organisation",
+      "anonymousAccess": "3. Accès anonyme",
+      "servicesLinks": "4. Services et liens",
+      "autoCollection": "5. Collecte automatique de données",
+      "dataPurpose": "6. Collecte de données et objectif",
+      "cookies": "7. Partage et cookies",
+      "children": "8. Confidentialité des enfants",
+      "disclosure": "9. Divulgation",
+      "ads": "10. Publicités tierces",
+      "security": "11. Confidentialité et sécurité",
+      "rights": "12. Vos droits",
+      "intlTransfers": "13. Transferts internationaux de données",
+      "compliance": "14. Conformité à la confidentialité",
+      "ccpa": "15. Avis aux résidents de Californie (CCPA)",
+      "support": "16. Support confidentialité"
+    },
+    "intro": "Cette politique explique comment VMH Global Insights gère vos données sur nos sites web et applications.",
+    "sections": {
+      "overview": {
+        "title": "1. Aperçu",
+        "p1": "Ce document établit les politiques de confidentialité de VMH Global Insights, de ses sites web et applications mobiles, ainsi que sa conformité avec des juridictions nationales et internationales spécifiques (y compris les réglementations et lois en matière de confidentialité). La publication de ce document annule toutes les politiques de confidentialité précédentes – implicites, orales ou écrites –"
+      },
+      "orgInfo": {
+        "title": "2. Informations sur l'organisation",
+        "p1": "Les technologies modernes d'information et de communication jouent un rôle fondamental dans les activités de VMH Global Insights.",
+        "p2": "VMH Global Insights est basé aux États-Unis et à l'adresse postale suivante :",
+        "address": {
+          "line1": "5 Penn Plaza, 14e étage,",
+          "line2": "New York - NY 10001,",
+          "line3": "États-Unis"
+        },
+        "contact": "VMH Global Insights peut être contacté par e-mail à"
+      },
+      "anonymousAccess": {
+        "title": "3. Accès anonyme",
+        "p1": "Les visiteurs peuvent accéder aux pages d'accueil du site web/application et naviguer sur les sites/applications sans divulguer de données personnelles."
+      },
+      "servicesLinks": {
+        "title": "4. Services et liens",
+        "p1": "Les sites web de VMH Global Insights permettent la communication avec d'autres visiteurs et la publication d'informations accessibles par d'autres visiteurs. La communication via ces publications est volontaire. Toutes les informations communiquées relèvent de la responsabilité et de la discrétion de l'individu et peuvent être collectées par d'autres visiteurs. Les sites Rewards Nation peuvent inclure des liens vers des fournisseurs de services web/mobiles tiers. VMH Global Insights n'est pas responsable du contenu, de l'exactitude ou des politiques de confidentialité des services web/mobiles tiers."
+      },
+      "autoCollection": {
+        "title": "5. Collecte automatique de données",
+        "p1": "VMH Global Insights peut collecter des informations à partir de votre ordinateur, téléphone mobile ou autre appareil d'accès. Les informations envoyées incluent, sans s'y limiter, des données sur les pages que vous accédez, votre adresse IP d'ordinateur, des données de référence, des identifiants d'appareil, le type de système d'exploitation que vous utilisez, votre localisation (GPS), des informations sur le réseau mobile, des données de journal web standard et d'autres informations. Les données de journal web incluent le type de navigateur que vous utilisez et le trafic vers et depuis notre site pour déterminer les tendances, administrer le site, suivre les mouvements des utilisateurs de manière agrégée et recueillir des informations démographiques larges pour une utilisation agrégée. La prise de décision automatisée est utilisée pour déterminer la probabilité d'une activité frauduleuse, y compris la duplication des répondants et l'utilisation de proxy. Les données collectées automatiquement peuvent être envoyées à des processeurs de données tiers dans le but de prévenir la fraude."
+      },
+      "dataPurpose": {
+        "title": "6. Collecte de données et objectif",
+        "p1": "Nous pouvons utiliser les données personnelles fournies ou fournies par vous pour vous envoyer des notifications par e-mail contenant des invitations à participer à des promotions, y compris, sans s'y limiter, des offres et des opportunités d'enquêtes de recherche de marché offertes par nos clients et/ou partenaires. Votre participation à ces opportunités est entièrement volontaire et vous pouvez vous désinscrire à tout moment des e-mails promotionnels. VMH Global Insights applique une politique e-mail stricte contre l'envoi d'e-mails non sollicités. Vous pouvez vous désinscrire en modifiant vos paramètres e-mail dans la section Modifier le compte/Modifier les préférences. Veuillez noter que le désabonnement des e-mails promotionnels ne vous dispense pas de recevoir des e-mails administratifs concernant le statut de votre compte et les changements de statut de membre, les mises à jour de la politique de confidentialité et des conditions générales.",
+        "p2": "De plus, nous pouvons partager les données personnelles et les informations socio-démographiques que nous collectons auprès de vous avec des sociétés de recherche de marché tierces dans le but de :",
+        "list1": "Faciliter votre participation à une ou plusieurs enquêtes ; et",
+        "list2": "Divulguer ces éléments de données aux clients des sociétés de recherche de marché tierces pour des services de mesure d'audience ; et",
+        "list3": "Ajouter ces éléments de données aux enquêtes clients complétées et livrer les données d'enquête ajoutées aux clients des sociétés de recherche de marché tierces à des fins analytiques ou de recherche ; et",
+        "list4": "Autres utilisations telles que définies dans leur politique de confidentialité.",
+        "p3": "Nous pouvons également partager des données personnelles et des informations socio-démographiques avec des partenaires pour plusieurs objectifs, y compris, sans limitation, la détection et la prévention de la fraude, la violation du droit d'auteur, la validation des données, l'accomplissement d'incitatifs ou de récompenses (si applicable), l'identification des répondants pour des enquêtes de recontact ou des communications, la correspondance de bases de données, l'ajout de données, le codage, la segmentation des données et/ou le développement d'insights de données concernant les participants aux enquêtes, mais pas à des fins de marketing.",
+        "p4": "Si vous êtes éligible pour une opportunité d'enquête client offerte par un client, le client ne vous contactera pas directement mais nous fournira votre numéro d'identification unique et un lien d'enquête, et nous vous permettrons de participer à l'enquête client spécifique. En lien avec le partage de vos informations avec un client, vos informations peuvent être transférées et stockées en dehors de votre pays de résidence, y compris, sans limitation, aux États-Unis, et en acceptant cette politique de confidentialité, vous acceptez le traitement et l'exportation de vos informations personnelles tels que décrits dans cette section. Si vous avez des questions sur ce partage de données, veuillez envoyer un ticket de support via notre système de support. L'accès aux données personnelles collectées est disponible sur demande en envoyant un ticket de support via notre système de support. Vous pouvez vous désinscrire en sélectionnant la catégorie confidentialité sur notre page de support et en soumettant votre demande. Si vous vous désinscrivez, il est de notre responsabilité d'informer les sociétés de recherche de marché tierces spécifiques. Veuillez noter que VMH Global Insights est seul responsable et tenu de gérer toutes les demandes de désinscription.",
+        "p5": "Nous nous réservons le droit de partager votre identité avec d'autres dans les limites de la protection des données dans une tentative de prévenir d'autres activités frauduleuses. Nous pouvons également obtenir des informations sur vous auprès de tiers, tels que des services de vérification d'identité."
+      },
+      "cookies": {
+        "title": "7. Partage et cookies",
+        "p1": "VMH Global Insights utilise des cookies et des technologies similaires pour vous reconnaître lorsque vous visitez nos sites web. Notre politique de cookies explique ce que sont ces technologies et pourquoi nous les utilisons, ainsi que vos droits de contrôler notre utilisation. Lisez notre politique de cookies."
+      },
+      "children": {
+        "title": "8. Confidentialité des enfants",
+        "p1": "VMH Global Insights ne collecte pas sciemment de données personnelles d'individus de moins de 16 ans dans l'UE et de moins de 13 ans en dehors de l'UE. Les mineurs de 16 à 18 ans dans l'UE et de 13 à 18 ans en dehors de l'UE sont autorisés à accéder aux services du site uniquement avec l'autorisation parentale. Il incombe à l'individu et au parent de s'assurer que de telles autorisations sont obtenues. Il est possible que par fraude ou tromperie, nous recevions des informations nous étant fournies ou relatives à des enfants de moins de 16 ans dans l'UE et de moins de 13 ans en dehors de l'UE. Si nous en sommes informés et dès que nous vérifions les informations, nous supprimerons immédiatement les informations de nos serveurs."
+      },
+      "disclosure": {
+        "title": "9. Divulgation",
+        "p1": "Sauf indication contraire dans le présent document, VMH Global Insights ne divulgue pas de données personnelles à des filiales ou à d'autres organisations sans votre permission ou lorsque l'on peut raisonnablement inférer des circonstances que vous consentez à la divulgation à des tiers. VMH Global Insights essaie de limiter les informations fournies à des tiers aux informations dont ils ont besoin pour aider VMH Global Insights à vous fournir des biens et services."
+      },
+      "ads": {
+        "title": "10. Publicités tierces",
+        "p1": "Les sites web et e-mails de VMH Global Insights contiennent des liens vers divers autres sites qui ne nous appartiennent pas. Bien que VMH Global Insights fasse tout son possible pour s'assurer que nos annonceurs publient des politiques de confidentialité claires et complètes et respectent des pratiques de données appropriées, chacun de ces sites/applications a une politique de confidentialité qui peut différer de celle de VMH Global Insights. Les pratiques de confidentialité d'autres sites web/applications et entreprises ne sont pas couvertes par cette politique. Veuillez noter que nous ne sommes pas responsables des pratiques de confidentialité de ces autres sites/applications. Nous vous encourageons à être vigilant lorsque vous quittez notre site/application et à lire les déclarations de confidentialité de chaque site web qui collecte des informations personnellement identifiables.",
+        "p2": "VMH Global Insights peut partager des informations non personnellement identifiables collectées via le service sous forme agrégée et anonyme avec des annonceurs ou d'autres tiers afin qu'ils puissent mieux évaluer quels produits et services sont les plus attractifs pour différents segments de la base d'utilisateurs. Rewards Nation ne divulgue pas votre prénom/nom de famille, adresse, adresse e-mail ou toute autre information personnelle à ces tiers sauf si vous donnez votre consentement exprès."
+      },
+      "security": {
+        "title": "11. Confidentialité et sécurité",
+        "p1": "VMH Global Insights n'utilise pas de méthodes de transmission sécurisées pour envoyer des données personnelles.",
+        "p2": "VMH Global Insights a mis en œuvre des politiques de sécurité, des règles et des mesures techniques pour protéger les données personnelles contre l'accès non autorisé, l'utilisation ou la divulgation inappropriée, la modification non autorisée et la destruction illégale ou la perte accidentelle.",
+        "p3": "Les employés de VMH Global Insights et les processeurs de données ayant accès ou associés au traitement de données personnelles sont tenus de respecter la confidentialité des données personnelles des visiteurs.",
+        "p4": "VMH Global Insights ne divulgue pas de données personnelles à des institutions et autorités d'État sauf si la loi l'exige."
+      },
+      "rights": {
+        "title": "12. Vos droits",
+        "p1": "12.1 Nous avons résumé les droits que vous avez en vertu du RGPD pour les sujets de données de l'UE. Certains droits sont complexes, et tous les détails n'ont pas été inclus dans nos résumés. Par conséquent, vous devriez lire les lois pertinentes et les orientations des autorités réglementaires pour une explication complète de ces droits. Vos données ne font pas partie d'une exigence légale ou contractuelle, ni d'une exigence nécessaire pour conclure un contrat.",
+        "p2": "12.2 Vos principaux droits en vertu de la loi sur la protection des données sont :",
+        "r1": "(a) le droit d'accès ;",
+        "r2": "(b) le droit de rectification ;",
+        "r3": "(c) le droit d'effacement ;",
+        "r4": "(d) le droit de restriction du traitement ;",
+        "r5": "(e) le droit d'opposition au traitement ;",
+        "r6": "(f) le droit à la portabilité des données ;",
+        "r7": "(g) le droit de porter plainte auprès d'une autorité de contrôle ; et",
+        "r8": "(h) le droit de retirer son consentement.",
+        "p3": "12.3 Vous avez le droit de confirmer si nous traitons ou non vos données personnelles et, le cas échéant, d'accéder aux données personnelles, ainsi qu'à certaines informations supplémentaires. Ces informations supplémentaires incluent des détails sur les finalités du traitement, les catégories de données personnelles concernées et les destinataires des données personnelles. À condition que les droits et libertés d'autrui ne soient pas affectés. Vous pouvez accéder à vos données personnelles en visitant https://vmhgroup.com/login/.",
+        "p4": "12.4 Vous avez le droit de faire rectifier toute donnée personnelle inexacte vous concernant et, compte tenu des finalités du traitement, de faire compléter toute donnée personnelle incomplète vous concernant.",
+        "p5": "12.5 Dans certaines circonstances, vous avez le droit à l'effacement de vos données personnelles sans retard injustifié. Ces circonstances incluent : (a) les données personnelles ne sont plus nécessaires au regard des finalités pour lesquelles elles ont été collectées ou traitées d'une autre manière ; (b) vous retirez votre consentement au traitement basé sur le consentement ; (c) vous vous opposez au traitement en vertu de certaines règles du droit applicable en matière de protection des données ; (d) le traitement est à des fins de marketing direct ; (e) et les données personnelles ont été traitées illégalement. Cependant, il existe des exclusions au droit d'effacement. Les exclusions générales incluent les cas où le traitement est nécessaire : (a) aux fins de recherche de marché auxquelles vous avez participé ; (b) pour le respect d'une obligation légale ; (c) aux fins de prévention de la fraude ; ou (d) pour l'établissement, l'exercice ou la défense de droits en justice.",
+        "p6": "12.6 Dans certaines circonstances, vous avez le droit de restreindre le traitement de vos données personnelles. Ces circonstances sont : vous contestez l'exactitude des données personnelles ; le traitement est illégal mais vous vous opposez à l'effacement ; nous n'avons plus besoin des données personnelles aux fins de notre traitement, mais vous avez besoin de données personnelles pour l'établissement, l'exercice ou la défense de droits en justice ; et vous vous êtes opposé au traitement, en attendant la vérification de cette opposition. Lorsque le traitement a été restreint sur cette base, nous pouvons continuer à stocker vos données personnelles. Cependant, nous ne les traiterons autrement qu'avec votre consentement ; pour l'établissement, l'exercice ou la défense de droits en justice ; pour la protection des droits d'une autre personne physique ou morale ; ou pour des raisons d'intérêt public important.",
+        "basis1": "(a) consentement ;",
+        "basis2": "(b) que le traitement est nécessaire pour l'exécution d'un contrat dont vous êtes partie ou pour prendre des mesures à votre demande avant la conclusion d'un contrat, et que ce traitement est effectué par des moyens automatisés, vous avez le droit de recevoir vos données personnelles de notre part dans un format structuré, couramment utilisé et lisible par machine. Cependant, ce droit ne s'applique pas lorsqu'il porterait atteinte aux droits et libertés d'autrui.",
+        "p7": "12.11 Si vous considérez que notre traitement de vos informations personnelles enfreint les lois sur la protection des données, vous avez le droit légal de déposer une plainte auprès d'une autorité de contrôle responsable de la protection des données. Vous pouvez le faire dans l'État membre de l'UE de votre résidence habituelle, de votre lieu de travail ou du lieu de l'infraction alléguée.",
+        "p8": "12.12 Dans la mesure où la base légale de notre traitement de vos informations personnelles est le consentement, vous avez le droit de retirer ce consentement à tout moment. Le retrait n'affectera pas la légalité du traitement avant le retrait.",
+        "p9": "12.13 Vous pouvez exercer l'un de vos droits relatifs à vos données personnelles en envoyant un ticket de support après vous être connecté.",
+        "p10": "Visiteurs de zones autres que l'UE peuvent demander l'accès à leurs propres informations personnelles spécifiques collectées par VMH Global Insights en visitant la section des informations de compte membre du site web de VMH Global Insights : https://vmhgroup.com/profile/. L'accès aux informations personnelles peut nécessiter une preuve d'identité. L'accès aux données personnelles est gratuit. Les données personnelles peuvent être contestées ou mises à jour et, le cas échéant, les données seront complétées, effacées, rectifiées ou modifiées. VMH Global Insights se réserve le droit de refuser l'accès aux données personnelles. Dans un tel cas, des motifs seront donnés pour le refus. Vous pouvez fermer votre compte via notre site web. Si vous fermez votre compte, nous marquerons votre compte dans notre base de données comme \"Fermé\", mais conserverons les informations de votre compte dans notre base de données. Cela est nécessaire pour dissuader la fraude ou l'abus du site, en veillant à ce que les personnes qui tentent de commettre une fraude ou un abus du site ne puissent pas éviter la détection simplement en fermant leur compte et en ouvrant un nouveau. Cependant, si vous fermez votre compte, vos informations personnellement identifiables ne seront pas utilisées par nous à d'autres fins, ni vendues ou partagées avec des tiers, sauf si nécessaire pour prévenir la fraude et assister les forces de l'ordre ou comme requis par la loi."
+      },
+      "intlTransfers": {
+        "title": "13. Transferts internationaux de données",
+        "p1": "Nous opérons à l'international et pouvons transférer des informations vous concernant vers n'importe quelle juridiction où nous exerçons nos activités, y compris les États-Unis. Lorsque vous utilisez nos sites web, vous reconnaissez que nous pouvons transférer des informations vous concernant comme décrit dans cette politique.",
+        "p2": "Nous transférerons vos informations personnelles pour l'un des objectifs identifiés dans cette politique à l'une de nos filiales, sociétés affiliées, fournisseurs de services et partenaires commerciaux qui peuvent être situés en dehors de la juridiction où vous vous trouvez. Les lois dans ces juridictions peuvent ne pas offrir le même niveau de protection des données que les lois de votre pays. Cependant, nous traiterons vos informations personnelles comme soumises aux protections décrites dans cette politique.",
+        "p3": "Lorsque nous transférons des informations personnelles soumises au Règlement général sur la protection des données à des entités situées en dehors de l'Espace économique européen (\"EEE\"), nous nous appuierons sur une base légale appropriée, telle que des garanties appropriées, qui pourraient inclure les clauses contractuelles types, les règles d'entreprise contraignantes, le programme EU-US Privacy Shield, ou un autre cadre jugé adéquat par la Commission européenne, ou comme autrement permis par la loi applicable, tel que conformément à votre consentement ou pour exécuter nos accords contractuels avec vous."
+      },
+      "compliance": {
+        "title": "14. Conformité à la confidentialité",
+        "p1": "La politique de confidentialité de VMH Global Insights est conforme aux réglementations internationales et nationales suivantes :",
+        "c1": "Global : Directives de l'OCDE sur la protection de la vie privée et les flux transfrontaliers de données personnelles",
+        "c2": "Global : Directives des Nations Unies pour la réglementation des fichiers de données personnelles adoptées par la résolution 45/95 de l'Assemblée générale du 14 décembre 1990",
+        "c3": "États-Unis : Loi sur la confidentialité de 1974",
+        "c4": "Union européenne : Convention européenne des droits de l'homme et Règlement général sur la protection des données (RGPD)",
+        "c5": "Canada : Loi sur la protection des renseignements personnels et les documents électroniques",
+        "p2": "La conformité à la confidentialité est assurée par des auto-évaluations périodiques."
+      },
+      "ccpa": {
+        "title": "15. Avis aux résidents de Californie (CCPA)",
+        "p1": "Le CCPA définit le terme « vendre » de manière large. Sa signification inclut « louer, libérer, divulguer, diffuser, rendre disponible et transférer contre une rémunération monétaire ou autre considération de valeur ».",
+        "p2": "Selon cette définition et la définition large du CCPA des « informations personnelles », nous pouvons « vendre des informations personnelles » vous concernant à nos fournisseurs ou autres partenaires, telles que vos informations de contact ou certaines combinaisons d'informations démographiques anonymisées ou pseudonymisées et d'autres informations.",
+        "p3": "Catégories d'informations que nous avons « vendues » au cours des 12 mois précédents incluent :",
+        "sold1": "Nom, adresse e-mail, adresse postale, numéro de téléphone",
+        "sold2": "Fichiers journaux, y compris l'adresse de protocole Internet (IP), le type de navigateur, l'ISP, la langue du navigateur, la date et l'heure de votre demande, le système d'exploitation, les pages de référence/sortie, les données de flux de clics, les informations sur les plug-ins",
+        "sold3": "Informations de navigation, telles que la date et l'heure de votre visite sur notre site web, le nombre de pages que vous avez vues, le temps en secondes passé sur chaque page, et les détails de tout site web que vous avez visité avant et/ou après la participation à l'une de nos enquêtes ou à un autre programme de recherche",
+        "sold4": "Démographiques auto-rapportées (c.-à-d. âge, genre, éducation, etc.)",
+        "sold5": "Firmographiques auto-rapportées (c.-à-d. informations liées à l'emploi telles que titre et profession, etc.)",
+        "sold6": "Informations de profil auto-rapportées (c.-à-d. affiliation politique, utilisation de la technologie, préférences et propriété des consommateurs, etc.)",
+        "sold7": "Métriques système incluant le statut de l'enquête (enquête terminée, terminée, etc.), durée du temps passé dans une enquête",
+        "p4": "Catégories d'informations que nous avons autrement divulguées à des fins commerciales ou commerciales (par exemple, pour une utilisation confidentielle par nos fournisseurs de services) au cours des 12 mois précédents incluent :",
+        "disclosed1": "Nom, adresse e-mail, adresse postale, numéro de téléphone",
+        "disclosed2": "Fichiers journaux, y compris l'adresse de protocole Internet (IP), le type de navigateur, l'ISP, la langue du navigateur, la date et l'heure de votre demande, le système d'exploitation, les pages de référence/sortie, les données de flux de clics, les informations sur les plug-ins",
+        "disclosed3": "Informations de navigation, telles que la date et l'heure de votre visite sur notre site web, le nombre de pages que vous avez vues, le temps en secondes passé sur chaque page, et les détails de tout site web que vous avez visité avant et/ou après la participation à l'une de nos enquêtes ou à un autre programme de recherche",
+        "disclosed4": "Démographiques auto-rapportées (c.-à-d. âge, genre, éducation, etc.)",
+        "disclosed5": "Firmographiques auto-rapportées (c.-à-d. informations liées à l'emploi telles que titre et profession, etc.)",
+        "disclosed6": "Informations de profil auto-rapportées (c.-à-d. affiliation politique, utilisation de la technologie, préférences et propriété des consommateurs, etc.)",
+        "disclosed7": "Métriques système incluant le statut de l'enquête (enquête terminée, terminée, etc.), durée du temps passé dans une enquête",
+        "rightsIntro": "Si vous êtes résident de Californie, vous avez également les droits spéciaux suivants :",
+        "rightKnowTitle": "Votre droit de « savoir » et de demander la suppression",
+        "rightKnowP1": "Vous avez le droit de connaître les catégories et les pièces spécifiques d'informations personnelles que nous avons collectées sur vous.",
+        "rightKnowP2": "Vous avez le droit de connaître les catégories de sources à partir desquelles les informations personnelles ont été collectées, le but commercial ou commercial de la collecte ou de la vente d'informations personnelles, et les catégories de tiers avec lesquels nous partageons des informations personnelles.",
+        "rightKnowP3": "Vous avez le droit de demander la suppression des informations personnelles que nous avons collectées ou maintenues. Pour exercer ces droits, contactez-nous à info@vmhgroupsmr.com.",
+        "optOutTitle": "Votre droit de vous désinscrire de la « vente » de vos informations",
+        "optOutP": "Vous avez le droit de vous désinscrire de la vente de vos informations personnelles.",
+        "nonDiscriminationTitle": "Votre droit à la non-discrimination",
+        "nonDiscriminationP": "Vous avez le droit de ne pas recevoir de traitement discriminatoire de la part de The Rewards Nation pour l'exercice des droits de confidentialité conférés par le CCPA.",
+        "verificationTitle": "Processus de vérification :",
+        "verificationP": "Si vous faites une demande d'accès ou de suppression de vos informations, ou de vous désinscrire de la vente de vos informations personnelles, nous pouvons vous demander des informations supplémentaires pour vérifier votre identité. Ces informations peuvent inclure : votre nom complet, date de naissance, numéro de téléphone, adresse e-mail, ou d'autres informations personnelles de base sur vous que nous avons déjà en fichier."
+      },
+      "support": {
+        "title": "16. Support confidentialité",
+        "p1": "Les demandes ou préoccupations concernant la politique de confidentialité de VMH Global Insights peuvent être adressées à :",
+        "address": {
+          "line1": "VMH Global Insights",
+          "line2": "5 Penn Plaza, 14e étage,",
+          "line3": "New York - NY 10001,",
+          "line4": "E-mail :"
+        }
+      },
+      "backHome": "Retour à l'accueil"
+    }
+  },
+  "gdpr": {
+    "hero": {
+      "title": "Conformité RGPD",
+      "home": "Accueil",
+      "here": "Conformité RGPD"
+    },
+    "sidebar": {
+      "sections": "Sections",
+      "contactCta": "Contact"
+    },
+    "toc": {
+      "overview": "Aperçu",
+      "principles": "Principes",
+      "consent": "Consentement & Transparence",
+      "research": "Prospection de recherche",
+      "cloud": "Cloud & Stockage",
+      "data": "Données collectées",
+      "use": "Comment nous utilisons les données",
+      "legal": "Bases légales",
+      "sharing": "Partage & Processeurs",
+      "cookies": "Cookies",
+      "intl": "Transferts internationaux",
+      "retention": "Rétention",
+      "rights": "Vos droits",
+      "security": "Sécurité",
+      "contact": "Contact"
+    },
+    "sections": {
+      "overview": {
+        "title": "Aperçu",
+        "body": "Nous traitons les données personnelles conformément au Règlement général sur la protection des données de l'UE (RGPD) et aux lois locales applicables. Étant donné que les méthodes de collecte, de stockage, de traitement et d'analyse des données ont évolué, nous suivons des normes plus strictes pour protéger la vie privée des individus et être transparents sur nos pratiques."
+      },
+      "principles": {
+        "title": "Principes clés que nous suivons",
+        "items": {
+          "purpose": "Limitation des finalités : finalités spécifiques, explicites et légitimes uniquement.",
+          "minimization": "Minimisation des données : seulement ce qui est nécessaire.",
+          "accuracy": "Exactitude : maintenir les données exactes et à jour si nécessaire.",
+          "storage": "Limitation du stockage : conserver seulement aussi longtemps que nécessaire.",
+          "integrity": "Intégrité et confidentialité : mesures techniques et organisationnelles appropriées.",
+          "accountability": "Responsabilité : documenter le traitement et démontrer la conformité."
+        }
+      },
+      "consent": {
+        "title": "Consentement et transparence",
+        "items": {
+          "clearConsent": "Nous obtenons un consentement clair et informé lorsque requis (marketing, analyses optionnelles, certaines recherches).",
+          "cookieBanner": "L'utilisation des cookies est divulguée via une bannière/pop-up avec options pour accepter, refuser ou gérer les catégories.",
+          "collectionNotice": "Lors de la collecte directe de données, nous expliquons la finalité, le stockage, la rétention le cas échéant, et tout partage avec des tiers."
+        }
+      },
+      "research": {
+        "title": "Lors du contact pour la recherche",
+        "items": {
+          "optInLawful": "Nous nous assurons que le public a opté pour ou peut être contacté légalement.",
+          "legalBasis": "Nous nous appuyons sur une base légale valide (consentement, contrat, intérêts légitimes, obligation légale).",
+          "purposeLimitation": "Les données sont utilisées uniquement pour la finalité de recherche indiquée."
+        }
+      },
+      "cloud": {
+        "title": "Cloud et stockage",
+        "body": "Nous pouvons stocker les réponses de recherche et les données opérationnelles dans des bases de données ou des fournisseurs cloud de confiance sous accords de traitement de données. Nous assurons des contrôles d'accès, un chiffrement en transit (et au repos le cas échéant), des sauvegardes avec purges roulantes, une diligence raisonnable des fournisseurs et une allocation claire des responsabilités entre nous et les processeurs."
+      },
+      "data": {
+        "title": "Données que nous collectons",
+        "items": {
+          "account": "Données de compte : nom, e-mail, rôle, hash de mot de passe.",
+          "preferences": "Préférences/profil : langue, préférences de communication.",
+          "usage": "Utilisation/appareil : pages vues, actions, IP, agent utilisateur, localisation approximative à partir de l'IP.",
+          "cookies": "Cookies/technologie : nécessaires, préférences, analyses (sujettes au consentement).",
+          "research": "Recherche/enquêtes : réponses volontaires ; catégories spéciales uniquement avec consentement explicite."
+        }
+      },
+      "use": {
+        "title": "Comment nous utilisons les données",
+        "items": {
+          "provide": "Fournir, exploiter et améliorer les services et la recherche.",
+          "authSecure": "Authentifier les utilisateurs, prévenir la fraude et sécuriser les systèmes.",
+          "personalize": "Personnaliser le contenu et mémoriser les préférences.",
+          "measure": "Mesurer les performances et analyser l'utilisation des produits.",
+          "communicate": "Communiquer les mises à jour de service et, le cas échéant, le marketing.",
+          "comply": "Respecter les obligations légales et appliquer les termes."
+        }
+      },
+      "legal": {
+        "title": "Bases légales",
+        "items": {
+          "contract": "Contrat",
+          "consent": "Consentement",
+          "legitInterests": "Intérêts légitimes",
+          "legalObligation": "Obligation légale",
+          "vitalPublic": "Intérêts vitaux/tâche publique (le cas échéant)"
+        }
+      },
+      "sharing": {
+        "title": "Partage et processeurs",
+        "body": "Nous partageons des données avec des fournisseurs de services vérifiés agissant en tant que processeurs (hébergement, analyses, e-mail, support client) sous contrats écrits avec confidentialité, sécurité et termes de traitement conformes au RGPD. Nous pouvons divulguer des données pour respecter la loi ou protéger les droits, la sécurité ou la propriété."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "body": "Nous utilisons des cookies strictement nécessaires pour faire fonctionner le site et des cookies analytiques optionnels sujets au consentement. Les visiteurs peuvent accepter, refuser ou gérer les catégories via la bannière de cookies ou les paramètres."
+      },
+      "intl": {
+        "title": "Transferts internationaux",
+        "body": "Si des données sont transférées en dehors de l'EEE/Royaume-Uni, nous utilisons des garanties appropriées telles que les clauses contractuelles types de la Commission européenne et des mesures supplémentaires si nécessaire."
+      },
+      "retention": {
+        "title": "Rétention",
+        "body": "Nous conservons les données personnelles seulement aussi longtemps que nécessaire pour les finalités décrites ou requis par la loi. Les sauvegardes sont purgées sur une base roulante, et les données sont supprimées ou anonymisées à la fin des périodes de rétention."
+      },
+      "rights": {
+        "title": "Vos droits (UE/EEE)",
+        "body": "Sous réserve de conditions et d'exemptions, les individus peuvent demander l'accès, la rectification, l'effacement, la restriction, l'opposition, la portabilité, retirer le consentement à tout moment sans affecter le traitement antérieur, et déposer une plainte auprès d'une autorité de contrôle."
+      },
+      "security": {
+        "title": "Sécurité",
+        "body": "Nous mettons en œuvre une sécurité multicouche : chiffrement en transit, infrastructure renforcée, accès basé sur les rôles, surveillance, pratiques de privilèges minimaux et procédures de réponse aux incidents incluant notification si requis."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "Pour poser des questions ou exercer vos droits, contactez : info@vmhgroupsmr.com. Poste : VMH GROUP, 5 Penn Plaza, 14e étage, New York - NY 10001 (États-Unis)."
+      }
+    },
+    "footer": {
+      "updated": "Dernière mise à jour : 10 août 2025",
+      "back": "Retour",
+      "home": "Retour à l'accueil"
+    }
   }
-
 }
-
