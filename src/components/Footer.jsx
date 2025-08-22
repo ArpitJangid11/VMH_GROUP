@@ -121,7 +121,7 @@ export default function Footer() {
               {/* Phone */}
                <div className="flex gap-2 text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1 cursor-pointer">
                 <MdLocationOn className="text-blue-300 mt-0.5 shrink-0" />
-                <span>USA Office<br />UK Office<br />India Office</span>
+                <span>USA | UK | India </span>
                 {/* <span>UK Office<br /></span>
                 <span>India Office</span> */}
               </div>

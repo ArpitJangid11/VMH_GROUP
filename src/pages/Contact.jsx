@@ -136,9 +136,9 @@ export default function ContactUs() {
                 </span>
               </li>
               <li className="flex items-center">
-                <FaPhoneAlt className="text-blue-600 mr-3 flex-shrink-0" />
+                <FaMapMarkerAlt className="text-blue-600 mr-3 flex-shrink-0" />
                 <span>
-                  <strong>Phone:</strong> +91 98765 43210
+                  <strong>Office:</strong> US | UK | INDIA
                 </span>
               </li>
               <li className="flex items-center">

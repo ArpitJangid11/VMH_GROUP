@@ -455,8 +455,6 @@ const ProfessionalHouseholdModal = ({
                     <option value="">--Select--</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
-                    <option value="Non-binary">Non-binary</option>
-                    <option value="Prefer not to say">Prefer not to say</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
